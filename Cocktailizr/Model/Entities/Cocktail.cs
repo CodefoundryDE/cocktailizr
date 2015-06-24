@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using Cocktailizr.Helper.Serializer;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson.Serialization.Options;
 
 namespace Cocktailizr.Model.Entities
 {
     [BsonIgnoreExtraElements]
-    public class Cocktail
+    public class Cocktail : CocktailizrEntityBase
     {
         [BsonElement]
         public string Name { get; set; }
@@ -51,5 +52,27 @@ namespace Cocktailizr.Model.Entities
         [BsonElement]
         public string Headline { get; set; }
 
+    }
+
+    [BsonIgnoreExtraElements]
+    public class Zutat
+    {
+        [BsonElement]
+        public string Name { get; set; }
+
+        [BsonElement]
+        public bool IsOptional { get; set; }
+
+        [BsonElement, BsonRepresentation(BsonType.String)]
+        public ZutatenSkala Skala { get; set; }
+    }
+
+    public enum ZutatenSkala
+    {
+        Cl,
+        Liter,
+        Stueck,
+        Gramm,
+        Priese,
     }
 }
