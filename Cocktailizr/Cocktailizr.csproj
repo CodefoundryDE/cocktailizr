@@ -71,10 +71,14 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Service1.svc" />
+    <Content Include="Service\Impl\AdminService.svc" />
+    <Content Include="Service\Impl\CocktailService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Service\Impl\AdminService.svc.cs">
+      <DependentUpon>AdminService.svc</DependentUpon>
+    </Compile>
     <Compile Include="Helper\Serializer\ColorSerializer.cs" />
     <Compile Include="Model\Database\CoktailizrDataContext.cs" />
     <Compile Include="Model\Database\MongoClientFactory.cs" />
@@ -85,10 +89,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Service1.svc.cs">
-      <DependentUpon>Service1.svc</DependentUpon>
+    <Compile Include="Service\IAdminService.cs" />
+    <Compile Include="Service\Impl\CocktailService.svc.cs">
+      <DependentUpon>CocktailService.svc</DependentUpon>
     </Compile>
-    <Compile Include="IService1.cs" />
+    <Compile Include="Service\ICocktailService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

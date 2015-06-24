@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="888a1384-8700-46a9-8dc7-09a6ca018bf8" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:19609/Service/Impl/CocktailService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CocktailService3.xsd" MetadataType="Schema" ID="cf5630f5-7923-4fb6-9955-5674e16ea85b" SourceId="1" SourceUrl="http://localhost:19609/Service/Impl/CocktailService.svc?xsd=xsd4" />
+    <MetadataFile FileName="CocktailService2.xsd" MetadataType="Schema" ID="2d80a590-fdf4-41c3-a3aa-5e6d13c9fc5c" SourceId="1" SourceUrl="http://localhost:19609/Service/Impl/CocktailService.svc?xsd=xsd2" />
+    <MetadataFile FileName="CocktailService.xsd" MetadataType="Schema" ID="4fa9af83-ed70-4b3c-b0e6-2b71de70da73" SourceId="1" SourceUrl="http://localhost:19609/Service/Impl/CocktailService.svc?xsd=xsd0" />
+    <MetadataFile FileName="CocktailService.wsdl" MetadataType="Wsdl" ID="fcadd2ef-98dc-4457-8a18-9aff7220ede2" SourceId="1" SourceUrl="http://localhost:19609/Service/Impl/CocktailService.svc?wsdl" />
+    <MetadataFile FileName="CocktailService31.xsd" MetadataType="Schema" ID="3da3f81b-95a9-4e58-8955-381ad01179e4" SourceId="1" SourceUrl="http://localhost:19609/Service/Impl/CocktailService.svc?xsd=xsd3" />
+    <MetadataFile FileName="CocktailService.disco" MetadataType="Disco" ID="27405504-bff8-4c18-86e5-be189d36c2f5" SourceId="1" SourceUrl="http://localhost:19609/Service/Impl/CocktailService.svc?disco" />
+    <MetadataFile FileName="CocktailService1.xsd" MetadataType="Schema" ID="7e2229d7-4448-4b61-9f5c-9f8077c01ade" SourceId="1" SourceUrl="http://localhost:19609/Service/Impl/CocktailService.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

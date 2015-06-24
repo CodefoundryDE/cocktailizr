@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cocktailizr", "Cocktailizr.csproj", "{EDCD31E4-3CE9-4179-9805-3F7A3094A395}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocktailizrClient", "..\CocktailizrClient\CocktailizrClient.csproj", "{DFA23BCA-455A-4E12-83F0-78EDAC02D9A2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EDCD31E4-3CE9-4179-9805-3F7A3094A395} = {EDCD31E4-3CE9-4179-9805-3F7A3094A395}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
