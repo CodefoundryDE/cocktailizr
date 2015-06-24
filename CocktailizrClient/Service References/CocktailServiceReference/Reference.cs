@@ -15,141 +15,6 @@ namespace CocktailizrClient.CocktailServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Cocktail", Namespace="http://schemas.datacontract.org/2004/07/Cocktailizr.Model.Entities")]
-    [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(object[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.Dictionary<decimal, CocktailizrClient.CocktailServiceReference.Zutat>))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CocktailizrClient.CocktailServiceReference.Rezept))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CocktailizrClient.CocktailServiceReference.Step[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CocktailizrClient.CocktailServiceReference.Step))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CocktailizrClient.CocktailServiceReference.Zutat))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CocktailizrClient.CocktailServiceReference.ZutatenSkala))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CocktailizrClient.CocktailServiceReference.Cocktail[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CocktailizrClient.CocktailServiceReference.Zutat[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CocktailizrClient.CocktailServiceReference.Color))]
-    public partial class Cocktail : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool AlcoholicField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private CocktailizrClient.CocktailServiceReference.Color DrinkColorField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private CocktailizrClient.CocktailServiceReference.Rezept RezeptField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private object[] TagsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.Dictionary<decimal, CocktailizrClient.CocktailServiceReference.Zutat> ZutatenField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool Alcoholic {
-            get {
-                return this.AlcoholicField;
-            }
-            set {
-                if ((this.AlcoholicField.Equals(value) != true)) {
-                    this.AlcoholicField = value;
-                    this.RaisePropertyChanged("Alcoholic");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public CocktailizrClient.CocktailServiceReference.Color DrinkColor {
-            get {
-                return this.DrinkColorField;
-            }
-            set {
-                if ((this.DrinkColorField.Equals(value) != true)) {
-                    this.DrinkColorField = value;
-                    this.RaisePropertyChanged("DrinkColor");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public CocktailizrClient.CocktailServiceReference.Rezept Rezept {
-            get {
-                return this.RezeptField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.RezeptField, value) != true)) {
-                    this.RezeptField = value;
-                    this.RaisePropertyChanged("Rezept");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public object[] Tags {
-            get {
-                return this.TagsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TagsField, value) != true)) {
-                    this.TagsField = value;
-                    this.RaisePropertyChanged("Tags");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.Dictionary<decimal, CocktailizrClient.CocktailServiceReference.Zutat> Zutaten {
-            get {
-                return this.ZutatenField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ZutatenField, value) != true)) {
-                    this.ZutatenField = value;
-                    this.RaisePropertyChanged("Zutaten");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Color", Namespace="http://schemas.datacontract.org/2004/07/System.Drawing")]
     [System.SerializableAttribute()]
     public partial struct Color : System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -236,246 +101,37 @@ namespace CocktailizrClient.CocktailServiceReference {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Rezept", Namespace="http://schemas.datacontract.org/2004/07/Cocktailizr.Model.Entities")]
-    [System.SerializableAttribute()]
-    public partial class Rezept : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private CocktailizrClient.CocktailServiceReference.Step[] ZubereitungsSchritteField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.TimeSpan ZubereitungszeitField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public CocktailizrClient.CocktailServiceReference.Step[] ZubereitungsSchritte {
-            get {
-                return this.ZubereitungsSchritteField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ZubereitungsSchritteField, value) != true)) {
-                    this.ZubereitungsSchritteField = value;
-                    this.RaisePropertyChanged("ZubereitungsSchritte");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.TimeSpan Zubereitungszeit {
-            get {
-                return this.ZubereitungszeitField;
-            }
-            set {
-                if ((this.ZubereitungszeitField.Equals(value) != true)) {
-                    this.ZubereitungszeitField = value;
-                    this.RaisePropertyChanged("Zubereitungszeit");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Zutat", Namespace="http://schemas.datacontract.org/2004/07/Cocktailizr.Model.Entities")]
-    [System.SerializableAttribute()]
-    public partial class Zutat : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool IsOptionalField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private CocktailizrClient.CocktailServiceReference.ZutatenSkala SkalaField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool IsOptional {
-            get {
-                return this.IsOptionalField;
-            }
-            set {
-                if ((this.IsOptionalField.Equals(value) != true)) {
-                    this.IsOptionalField = value;
-                    this.RaisePropertyChanged("IsOptional");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public CocktailizrClient.CocktailServiceReference.ZutatenSkala Skala {
-            get {
-                return this.SkalaField;
-            }
-            set {
-                if ((this.SkalaField.Equals(value) != true)) {
-                    this.SkalaField = value;
-                    this.RaisePropertyChanged("Skala");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Step", Namespace="http://schemas.datacontract.org/2004/07/Cocktailizr.Model.Entities")]
-    [System.SerializableAttribute()]
-    public partial class Step : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string BeschreibungField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string HeadlineField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Beschreibung {
-            get {
-                return this.BeschreibungField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.BeschreibungField, value) != true)) {
-                    this.BeschreibungField = value;
-                    this.RaisePropertyChanged("Beschreibung");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Headline {
-            get {
-                return this.HeadlineField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.HeadlineField, value) != true)) {
-                    this.HeadlineField = value;
-                    this.RaisePropertyChanged("Headline");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ZutatenSkala", Namespace="http://schemas.datacontract.org/2004/07/Cocktailizr.Model.Entities")]
-    public enum ZutatenSkala : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Cl = 0,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Liter = 1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Stueck = 2,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Gramm = 3,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Priese = 4,
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="CocktailServiceReference.ICocktailService")]
     public interface ICocktailService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICocktailService/GetRandomCocktail", ReplyAction="http://tempuri.org/ICocktailService/GetRandomCocktailResponse")]
-        CocktailizrClient.CocktailServiceReference.Cocktail GetRandomCocktail();
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.Dictionary<Cocktailizr.Model.Entities.Zutat, decimal>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Cocktailizr.Model.Entities.Rezept))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Cocktailizr.Model.Entities.Step[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Cocktailizr.Model.Entities.Step))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Cocktailizr.Model.Entities.Zutat))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Cocktailizr.Model.Entities.ZutatenSkala))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Cocktailizr.Model.Entities.Cocktail[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Cocktailizr.Model.Entities.Zutat[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrClient.CocktailServiceReference.Color))]
+        Cocktailizr.Model.Entities.Cocktail GetRandomCocktail();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICocktailService/GetRandomCocktail", ReplyAction="http://tempuri.org/ICocktailService/GetRandomCocktailResponse")]
-        System.Threading.Tasks.Task<CocktailizrClient.CocktailServiceReference.Cocktail> GetRandomCocktailAsync();
+        System.Threading.Tasks.Task<Cocktailizr.Model.Entities.Cocktail> GetRandomCocktailAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICocktailService/GetCocktailsByName", ReplyAction="http://tempuri.org/ICocktailService/GetCocktailsByNameResponse")]
-        CocktailizrClient.CocktailServiceReference.Cocktail[] GetCocktailsByName(string name);
+        Cocktailizr.Model.Entities.Cocktail[] GetCocktailsByName(string name);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICocktailService/GetCocktailsByName", ReplyAction="http://tempuri.org/ICocktailService/GetCocktailsByNameResponse")]
-        System.Threading.Tasks.Task<CocktailizrClient.CocktailServiceReference.Cocktail[]> GetCocktailsByNameAsync(string name);
+        System.Threading.Tasks.Task<Cocktailizr.Model.Entities.Cocktail[]> GetCocktailsByNameAsync(string name);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICocktailService/GetCocktailsByIndigrents", ReplyAction="http://tempuri.org/ICocktailService/GetCocktailsByIndigrentsResponse")]
-        CocktailizrClient.CocktailServiceReference.Cocktail[] GetCocktailsByIndigrents(CocktailizrClient.CocktailServiceReference.Zutat[] zutaten);
+        Cocktailizr.Model.Entities.Cocktail[] GetCocktailsByIndigrents(Cocktailizr.Model.Entities.Zutat[] zutaten);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICocktailService/GetCocktailsByIndigrents", ReplyAction="http://tempuri.org/ICocktailService/GetCocktailsByIndigrentsResponse")]
-        System.Threading.Tasks.Task<CocktailizrClient.CocktailServiceReference.Cocktail[]> GetCocktailsByIndigrentsAsync(CocktailizrClient.CocktailServiceReference.Zutat[] zutaten);
+        System.Threading.Tasks.Task<Cocktailizr.Model.Entities.Cocktail[]> GetCocktailsByIndigrentsAsync(Cocktailizr.Model.Entities.Zutat[] zutaten);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -505,27 +161,27 @@ namespace CocktailizrClient.CocktailServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public CocktailizrClient.CocktailServiceReference.Cocktail GetRandomCocktail() {
+        public Cocktailizr.Model.Entities.Cocktail GetRandomCocktail() {
             return base.Channel.GetRandomCocktail();
         }
         
-        public System.Threading.Tasks.Task<CocktailizrClient.CocktailServiceReference.Cocktail> GetRandomCocktailAsync() {
+        public System.Threading.Tasks.Task<Cocktailizr.Model.Entities.Cocktail> GetRandomCocktailAsync() {
             return base.Channel.GetRandomCocktailAsync();
         }
         
-        public CocktailizrClient.CocktailServiceReference.Cocktail[] GetCocktailsByName(string name) {
+        public Cocktailizr.Model.Entities.Cocktail[] GetCocktailsByName(string name) {
             return base.Channel.GetCocktailsByName(name);
         }
         
-        public System.Threading.Tasks.Task<CocktailizrClient.CocktailServiceReference.Cocktail[]> GetCocktailsByNameAsync(string name) {
+        public System.Threading.Tasks.Task<Cocktailizr.Model.Entities.Cocktail[]> GetCocktailsByNameAsync(string name) {
             return base.Channel.GetCocktailsByNameAsync(name);
         }
         
-        public CocktailizrClient.CocktailServiceReference.Cocktail[] GetCocktailsByIndigrents(CocktailizrClient.CocktailServiceReference.Zutat[] zutaten) {
+        public Cocktailizr.Model.Entities.Cocktail[] GetCocktailsByIndigrents(Cocktailizr.Model.Entities.Zutat[] zutaten) {
             return base.Channel.GetCocktailsByIndigrents(zutaten);
         }
         
-        public System.Threading.Tasks.Task<CocktailizrClient.CocktailServiceReference.Cocktail[]> GetCocktailsByIndigrentsAsync(CocktailizrClient.CocktailServiceReference.Zutat[] zutaten) {
+        public System.Threading.Tasks.Task<Cocktailizr.Model.Entities.Cocktail[]> GetCocktailsByIndigrentsAsync(Cocktailizr.Model.Entities.Zutat[] zutaten) {
             return base.Channel.GetCocktailsByIndigrentsAsync(zutaten);
         }
     }

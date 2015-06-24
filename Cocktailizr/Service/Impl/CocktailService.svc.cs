@@ -14,7 +14,10 @@ namespace Cocktailizr.Service.Impl
     {
         public Cocktail GetRandomCocktail()
         {
-            throw new NotImplementedException();
+            return new Cocktail()
+            {
+                Name = "Bloody Mary"
+            };
         }
 
         public IEnumerable<Cocktail> GetCocktailsByName(string name)

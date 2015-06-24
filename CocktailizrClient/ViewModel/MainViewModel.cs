@@ -1,4 +1,7 @@
+using System.Windows.Media.Animation;
+using CocktailizrClient.CocktailServiceReference;
 using GalaSoft.MvvmLight;
+using System.Windows;
 
 namespace CocktailizrClient.ViewModel
 {
@@ -21,14 +24,10 @@ namespace CocktailizrClient.ViewModel
         /// </summary>
         public MainViewModel()
         {
-            ////if (IsInDesignMode)
-            ////{
-            ////    // Code runs in Blend --> create design time data.
-            ////}
-            ////else
-            ////{
-            ////    // Code runs "for real"
-            ////}
+            using (var client = new CocktailServiceClient())
+            {
+                MessageBox.Show(client.GetRandomCocktail().ToString());
+            }
         }
     }
 }

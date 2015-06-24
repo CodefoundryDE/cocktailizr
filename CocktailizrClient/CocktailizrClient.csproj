@@ -114,6 +114,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Cocktailizr.Model.Entities.Cocktail.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -134,9 +135,6 @@
     </None>
     <None Include="Service References\AdminServiceReference\AdminService31.xsd">
       <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\CocktailServiceReference\CocktailizrClient.CocktailServiceReference.Cocktail.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\CocktailServiceReference\CocktailService.wsdl" />
     <None Include="Service References\CocktailServiceReference\CocktailService.xsd">
@@ -194,6 +192,12 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cocktailizr\Cocktailizr.csproj">
+      <Project>{edcd31e4-3ce9-4179-9805-3f7a3094a395}</Project>
+      <Name>Cocktailizr</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

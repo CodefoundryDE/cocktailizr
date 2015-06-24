@@ -36,7 +36,11 @@ namespace Cocktailizr.Model.Entities
         [DataMember]
         [BsonElement]
         public Rezept Rezept { get; set; }
-        
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 
     [DataContract]
