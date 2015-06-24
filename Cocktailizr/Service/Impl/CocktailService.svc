@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Cocktailizr.Service.Impl.CocktailService" CodeBehind="CocktailService.svc.cs" %>
