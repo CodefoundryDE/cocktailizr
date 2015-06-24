@@ -72,19 +72,24 @@ namespace Cocktailizr.Model.Entities
 
     }
 
+    [DataContract]
     [BsonIgnoreExtraElements]
     public class Zutat
     {
+        [DataMember]
         [BsonElement]
         public string Name { get; set; }
 
+        [DataMember]
         [BsonElement]
         public bool IsOptional { get; set; }
 
+        [DataMember]
         [BsonElement, BsonRepresentation(BsonType.String)]
         public ZutatenSkala Skala { get; set; }
     }
 
+    [DataContract]
     public enum ZutatenSkala
     {
         Cl,
