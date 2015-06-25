@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
+using System.Security.Permissions;
 using System.ServiceModel;
 using System.Text;
 
@@ -13,32 +14,38 @@ namespace Cocktailizr.Service.Impl
     public class AdminService : IAdminService
     {
 
+        [PrincipalPermission(SecurityAction.Demand, Role = "ADMIN")]
         public bool AddCocktail(Cocktail cocktail)
         {
             throw new NotImplementedException();
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = "ADMIN")]
         public bool ModifyCocktail(Guid cocktailId, Cocktail cocktail)
         {
             throw new NotImplementedException();
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = "ADMIN")]
         public bool RemoveCocktail(Guid cocktailId)
         {
             throw new NotImplementedException();
         }
 
 
+        [PrincipalPermission(SecurityAction.Demand, Role = "ADMIN")]
         public bool AddZutat(Zutat zutat)
         {
             throw new NotImplementedException();
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = "ADMIN")]
         public bool ModifyZutat(Guid zutatId, Zutat zutat)
         {
             throw new NotImplementedException();
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = "ADMIN")]
         public bool RemoveZutat(Guid zutatId)
         {
             throw new NotImplementedException();

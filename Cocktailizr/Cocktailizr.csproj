@@ -52,6 +52,7 @@
       <HintPath>packages\MongoDB.Driver.Core.2.0.1\lib\net45\MongoDB.Driver.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.IdentityModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -73,9 +74,14 @@
   <ItemGroup>
     <Content Include="Service\Impl\AdminService.svc" />
     <Content Include="Service\Impl\CocktailService.svc" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Auth\AuthPolicy.cs" />
+    <Compile Include="Auth\AuthPrincipal.cs" />
+    <Compile Include="Auth\UserAuthentication.cs" />
     <Compile Include="Service\Impl\AdminService.svc.cs">
       <DependentUpon>AdminService.svc</DependentUpon>
     </Compile>

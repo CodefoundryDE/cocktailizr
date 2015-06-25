@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
+using System.Security.Permissions;
 using System.ServiceModel;
 using System.Text;
 
@@ -12,6 +13,7 @@ namespace Cocktailizr.Service.Impl
     // HINWEIS: Wählen Sie zum Starten des WCF-Testclients zum Testen dieses Diensts CocktailService.svc oder CocktailService.svc.cs im Projektmappen-Explorer aus, und starten Sie das Debuggen.
     public class CocktailService : ICocktailService
     {
+
         public Cocktail GetRandomCocktail()
         {
             return new Cocktail()
