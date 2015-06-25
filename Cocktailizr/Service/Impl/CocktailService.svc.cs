@@ -1,11 +1,15 @@
 ﻿using Cocktailizr.Model.Entities;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Security.Permissions;
 using System.ServiceModel;
 using System.Text;
+using Cocktailizr.Model.Database;
+using MongoDB.Bson;
+using MongoDB.Driver;
 
 namespace Cocktailizr.Service.Impl
 {
@@ -13,13 +17,35 @@ namespace Cocktailizr.Service.Impl
     // HINWEIS: Wählen Sie zum Starten des WCF-Testclients zum Testen dieses Diensts CocktailService.svc oder CocktailService.svc.cs im Projektmappen-Explorer aus, und starten Sie das Debuggen.
     public class CocktailService : ICocktailService
     {
+        #region Properties
+
+
+
+        #endregion
+
+        #region Vriables
+
+        private readonly CocktailizrDataContext _context;
+
+        #endregion
+
+        #region Constructor
+
+        public CocktailService()
+        {
+            _context = new CocktailizrDataContext();
+        }
+
+        #endregion
+
+        #region Methods
 
         public Cocktail GetRandomCocktail()
         {
-            return new Cocktail()
-            {
-                Name = "Bloody Mary"
-            };
+            var count = _context.Cocktails.CountAsync(new BsonDocument()).Result;
+            var rnd = (int)LongRandom(0, count > int.MaxValue ? count : int.MaxValue, new Random());
+
+            return _context.Cocktails.Find(new BsonDocument()).Skip(rnd).FirstOrDefaultAsync().Result;
         }
 
         public IEnumerable<Cocktail> GetCocktailsByName(string name)
@@ -31,5 +57,19 @@ namespace Cocktailizr.Service.Impl
         {
             throw new NotImplementedException();
         }
+
+        #region DontLookAtIt
+
+        long LongRandom(long min, long max, Random rand)
+        {
+            long result = rand.Next((Int32)(min >> 32), (Int32)(max >> 32));
+            result = (result << 32);
+            result = result | (long)rand.Next((Int32)min, (Int32)max);
+            return result;
+        }
+
+        #endregion
+
+        #endregion
     }
 }

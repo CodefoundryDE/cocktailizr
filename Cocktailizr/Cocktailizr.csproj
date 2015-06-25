@@ -86,8 +86,15 @@
       <DependentUpon>AdminService.svc</DependentUpon>
     </Compile>
     <Compile Include="Helper\Serializer\ColorSerializer.cs" />
+    <Compile Include="Model\Database\CoktailizrDataContext.cs" />
+    <Compile Include="Model\Database\MongoClientFactory.cs" />
     <Compile Include="Model\Entities\Cocktail.cs" />
-    <Compile Include="Model\Entities\Zutat.cs" />
+    <Compile Include="Model\Entities\CocktailizrEntityBase.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Service\IAdminService.cs" />
     <Compile Include="Service\Impl\CocktailService.svc.cs">
       <DependentUpon>CocktailService.svc</DependentUpon>
@@ -106,6 +113,12 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
