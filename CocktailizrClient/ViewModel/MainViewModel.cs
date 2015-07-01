@@ -26,7 +26,7 @@ namespace CocktailizrClient.ViewModel
         {
             using (var client = new CocktailServiceClient())
             {
-                MessageBox.Show(client.GetRandomCocktail().ToString());
+                //MessageBox.Show(client.GetRandomCocktail().ToString());
             }
         }
     }

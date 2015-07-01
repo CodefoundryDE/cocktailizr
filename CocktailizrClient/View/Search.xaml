@@ -9,18 +9,17 @@
         <Grid.Background>
             <ImageBrush ImageSource="beach.jpg"/>
         </Grid.Background>
-        <StackPanel VerticalAlignment="Bottom" Margin="0,200">
+        <StackPanel VerticalAlignment="Bottom" Margin="0,80">
             <Label FontSize="39" Content="Cocktailizr" HorizontalAlignment="Center"  VerticalAlignment="Bottom"/>
-            <TextBox HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" RenderTransformOrigin="0.156,-1.717"/>
+            <TextBox HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" RenderTransformOrigin="0.156,-1.717"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
                 <Button Content="Suche" Width="100" Margin="5"/>
                 <Button Content="Auf gut Glück!" Width="100" Margin="5"/>
             </StackPanel>
-            <TextBlock HorizontalAlignment="Center">
-                <Hyperlink>Erweiterte Suche</Hyperlink>
-            </TextBlock>
+            <TextBlock HorizontalAlignment="Center"><Hyperlink><Run Text="Erweiterte Suche"/></Hyperlink></TextBlock>
 
         </StackPanel>
+
 
 
 

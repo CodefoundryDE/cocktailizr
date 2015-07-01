@@ -76,10 +76,10 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helper\Serializer\ColorSerializer.cs" />
     <Compile Include="Service\Impl\AdminService.svc.cs">
       <DependentUpon>AdminService.svc</DependentUpon>
     </Compile>
-    <Compile Include="App_Data\Helper\Serializer\ColorSerializer.cs" />
     <Compile Include="Model\Database\CoktailizrDataContext.cs" />
     <Compile Include="Model\Database\MongoClientFactory.cs" />
     <Compile Include="Model\Entities\Cocktail.cs" />
@@ -96,7 +96,9 @@
     <Compile Include="Service\ICocktailService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
