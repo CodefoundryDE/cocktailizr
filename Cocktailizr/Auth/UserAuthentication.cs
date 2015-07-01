@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IdentityModel.Selectors;
+using System.IdentityModel.Tokens;
 using System.Linq;
 using System.ServiceModel;
 using System.Web;
@@ -11,17 +12,16 @@ namespace Cocktailizr.Auth
     {
         public override void Validate(string userName, string password)
         {
-            try
+            if (string.IsNullOrWhiteSpace(userName) || string.IsNullOrWhiteSpace(password))
             {
-                if (userName == "test" && password == "test123")
-                {
-                    Console.WriteLine("Authentic User");
-                }
+                throw new FaultException("username and password required");
             }
-            catch (Exception e)
+
+            if (userName != "test" || password != "test123")
             {
                 throw new FaultException("Unknown Username or Incorrect Password");
             }
+
         }
     }
 

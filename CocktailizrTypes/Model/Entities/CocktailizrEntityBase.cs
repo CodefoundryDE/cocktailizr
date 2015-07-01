@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.Configuration;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace Cocktailizr.Model.Entities
+namespace CocktailizrTypes.Model.Entities
 {
 
     [DataContract]

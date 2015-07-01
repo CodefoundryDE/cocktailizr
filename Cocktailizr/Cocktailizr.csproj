@@ -16,7 +16,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44300</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -85,11 +85,8 @@
     <Compile Include="Service\Impl\AdminService.svc.cs">
       <DependentUpon>AdminService.svc</DependentUpon>
     </Compile>
-    <Compile Include="Helper\Serializer\ColorSerializer.cs" />
     <Compile Include="Model\Database\CoktailizrDataContext.cs" />
     <Compile Include="Model\Database\MongoClientFactory.cs" />
-    <Compile Include="Model\Entities\Cocktail.cs" />
-    <Compile Include="Model\Entities\CocktailizrEntityBase.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -119,6 +116,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CocktailizrTypes\CocktailizrTypes.csproj">
+      <Project>{80438336-f2aa-4286-bb15-8b84d471ca45}</Project>
+      <Name>CocktailizrTypes</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

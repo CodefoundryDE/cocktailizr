@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-using Cocktailizr.Model.Entities;
+using CocktailizrTypes.Model.Entities;
 
 namespace Cocktailizr.Service
 {
@@ -15,10 +15,10 @@ namespace Cocktailizr.Service
         [OperationContract]
         Cocktail GetRandomCocktail();
 
-        [OperationContract]
-        IEnumerable<Cocktail> GetCocktailsByName(string name);
+        //[OperationContract]
+        //IEnumerable<Cocktail> GetCocktailsByName(string name);
 
-        [OperationContract]
-        IEnumerable<Cocktail> GetCocktailsByIndigrents(IEnumerable<Zutat> zutaten);
+        //[OperationContract]
+        //IEnumerable<Cocktail> GetCocktailsByIndigrents(IEnumerable<Zutat> zutaten);
     }
 }

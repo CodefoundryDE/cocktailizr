@@ -2,7 +2,7 @@
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 
-namespace Cocktailizr.Helper.Serializer
+namespace CocktailizrTypes.Helper.Serializer
 {
     class ColorSerializer : SerializerBase<Color>
     {

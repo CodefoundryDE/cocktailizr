@@ -1,4 +1,4 @@
-﻿using Cocktailizr.Model.Entities;
+﻿using CocktailizrTypes.Model.Entities;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -39,7 +39,7 @@ namespace Cocktailizr.Service.Impl
         #endregion
 
         #region Methods
-
+        [PrincipalPermission(SecurityAction.Demand, Role = "ADMIN")]
         public Cocktail GetRandomCocktail()
         {
             var count = _context.Cocktails.CountAsync(new BsonDocument()).Result;
@@ -48,15 +48,15 @@ namespace Cocktailizr.Service.Impl
             return _context.Cocktails.Find(new BsonDocument()).Skip(rnd).FirstOrDefaultAsync().Result;
         }
 
-        public IEnumerable<Cocktail> GetCocktailsByName(string name)
-        {
-            throw new NotImplementedException();
-        }
+        //public IEnumerable<Cocktail> GetCocktailsByName(string name)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
-        public IEnumerable<Cocktail> GetCocktailsByIndigrents(IEnumerable<Zutat> zutaten)
-        {
-            throw new NotImplementedException();
-        }
+        //public IEnumerable<Cocktail> GetCocktailsByIndigrents(IEnumerable<Zutat> zutaten)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         #region DontLookAtIt
 

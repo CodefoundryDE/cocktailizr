@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Cocktailizr.Model.Entities;
+using CocktailizrTypes.Model.Entities;
 using MongoDB.Driver;
 
 namespace Cocktailizr.Model.Database
@@ -9,7 +9,7 @@ namespace Cocktailizr.Model.Database
     {
         private readonly IMongoDatabase _mongoDb;
 
-        public IMongoCollection<Cocktail> Cocktails { get { return _mongoDb.GetCollection<Cocktail>(Cocktailizr.Properties.Resources.CocktailsCollectionName); } }
+        public IMongoCollection<Cocktail> Cocktails { get { return _mongoDb.GetCollection<Cocktail>(Properties.Resources.CocktailsCollectionName); } }
 
         public CocktailizrDataContext()
         {

@@ -1,4 +1,5 @@
-﻿using Cocktailizr.Model.Entities;
+﻿using Cocktailizr.Model.Database;
+using CocktailizrTypes.Model.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,6 +7,7 @@ using System.Runtime.Serialization;
 using System.Security.Permissions;
 using System.ServiceModel;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Cocktailizr.Service.Impl
 {
@@ -13,11 +15,18 @@ namespace Cocktailizr.Service.Impl
     // HINWEIS: Wählen Sie zum Starten des WCF-Testclients zum Testen dieses Diensts AdminService.svc oder AdminService.svc.cs im Projektmappen-Explorer aus, und starten Sie das Debuggen.
     public class AdminService : IAdminService
     {
+        private readonly CocktailizrDataContext _context;
+
+        public AdminService()
+        {
+            _context = new CocktailizrDataContext();
+        }
 
         [PrincipalPermission(SecurityAction.Demand, Role = "ADMIN")]
         public bool AddCocktail(Cocktail cocktail)
         {
-            throw new NotImplementedException();
+            _context.Cocktails.InsertOneAsync(cocktail).Wait();
+            return true;
         }
 
         [PrincipalPermission(SecurityAction.Demand, Role = "ADMIN")]

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="XddvhoVs/P65ESxC3Hb9MIyoaK4=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="FK+ePiCJOIPuhF5On8hWfKRXWZ4=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="wsHttpBinding" name="WSHttpBinding_ICocktailService">
       <properties>
@@ -81,14 +81,14 @@
         <property path="/security" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.WSHttpSecurityElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.WSHttpSecurityElement</serializedValue>
         </property>
-        <property path="/security/mode" isComplexType="false" isExplicitlyDefined="false" clrType="System.ServiceModel.SecurityMode, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>Message</serializedValue>
+        <property path="/security/mode" isComplexType="false" isExplicitlyDefined="true" clrType="System.ServiceModel.SecurityMode, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+          <serializedValue>TransportWithMessageCredential</serializedValue>
         </property>
         <property path="/security/transport" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.WSHttpTransportSecurityElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.WSHttpTransportSecurityElement</serializedValue>
         </property>
-        <property path="/security/transport/clientCredentialType" isComplexType="false" isExplicitlyDefined="false" clrType="System.ServiceModel.HttpClientCredentialType, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>Windows</serializedValue>
+        <property path="/security/transport/clientCredentialType" isComplexType="false" isExplicitlyDefined="true" clrType="System.ServiceModel.HttpClientCredentialType, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+          <serializedValue>None</serializedValue>
         </property>
         <property path="/security/transport/proxyCredentialType" isComplexType="false" isExplicitlyDefined="false" clrType="System.ServiceModel.HttpProxyCredentialType, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>None</serializedValue>
@@ -127,10 +127,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="WSHttpBinding_ICocktailService" contract="CocktailServiceReference.ICocktailService" bindingType="wsHttpBinding" address="http://localhost:19609/Service/Impl/CocktailService.svc" bindingConfiguration="WSHttpBinding_ICocktailService">
+    <endpoint name="WSHttpBinding_ICocktailService" contract="CocktailServiceReference.ICocktailService" bindingType="wsHttpBinding" address="https://localhost:44300/Service/Impl/CocktailService.svc" bindingConfiguration="WSHttpBinding_ICocktailService">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:19609/Service/Impl/CocktailService.svc</serializedValue>
+          <serializedValue>https://localhost:44300/Service/Impl/CocktailService.svc</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -180,8 +180,8 @@
         <property path="/identity/certificate" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.CertificateElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.CertificateElement</serializedValue>
         </property>
-        <property path="/identity/certificate/encodedValue" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>AwAAAAEAAAAUAAAAV+efakEt8QLoodNs+zCIfA37EjYgAAAAAQAAAPsCAAAwggL3MIIB46ADAgECAhBA2Sd1Y0zZukU31fYxzb82MAkGBSsOAwIdBQAwFTETMBEGA1UEAxMKUm9vdENBVGVzdDAeFw0xNTA2MjUyMDE1MDNaFw0zOTEyMzEyMzU5NTlaMBYxFDASBgNVBAMTC0NPQ0tUQUlMSVpSMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtEcRSU/Lck5TGCk4GHZ1pE56PMGvuhPeu0UA0Y+Yyp6uNT7OC+0r4kgHGK15PVL2xWhXTbkbEG/k6YVJ/+QI47Dss13/GLH2+RWd9qQRYR+txVGv7m8YplJMVfFuhOh6HS5av8wxxC915TzNME2h46hoWBwIVFVS3/0bpSEC66lBFnbIxFuRihGCZ9IE+ECI6SKhT9kgiNHs6VhQmsN5M+I91pg+iva3BptYWzN9DqEAMTiWAGCkAitR947n9VjkxABgTPOoIixHoiBYEI8STinb6/k/gmcCZufIbe7MrYJKjzeO5RkX47kHoQmhLPtE49tpI2H0OqVmZ0CXHJycNQIDAQABo0owSDBGBgNVHQEEPzA9gBCdarnXs5KiCPTHIyS6otpXoRcwFTETMBEGA1UEAxMKUm9vdENBVGVzdIIQD+0uP8juPqJC0cy1KRJ7gDAJBgUrDgMCHQUAA4IBAQCoL5w/cn9qnn9f4rrxUd0MhCU1AWK23g6HmdAl7m+U5HtnmrsRsjDZ7ZeWfVXq3XeJmgOA/H4onmviwScjHm1xXc1yX+fwNMZpkbJJgS5SKCXa+MoR+BmJlnLh1EO2bGSoD1G1bH/MZ7a51pj81tyEC1j9JjyaP8jHdPs7zjPFK416thm/8rodmZQGrw1TEinBomZGzXjk9m1Oz4BE8P9P+3O2LComoLl+j/msFA+k3Se5no5LM6qSxmJy1+pEbyfhmAiZnT+kgg/MpEdb7ltYWZebLAqusJxW0a0B60cphFssnp2ERLaaGmWeE3o1otJfBx7R9UCw8aj33ktVbl74</serializedValue>
+        <property path="/identity/certificate/encodedValue" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+          <serializedValue />
         </property>
         <property path="/identity/certificateReference" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.CertificateReferenceElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.CertificateReferenceElement</serializedValue>
