@@ -116,10 +116,30 @@
   <wsdl:message name="ICocktailService_GetRandomCocktail_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetRandomCocktailResponse" />
   </wsdl:message>
+  <wsdl:message name="ICocktailService_GetCocktailsByName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCocktailsByName" />
+  </wsdl:message>
+  <wsdl:message name="ICocktailService_GetCocktailsByName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCocktailsByNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICocktailService_GetCocktailsByIndigrents_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCocktailsByIndigrents" />
+  </wsdl:message>
+  <wsdl:message name="ICocktailService_GetCocktailsByIndigrents_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCocktailsByIndigrentsResponse" />
+  </wsdl:message>
   <wsdl:portType name="ICocktailService">
     <wsdl:operation name="GetRandomCocktail">
       <wsdl:input wsaw:Action="http://tempuri.org/ICocktailService/GetRandomCocktail" message="tns:ICocktailService_GetRandomCocktail_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICocktailService/GetRandomCocktailResponse" message="tns:ICocktailService_GetRandomCocktail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCocktailsByName">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICocktailService/GetCocktailsByName" message="tns:ICocktailService_GetCocktailsByName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICocktailService/GetCocktailsByNameResponse" message="tns:ICocktailService_GetCocktailsByName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCocktailsByIndigrents">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICocktailService/GetCocktailsByIndigrents" message="tns:ICocktailService_GetCocktailsByIndigrents_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICocktailService/GetCocktailsByIndigrentsResponse" message="tns:ICocktailService_GetCocktailsByIndigrents_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSHttpBinding_ICocktailService" type="tns:ICocktailService">
@@ -127,6 +147,24 @@
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetRandomCocktail">
       <soap12:operation soapAction="http://tempuri.org/ICocktailService/GetRandomCocktail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCocktailsByName">
+      <soap12:operation soapAction="http://tempuri.org/ICocktailService/GetCocktailsByName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCocktailsByIndigrents">
+      <soap12:operation soapAction="http://tempuri.org/ICocktailService/GetCocktailsByIndigrents" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

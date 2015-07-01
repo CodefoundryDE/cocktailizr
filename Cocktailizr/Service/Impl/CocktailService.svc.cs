@@ -48,15 +48,15 @@ namespace Cocktailizr.Service.Impl
             return _context.Cocktails.Find(new BsonDocument()).Skip(rnd).FirstOrDefaultAsync().Result;
         }
 
-        //public IEnumerable<Cocktail> GetCocktailsByName(string name)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        public IEnumerable<Cocktail> GetCocktailsByName(string name)
+        {
+            throw new NotImplementedException();
+        }
 
-        //public IEnumerable<Cocktail> GetCocktailsByIndigrents(IEnumerable<Zutat> zutaten)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        public IEnumerable<Cocktail> GetCocktailsByIndigrents(IEnumerable<Zutat> zutaten)
+        {
+            throw new NotImplementedException();
+        }
 
         #region DontLookAtIt
 

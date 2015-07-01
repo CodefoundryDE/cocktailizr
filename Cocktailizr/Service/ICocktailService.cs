@@ -15,10 +15,10 @@ namespace Cocktailizr.Service
         [OperationContract]
         Cocktail GetRandomCocktail();
 
-        //[OperationContract]
-        //IEnumerable<Cocktail> GetCocktailsByName(string name);
+        [OperationContract]
+        IEnumerable<Cocktail> GetCocktailsByName(string name);
 
-        //[OperationContract]
-        //IEnumerable<Cocktail> GetCocktailsByIndigrents(IEnumerable<Zutat> zutaten);
+        [OperationContract]
+        IEnumerable<Cocktail> GetCocktailsByIndigrents(IEnumerable<Zutat> zutaten);
     }
 }
