@@ -1,7 +1,11 @@
+using System.Security.Cryptography.X509Certificates;
+using System.ServiceModel.Description;
 using System.Windows.Media.Animation;
-using CocktailizrClient.CocktailServiceReference;
 using GalaSoft.MvvmLight;
 using System.Windows;
+using System.ServiceModel.Security;
+using CocktailizrClient.AdminServiceReference;
+using CocktailizrClient.CocktailServiceReference;
 
 namespace CocktailizrClient.ViewModel
 {
@@ -26,7 +30,15 @@ namespace CocktailizrClient.ViewModel
         {
             using (var client = new CocktailServiceClient())
             {
+                client.ClientCredentials.UserName.UserName = "tes1t";
+                client.ClientCredentials.UserName.Password = "test123";
+                client.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode = X509CertificateValidationMode.None;
                 MessageBox.Show(client.GetRandomCocktail().ToString());
+            }
+
+            using (var client = new AdminServiceClient())
+            {
+
             }
         }
     }

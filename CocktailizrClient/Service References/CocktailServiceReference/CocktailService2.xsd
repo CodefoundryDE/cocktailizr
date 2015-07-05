@@ -1,67 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/Cocktailizr.Model.Entities" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Cocktailizr.Model.Entities" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:19609/Service/Impl/CocktailService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System.Drawing" />
-  <xs:import schemaLocation="http://localhost:19609/Service/Impl/CocktailService.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-  <xs:import schemaLocation="http://localhost:19609/Service/Impl/CocktailService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-  <xs:complexType name="Cocktail">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Alcoholic" type="xs:boolean" />
-      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/System.Drawing" minOccurs="0" name="DrinkColor" type="q1:Color" />
-      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Rezept" nillable="true" type="tns:Rezept" />
-      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Tags" nillable="true" type="q2:ArrayOfanyType" />
-      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Zutaten" nillable="true" type="q3:ArrayOfKeyValueOfZutatdecimalknAgrI2G" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Cocktail" nillable="true" type="tns:Cocktail" />
-  <xs:complexType name="Rezept">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="ZubereitungsSchritte" nillable="true" type="tns:ArrayOfStep" />
-      <xs:element minOccurs="0" name="Zubereitungszeit" type="ser:duration" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Rezept" nillable="true" type="tns:Rezept" />
-  <xs:complexType name="ArrayOfStep">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Step" nillable="true" type="tns:Step" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfStep" nillable="true" type="tns:ArrayOfStep" />
-  <xs:complexType name="Step">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Beschreibung" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Headline" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Step" nillable="true" type="tns:Step" />
-  <xs:complexType name="Zutat">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="IsOptional" type="xs:boolean" />
-      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Skala" type="tns:ZutatenSkala" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Zutat" nillable="true" type="tns:Zutat" />
-  <xs:simpleType name="ZutatenSkala">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="Cl" />
-      <xs:enumeration value="Liter" />
-      <xs:enumeration value="Stueck" />
-      <xs:enumeration value="Gramm" />
-      <xs:enumeration value="Priese" />
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name="ZutatenSkala" nillable="true" type="tns:ZutatenSkala" />
-  <xs:complexType name="ArrayOfCocktail">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Cocktail" nillable="true" type="tns:Cocktail" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfCocktail" nillable="true" type="tns:ArrayOfCocktail" />
-  <xs:complexType name="ArrayOfZutat">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Zutat" nillable="true" type="tns:Zutat" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfZutat" nillable="true" type="tns:ArrayOfZutat" />
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://localhost:44300/Service/Impl/CocktailService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/CocktailizrTypes.Model.Entities" />
+  <xs:element name="GetRandomCocktail">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRandomCocktailResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/CocktailizrTypes.Model.Entities" minOccurs="0" name="GetRandomCocktailResult" nillable="true" type="q1:Cocktail" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCocktailsByName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCocktailsByNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/CocktailizrTypes.Model.Entities" minOccurs="0" name="GetCocktailsByNameResult" nillable="true" type="q2:ArrayOfCocktail" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCocktailsByIndigrents">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/CocktailizrTypes.Model.Entities" minOccurs="0" name="zutaten" nillable="true" type="q3:ArrayOfZutat" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCocktailsByIndigrentsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/CocktailizrTypes.Model.Entities" minOccurs="0" name="GetCocktailsByIndigrentsResult" nillable="true" type="q4:ArrayOfCocktail" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>
