@@ -61,6 +61,15 @@ namespace Cocktailizr.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Benutzer ähnelt.
+        /// </summary>
+        internal static string BenutzerCollectionName {
+            get {
+                return ResourceManager.GetString("BenutzerCollectionName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Cocktails ähnelt.
         /// </summary>
         internal static string CocktailsCollectionName {
