@@ -9,7 +9,7 @@
         <Grid.Background>
             <ImageBrush ImageSource="beach.jpg"/>
         </Grid.Background>
-        <StackPanel VerticalAlignment="Bottom" Margin="0,80">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Margin="80,80">
             <Label FontSize="39" Content="Cocktailizr" HorizontalAlignment="Center"  VerticalAlignment="Bottom"/>
             <TextBox HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" RenderTransformOrigin="0.156,-1.717"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">

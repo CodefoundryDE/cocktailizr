@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="CocktailizrClient.View.Result"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="1280" d:DesignWidth="1024">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="beach.jpg" Opacity="0.3"/>
+        </Grid.Background>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0">
+                <Label Content="Ergebnisse für Binding"></Label>
+                <Label HorizontalAlignment="Center" Content="Titel Binding"></Label>
+                <Image Source="wmojtobasse.png" HorizontalAlignment="Center" Height="500"></Image>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Content="Zurück" Margin="5"/>
+                    <Button Content="Weiter" Margin="5"/>
+                </StackPanel>
+                <Label Content="Zubereitung:"></Label>
+                <Label Content="Binding für den Zubereirungs-Text blablablabla"></Label>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1">
+                <Label Content="Benötigte Zutaten:"></Label>
+                <Label Content="Binding für Zutaten"></Label>
+            </StackPanel>
+
+        </Grid>
+
+    </Grid>
+</UserControl>
