@@ -14,5 +14,8 @@ namespace CocktailizrTypes.Model.Entities
 
         [BsonElement]
         public string Role { get; set; }
+
+        [BsonElement]
+        public string HashedPassword { get; set; }
     }
 }
