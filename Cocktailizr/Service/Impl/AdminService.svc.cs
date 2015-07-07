@@ -40,24 +40,6 @@ namespace Cocktailizr.Service.Impl
         {
             throw new NotImplementedException();
         }
-
-
-        [PrincipalPermission(SecurityAction.Demand, Role = "ADMIN")]
-        public bool AddZutat(Zutat zutat)
-        {
-            throw new NotImplementedException();
-        }
-
-        [PrincipalPermission(SecurityAction.Demand, Role = "ADMIN")]
-        public bool ModifyZutat(Guid zutatId, Zutat zutat)
-        {
-            throw new NotImplementedException();
-        }
-
-        [PrincipalPermission(SecurityAction.Demand, Role = "ADMIN")]
-        public bool RemoveZutat(Guid zutatId)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
+

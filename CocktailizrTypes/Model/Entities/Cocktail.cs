@@ -87,6 +87,44 @@ namespace CocktailizrTypes.Model.Entities
         [DataMember]
         [BsonElement, BsonRepresentation(BsonType.String)]
         public ZutatenSkala Skala { get; set; }
+
+        public override bool Equals(Object obj)
+        {
+            // If parameter is null return false.
+            if (obj == null)
+            {
+                return false;
+            }
+
+            // If parameter cannot be cast to Point return false.
+            Zutat p = obj as Zutat;
+            if (p == null)
+            {
+                return false;
+            }
+
+            // Return true if the fields match:
+            return (p.GetHashCode() == GetHashCode());
+        }
+
+        public bool Equals(Zutat p)
+        {
+            // If parameter is null return false:
+            if (p == null)
+            {
+                return false;
+            }
+
+            // Return true if the fields match:
+            return (p.GetHashCode() == GetHashCode());
+        }
+
+        public override int GetHashCode()
+        {
+            var hash = Name.GetHashCode() * 17;
+            hash += Skala.GetHashCode() * 17;
+            return hash;
+        }
     }
 
     [DataContract]
