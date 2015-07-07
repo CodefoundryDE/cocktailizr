@@ -39,7 +39,7 @@ namespace Cocktailizr.Service.Impl
         #endregion
 
         #region Methods
-        [PrincipalPermission(SecurityAction.Demand, Role = "ADMIN")]
+        //[PrincipalPermission(SecurityAction.Demand, Role = "ADMIN")]
         public Cocktail GetRandomCocktail()
         {
             var count = _context.Cocktails.CountAsync(new BsonDocument()).Result;
