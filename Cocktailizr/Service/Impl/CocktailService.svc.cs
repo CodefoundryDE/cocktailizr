@@ -1,5 +1,6 @@
 ﻿using CocktailizrTypes.Model.Entities;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -7,7 +8,9 @@ using System.Runtime.Serialization;
 using System.Security.Permissions;
 using System.ServiceModel;
 using System.Text;
+using System.Threading.Tasks;
 using Cocktailizr.Model.Database;
+using Cocktailizr.Model.Service;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
@@ -25,7 +28,7 @@ namespace Cocktailizr.Service.Impl
 
         #region Vriables
 
-        private readonly CocktailizrDataContext _context;
+        private readonly CocktailDbService _cocktailDbService;
 
         #endregion
 
@@ -33,42 +36,29 @@ namespace Cocktailizr.Service.Impl
 
         public CocktailService()
         {
-            _context = new CocktailizrDataContext();
+            _cocktailDbService = new CocktailDbService();
         }
 
         #endregion
 
         #region Methods
         [PrincipalPermission(SecurityAction.Demand, Role = "ADMIN")]
-        public Cocktail GetRandomCocktail()
+        public async Task<Cocktail> GetRandomCocktail()
         {
-            var count = _context.Cocktails.CountAsync(new BsonDocument()).Result;
-            var rnd = (int)LongRandom(0, count > int.MaxValue ? count : int.MaxValue, new Random());
-
-            return _context.Cocktails.Find(new BsonDocument()).Skip(rnd).FirstOrDefaultAsync().Result;
+            return await _cocktailDbService.GetRandomCocktail();
         }
 
-        public IEnumerable<Cocktail> GetCocktailsByName(string name)
+        public async Task<IAsyncCursor<Cocktail>> GetCocktailsByName(string name)
         {
-            throw new NotImplementedException();
+            return await _cocktailDbService.GetCocktailsByName(name);
         }
 
-        public IEnumerable<Cocktail> GetCocktailsByIndigrents(IEnumerable<Zutat> zutaten)
+        public async Task<IAsyncCursor<Cocktail>> GetCocktailsByIndigrents(IEnumerable<Zutat> zutaten)
         {
-            throw new NotImplementedException();
+            return await _cocktailDbService.GetCocktailsByIndigrents(zutaten);
         }
 
-        #region DontLookAtIt
-
-        long LongRandom(long min, long max, Random rand)
-        {
-            long result = rand.Next((Int32)(min >> 32), (Int32)(max >> 32));
-            result = (result << 32);
-            result = result | (long)rand.Next((Int32)min, (Int32)max);
-            return result;
-        }
-
-        #endregion
+        
 
         #endregion
     }

@@ -117,6 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BenutzerCollectionName" xml:space="preserve">
+    <value>Benutzer</value>
+    <comment>Name der MongoDB-Collection welche die Benutzer beinhaltet</comment>
+  </data>
   <data name="CocktailsCollectionName" xml:space="preserve">
     <value>Cocktails</value>
     <comment>Name der MongoDB-Collection welche die Cocktails beinhaltet</comment>

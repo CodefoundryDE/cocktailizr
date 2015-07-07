@@ -30,10 +30,11 @@ namespace CocktailizrClient.ViewModel
         {
             using (var client = new CocktailServiceClient())
             {
-                client.ClientCredentials.UserName.UserName = "test";
-                client.ClientCredentials.UserName.Password = "test123";
+                client.ClientCredentials.UserName.UserName = "Admin";
+                client.ClientCredentials.UserName.Password = "Cocktailizor";
                 client.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode = X509CertificateValidationMode.None;
                 MessageBox.Show(client.GetRandomCocktail().ToString());
+
             }
 
             using (var client = new AdminServiceClient())
