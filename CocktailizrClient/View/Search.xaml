@@ -14,10 +14,10 @@
         </Grid.Background>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Margin="80,80">
             <Label FontSize="{StaticResource HeadingFontSize}" Content="Cocktailizr" HorizontalAlignment="Center"  VerticalAlignment="Bottom"/>
-            <TextBox HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" RenderTransformOrigin="0.156,-1.717"/>
+            <TextBox HorizontalAlignment="Center" Height="Auto" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" RenderTransformOrigin="0.156,-1.717"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
-                <Button Content="Suche" Width="100" Margin="5"/>
-                <Button Content="Auf gut Glück!" Width="100" Margin="5"/>
+                <Button Content="Suche" Width="Auto" Margin="5"/>
+                <Button Content="Auf gut Glück!" Width="Auto" Margin="5"/>
             </StackPanel>
             <TextBlock HorizontalAlignment="Center"><Hyperlink><Run Text="Erweiterte Suche"/></Hyperlink></TextBlock>
 

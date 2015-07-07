@@ -24,8 +24,8 @@
                 <Label HorizontalAlignment="Center" Content="Bloody Marry" FontSize="{StaticResource HeadingFontSize}"></Label>
                 <Image Source="wmojtobasse.png" HorizontalAlignment="Center" Height="500"></Image>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Content="Zurück" Margin="5"/>
-                    <Button Content="Weiter" Margin="5"/>
+                    <Button Content="Zurück" Margin="5" Style="{DynamicResource MaterialDesignFloatingActionButton}"/>
+                    <Button Content="Weiter" Margin="5" Style="{DynamicResource MaterialDesignFloatingActionButton}"/>
                 </StackPanel>
                 <Label Content="Zubereitung:"></Label>
                 <Label Content="Binding für den Zubereirungs-Text blablablabla"></Label>

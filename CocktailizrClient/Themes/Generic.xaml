@@ -4,7 +4,7 @@
 
     <system:Double x:Key="HeadingFontSize">40</system:Double>
     <system:Double x:Key="NormalFontSize">20</system:Double>
-    <FontFamily x:Key="Font">Tw Cen MT Condensed</FontFamily>
+    <!--<FontFamily x:Key="Font">Tw Cen MT Condensed</FontFamily>
 
     
     
@@ -20,5 +20,6 @@
     <Style TargetType="{x:Type Label}" BasedOn="{StaticResource FontStyling}" />
     <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource FontStyling}" />
     <Style TargetType="{x:Type ListView}" BasedOn="{StaticResource FontStyling}" />
+    -->
 
 </ResourceDictionary>
