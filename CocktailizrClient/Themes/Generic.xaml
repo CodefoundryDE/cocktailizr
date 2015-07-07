@@ -2,7 +2,23 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
-    <FontFamily x:Key="FontFamily" >Tw Cen MT Condensed</FontFamily>
     <system:Double x:Key="HeadingFontSize">40</system:Double>
+    <system:Double x:Key="NormalFontSize">20</system:Double>
+    <FontFamily x:Key="Font">Tw Cen MT Condensed</FontFamily>
+
+    
+    
+    
+    <Style TargetType="{x:Type TextBlock}">
+        <Setter Property="FontFamily" Value="{StaticResource Font}" />
+        <Setter Property="FontSize" Value="{StaticResource NormalFontSize}" />
+    </Style>
+    <Style TargetType="{x:Type Control}" x:Key="FontStyling">
+        <Setter Property="FontFamily" Value="{StaticResource Font}" />
+        <Setter Property="FontSize" Value="{StaticResource NormalFontSize}" />
+    </Style>
+    <Style TargetType="{x:Type Label}" BasedOn="{StaticResource FontStyling}" />
+    <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource FontStyling}" />
+    <Style TargetType="{x:Type ListView}" BasedOn="{StaticResource FontStyling}" />
 
 </ResourceDictionary>

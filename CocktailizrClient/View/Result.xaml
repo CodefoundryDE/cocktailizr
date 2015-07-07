@@ -5,10 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="1280" d:DesignWidth="1024">
-
     <UserControl.Resources>
         <ResourceDictionary Source="../Themes/Generic.xaml"></ResourceDictionary>
     </UserControl.Resources>
+
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="beach.jpg" Opacity="0.3"/>
@@ -21,7 +21,7 @@
 
             <StackPanel Grid.Column="0">
                 <Label Content="Ergebnisse für Binding"></Label>
-                <Label HorizontalAlignment="Center" Content="Bloody Marry" FontFamily="{StaticResource FontFamily}" FontSize="{StaticResource HeadingFontSize}"></Label>
+                <Label HorizontalAlignment="Center" Content="Bloody Marry" FontSize="{StaticResource HeadingFontSize}"></Label>
                 <Image Source="wmojtobasse.png" HorizontalAlignment="Center" Height="500"></Image>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Button Content="Zurück" Margin="5"/>
