@@ -11,6 +11,8 @@ namespace Cocktailizr.Model.Database
 
         public IMongoCollection<Cocktail> Cocktails { get { return _mongoDb.GetCollection<Cocktail>(Properties.Resources.CocktailsCollectionName); } }
 
+        public IMongoCollection<Benutzer> Benutzer { get { return _mongoDb.GetCollection<Benutzer>(Properties.Resources.BenutzerCollectionName); } }
+
         public CocktailizrDataContext()
         {
             _mongoDb = MongoClientFactory.DatabaseConnection;

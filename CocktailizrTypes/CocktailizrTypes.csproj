@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helper\Serializer\ColorSerializer.cs" />
+    <Compile Include="Model\Entities\Benutzer.cs" />
     <Compile Include="Model\Entities\Cocktail.cs" />
     <Compile Include="Model\Entities\CocktailizrEntityBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
