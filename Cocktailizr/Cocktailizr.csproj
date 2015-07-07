@@ -104,6 +104,7 @@
     <Compile Include="Auth\UserAuthentication.cs" />
     <Compile Include="CocktailizrServiceLocator.cs" />
     <Compile Include="Model\Service\BenutzerService.cs" />
+    <Compile Include="Model\Service\CocktailDbService.cs" />
     <Compile Include="Security\PasswordHashHelper.cs" />
     <Compile Include="Service\Impl\AdminService.svc.cs">
       <DependentUpon>AdminService.svc</DependentUpon>

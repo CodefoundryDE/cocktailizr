@@ -20,16 +20,5 @@ namespace Cocktailizr.Service
 
         [OperationContract]
         bool RemoveCocktail(Guid cocktailId);
-
-
-        [OperationContract]
-        bool AddZutat(Zutat zutat);
-
-        [OperationContract]
-        bool ModifyZutat(Guid zutatId, Zutat zutat);
-
-        [OperationContract]
-        bool RemoveZutat(Guid zutatId);
-
     }
 }
