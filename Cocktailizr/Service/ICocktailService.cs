@@ -4,7 +4,9 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Threading.Tasks;
 using Cocktailizr.Model.Entities;
+using MongoDB.Driver;
 
 namespace Cocktailizr.Service
 {
@@ -13,12 +15,12 @@ namespace Cocktailizr.Service
     public interface ICocktailService
     {
         [OperationContract]
-        Cocktail GetRandomCocktail();
+        Task<Cocktail> GetRandomCocktail();
 
         [OperationContract]
-        IEnumerable<Cocktail> GetCocktailsByName(string name);
+        Task<IAsyncCursor<Cocktail>> GetCocktailsByName(string name);
 
         [OperationContract]
-        IEnumerable<Cocktail> GetCocktailsByIndigrents(IEnumerable<Zutat> zutaten);
+        Task<IAsyncCursor<Cocktail>> GetCocktailsByIndigrents(IEnumerable<Zutat> zutaten);
     }
 }

@@ -27,21 +27,5 @@ namespace Cocktailizr.Service.Impl
         {
             throw new NotImplementedException();
         }
-
-
-        public bool AddZutat(Zutat zutat)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool ModifyZutat(Guid zutatId, Zutat zutat)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool RemoveZutat(Guid zutatId)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

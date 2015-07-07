@@ -1,11 +1,13 @@
 ﻿using Cocktailizr.Model.Entities;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Threading.Tasks;
 using Cocktailizr.Model.Database;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -39,22 +41,22 @@ namespace Cocktailizr.Service.Impl
 
         #region Methods
 
-        public Cocktail GetRandomCocktail()
+        public async Task<Cocktail> GetRandomCocktail()
         {
-            var count = _context.Cocktails.CountAsync(new BsonDocument()).Result;
+            var count = await _context.Cocktails.CountAsync(new BsonDocument());
             var rnd = (int)LongRandom(0, count > int.MaxValue ? count : int.MaxValue, new Random());
 
-            return _context.Cocktails.Find(new BsonDocument()).Skip(rnd).FirstOrDefaultAsync().Result;
+            return await _context.Cocktails.Find(new BsonDocument()).Skip(rnd).FirstOrDefaultAsync();
         }
 
-        public IEnumerable<Cocktail> GetCocktailsByName(string name)
+        public async Task<IAsyncCursor<Cocktail>> GetCocktailsByName(string name)
         {
-            throw new NotImplementedException();
+            return await _context.Cocktails.FindAsync(cocktail => cocktail.Name.Contains(name));
         }
 
-        public IEnumerable<Cocktail> GetCocktailsByIndigrents(IEnumerable<Zutat> zutaten)
+        public async Task<IAsyncCursor<Cocktail>> GetCocktailsByIndigrents(IEnumerable<Zutat> zutaten)
         {
-            throw new NotImplementedException();
+           return await _context.Cocktails.FindAsync(cocktail => !cocktail.Zutaten.Keys.Except(zutaten).Any());
         }
 
         #region DontLookAtIt
