@@ -5,21 +5,39 @@ using System.IdentityModel.Tokens;
 using System.Linq;
 using System.ServiceModel;
 using System.Web;
+using Cocktailizr.Model.Database;
+using Cocktailizr.Model.Service;
+using GalaSoft.MvvmLight.Ioc;
+using Microsoft.Practices.ServiceLocation;
+using MongoDB.Bson;
+using MongoDB.Driver;
 
 namespace Cocktailizr.Auth
 {
     public class UserAuthentication : UserNamePasswordValidator
     {
+        private BenutzerService _benutzerService;
+
+        public UserAuthentication()
+        {
+            _benutzerService = CocktailizrServiceLocator.BenutzerService;
+        }
+
+        public UserAuthentication(BenutzerService benutzerService)
+        {
+            _benutzerService = benutzerService;
+        }
+
         public override void Validate(string userName, string password)
         {
             if (string.IsNullOrWhiteSpace(userName) || string.IsNullOrWhiteSpace(password))
             {
-                throw new FaultException("username and password required");
+                throw new SecurityTokenException("Username and Password are required.");
             }
 
-            if (userName != "test" || password != "test123")
+            if (!_benutzerService.CredentialsOk(userName, password).Result)
             {
-                throw new FaultException("Unknown Username or Incorrect Password");
+                throw new SecurityTokenException("Unknown Username or Incorrect Password");
             }
 
         }

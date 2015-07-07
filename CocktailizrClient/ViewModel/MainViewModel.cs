@@ -30,7 +30,7 @@ namespace CocktailizrClient.ViewModel
         {
             using (var client = new CocktailServiceClient())
             {
-                client.ClientCredentials.UserName.UserName = "tes1t";
+                client.ClientCredentials.UserName.UserName = "test";
                 client.ClientCredentials.UserName.Password = "test123";
                 client.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode = X509CertificateValidationMode.None;
                 MessageBox.Show(client.GetRandomCocktail().ToString());
