@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Web;
 using System.Web.Configuration;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace Cocktailizr.Model.Entities
+namespace CocktailizrTypes.Model.Entities
 {
+
+    [DataContract]
     public class CocktailizrEntityBase
     {
 
@@ -16,6 +19,7 @@ namespace Cocktailizr.Model.Entities
         }
 
         [BsonElement]
+        [DataMember]
         public Guid Id { get; set; }
     }
 

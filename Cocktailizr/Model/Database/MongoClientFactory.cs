@@ -5,7 +5,7 @@ using System.Configuration;
 using System.EnterpriseServices;
 using System.Linq;
 using System.Web;
-using Cocktailizr.Model.Entities;
+using CocktailizrTypes.Model.Entities;
 using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 

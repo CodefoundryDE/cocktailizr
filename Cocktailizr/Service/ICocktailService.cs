@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-using Cocktailizr.Model.Entities;
+using CocktailizrTypes.Model.Entities;
 
 namespace Cocktailizr.Service
 {

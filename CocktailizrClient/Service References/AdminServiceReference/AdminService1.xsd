@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:19609/Service/Impl/AdminService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Cocktailizr.Model.Entities" />
-  <xs:import schemaLocation="http://localhost:19609/Service/Impl/AdminService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="https://localhost:44300/Service/Impl/AdminService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/CocktailizrTypes.Model.Entities" />
+  <xs:import schemaLocation="https://localhost:44300/Service/Impl/AdminService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:element name="AddCocktail">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Cocktailizr.Model.Entities" minOccurs="0" name="cocktail" nillable="true" type="q1:Cocktail" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/CocktailizrTypes.Model.Entities" minOccurs="0" name="cocktail" nillable="true" type="q1:Cocktail" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -20,7 +20,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="cocktailId" type="q2:guid" />
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Cocktailizr.Model.Entities" minOccurs="0" name="cocktail" nillable="true" type="q3:Cocktail" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/CocktailizrTypes.Model.Entities" minOccurs="0" name="cocktail" nillable="true" type="q3:Cocktail" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -48,7 +48,7 @@
   <xs:element name="AddZutat">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Cocktailizr.Model.Entities" minOccurs="0" name="zutat" nillable="true" type="q5:Zutat" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/CocktailizrTypes.Model.Entities" minOccurs="0" name="zutat" nillable="true" type="q5:Zutat" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -63,7 +63,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="zutatId" type="q6:guid" />
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Cocktailizr.Model.Entities" minOccurs="0" name="zutat" nillable="true" type="q7:Zutat" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/CocktailizrTypes.Model.Entities" minOccurs="0" name="zutat" nillable="true" type="q7:Zutat" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

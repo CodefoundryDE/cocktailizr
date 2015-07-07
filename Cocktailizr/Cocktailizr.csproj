@@ -16,7 +16,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44300</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -52,6 +52,7 @@
       <HintPath>packages\MongoDB.Driver.Core.2.0.1\lib\net45\MongoDB.Driver.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.IdentityModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -73,17 +74,20 @@
   <ItemGroup>
     <Content Include="Service\Impl\AdminService.svc" />
     <Content Include="Service\Impl\CocktailService.svc" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Auth\AuthPolicy.cs" />
+    <Compile Include="Auth\AuthPrincipal.cs" />
+    <Compile Include="Auth\UserAuthentication.cs" />
     <Compile Include="Helper\Serializer\ColorSerializer.cs" />
     <Compile Include="Service\Impl\AdminService.svc.cs">
       <DependentUpon>AdminService.svc</DependentUpon>
     </Compile>
     <Compile Include="Model\Database\CoktailizrDataContext.cs" />
     <Compile Include="Model\Database\MongoClientFactory.cs" />
-    <Compile Include="Model\Entities\Cocktail.cs" />
-    <Compile Include="Model\Entities\CocktailizrEntityBase.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -113,6 +117,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CocktailizrTypes\CocktailizrTypes.csproj">
+      <Project>{80438336-f2aa-4286-bb15-8b84d471ca45}</Project>
+      <Name>CocktailizrTypes</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
