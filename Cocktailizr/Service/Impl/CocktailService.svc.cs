@@ -10,6 +10,7 @@ using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using Cocktailizr.Model.Database;
+using Cocktailizr.Model.Service;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
@@ -27,7 +28,7 @@ namespace Cocktailizr.Service.Impl
 
         #region Vriables
 
-        private readonly CocktailizrDataContext _context;
+        private readonly CocktailDbService _cocktailDbService;
 
         #endregion
 
@@ -35,7 +36,7 @@ namespace Cocktailizr.Service.Impl
 
         public CocktailService()
         {
-            _context = new CocktailizrDataContext();
+            _cocktailDbService = new CocktailDbService();
         }
 
         #endregion
@@ -44,33 +45,20 @@ namespace Cocktailizr.Service.Impl
         [PrincipalPermission(SecurityAction.Demand, Role = "ADMIN")]
         public async Task<Cocktail> GetRandomCocktail()
         {
-            var count = await _context.Cocktails.CountAsync(new BsonDocument());
-            var rnd = (int)LongRandom(0, count > int.MaxValue ? count : int.MaxValue, new Random());
-
-            return await _context.Cocktails.Find(new BsonDocument()).Skip(rnd).FirstOrDefaultAsync();
+            return await _cocktailDbService.GetRandomCocktail();
         }
 
         public async Task<IAsyncCursor<Cocktail>> GetCocktailsByName(string name)
         {
-            return await _context.Cocktails.FindAsync(cocktail => cocktail.Name.Contains(name));
+            return await _cocktailDbService.GetCocktailsByName(name);
         }
 
         public async Task<IAsyncCursor<Cocktail>> GetCocktailsByIndigrents(IEnumerable<Zutat> zutaten)
         {
-           return await _context.Cocktails.FindAsync(cocktail => !cocktail.Zutaten.Keys.Except(zutaten).Any());
+            return await _cocktailDbService.GetCocktailsByIndigrents(zutaten);
         }
 
-        #region DontLookAtIt
-
-        long LongRandom(long min, long max, Random rand)
-        {
-            long result = rand.Next((Int32)(min >> 32), (Int32)(max >> 32));
-            result = (result << 32);
-            result = result | (long)rand.Next((Int32)min, (Int32)max);
-            return result;
-        }
-
-        #endregion
+        
 
         #endregion
     }

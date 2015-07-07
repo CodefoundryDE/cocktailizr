@@ -17,7 +17,6 @@ namespace Cocktailizr.Model.Service
         public BenutzerService()
         {
             _context = new CocktailizrDataContext();
-            _context.Benutzer.InsertOneAsync(new Benutzer() {Name = "test", HashedPassword = "test123"}).Wait();
         }
 
         public async Task<bool> CredentialsOk(string userName, string password)

@@ -40,6 +40,6 @@ namespace Cocktailizr.Service.Impl
         {
             throw new NotImplementedException();
         }
-        }
     }
 }
+

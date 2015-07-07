@@ -5,7 +5,6 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
-using Cocktailizr.Model.Entities;
 using CocktailizrTypes.Model.Entities;
 using MongoDB.Driver;
 
