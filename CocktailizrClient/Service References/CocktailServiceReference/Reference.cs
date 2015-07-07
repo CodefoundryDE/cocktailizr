@@ -107,31 +107,32 @@ namespace CocktailizrClient.CocktailServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICocktailService/GetRandomCocktail", ReplyAction="http://tempuri.org/ICocktailService/GetRandomCocktailResponse")]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.Dictionary<Cocktailizr.Model.Entities.Zutat, decimal>))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Cocktailizr.Model.Entities.Rezept))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Cocktailizr.Model.Entities.Step[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Cocktailizr.Model.Entities.Step))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Cocktailizr.Model.Entities.Zutat))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Cocktailizr.Model.Entities.ZutatenSkala))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Cocktailizr.Model.Entities.Cocktail[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(Cocktailizr.Model.Entities.Zutat[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.Dictionary<CocktailizrTypes.Model.Entities.Zutat, decimal>))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrClient.CocktailServiceReference.Color))]
-        Cocktailizr.Model.Entities.Cocktail GetRandomCocktail();
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.CocktailizrEntityBase))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Rezept))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Step[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Step))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Zutat))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.ZutatenSkala))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Cocktail[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Zutat[]))]
+        CocktailizrTypes.Model.Entities.Cocktail GetRandomCocktail();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICocktailService/GetRandomCocktail", ReplyAction="http://tempuri.org/ICocktailService/GetRandomCocktailResponse")]
-        System.Threading.Tasks.Task<Cocktailizr.Model.Entities.Cocktail> GetRandomCocktailAsync();
+        System.Threading.Tasks.Task<CocktailizrTypes.Model.Entities.Cocktail> GetRandomCocktailAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICocktailService/GetCocktailsByName", ReplyAction="http://tempuri.org/ICocktailService/GetCocktailsByNameResponse")]
-        Cocktailizr.Model.Entities.Cocktail[] GetCocktailsByName(string name);
+        CocktailizrTypes.Model.Entities.Cocktail[] GetCocktailsByName(string name);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICocktailService/GetCocktailsByName", ReplyAction="http://tempuri.org/ICocktailService/GetCocktailsByNameResponse")]
-        System.Threading.Tasks.Task<Cocktailizr.Model.Entities.Cocktail[]> GetCocktailsByNameAsync(string name);
+        System.Threading.Tasks.Task<CocktailizrTypes.Model.Entities.Cocktail[]> GetCocktailsByNameAsync(string name);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICocktailService/GetCocktailsByIndigrents", ReplyAction="http://tempuri.org/ICocktailService/GetCocktailsByIndigrentsResponse")]
-        Cocktailizr.Model.Entities.Cocktail[] GetCocktailsByIndigrents(Cocktailizr.Model.Entities.Zutat[] zutaten);
+        CocktailizrTypes.Model.Entities.Cocktail[] GetCocktailsByIndigrents(CocktailizrTypes.Model.Entities.Zutat[] zutaten);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICocktailService/GetCocktailsByIndigrents", ReplyAction="http://tempuri.org/ICocktailService/GetCocktailsByIndigrentsResponse")]
-        System.Threading.Tasks.Task<Cocktailizr.Model.Entities.Cocktail[]> GetCocktailsByIndigrentsAsync(Cocktailizr.Model.Entities.Zutat[] zutaten);
+        System.Threading.Tasks.Task<CocktailizrTypes.Model.Entities.Cocktail[]> GetCocktailsByIndigrentsAsync(CocktailizrTypes.Model.Entities.Zutat[] zutaten);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -161,27 +162,27 @@ namespace CocktailizrClient.CocktailServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public Cocktailizr.Model.Entities.Cocktail GetRandomCocktail() {
+        public CocktailizrTypes.Model.Entities.Cocktail GetRandomCocktail() {
             return base.Channel.GetRandomCocktail();
         }
         
-        public System.Threading.Tasks.Task<Cocktailizr.Model.Entities.Cocktail> GetRandomCocktailAsync() {
+        public System.Threading.Tasks.Task<CocktailizrTypes.Model.Entities.Cocktail> GetRandomCocktailAsync() {
             return base.Channel.GetRandomCocktailAsync();
         }
         
-        public Cocktailizr.Model.Entities.Cocktail[] GetCocktailsByName(string name) {
+        public CocktailizrTypes.Model.Entities.Cocktail[] GetCocktailsByName(string name) {
             return base.Channel.GetCocktailsByName(name);
         }
         
-        public System.Threading.Tasks.Task<Cocktailizr.Model.Entities.Cocktail[]> GetCocktailsByNameAsync(string name) {
+        public System.Threading.Tasks.Task<CocktailizrTypes.Model.Entities.Cocktail[]> GetCocktailsByNameAsync(string name) {
             return base.Channel.GetCocktailsByNameAsync(name);
         }
         
-        public Cocktailizr.Model.Entities.Cocktail[] GetCocktailsByIndigrents(Cocktailizr.Model.Entities.Zutat[] zutaten) {
+        public CocktailizrTypes.Model.Entities.Cocktail[] GetCocktailsByIndigrents(CocktailizrTypes.Model.Entities.Zutat[] zutaten) {
             return base.Channel.GetCocktailsByIndigrents(zutaten);
         }
         
-        public System.Threading.Tasks.Task<Cocktailizr.Model.Entities.Cocktail[]> GetCocktailsByIndigrentsAsync(Cocktailizr.Model.Entities.Zutat[] zutaten) {
+        public System.Threading.Tasks.Task<CocktailizrTypes.Model.Entities.Cocktail[]> GetCocktailsByIndigrentsAsync(CocktailizrTypes.Model.Entities.Zutat[] zutaten) {
             return base.Channel.GetCocktailsByIndigrentsAsync(zutaten);
         }
     }

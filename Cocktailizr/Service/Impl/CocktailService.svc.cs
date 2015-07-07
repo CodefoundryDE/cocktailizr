@@ -1,10 +1,11 @@
-﻿using Cocktailizr.Model.Entities;
+﻿using CocktailizrTypes.Model.Entities;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Runtime.Serialization;
+using System.Security.Permissions;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,7 +41,7 @@ namespace Cocktailizr.Service.Impl
         #endregion
 
         #region Methods
-
+        [PrincipalPermission(SecurityAction.Demand, Role = "ADMIN")]
         public async Task<Cocktail> GetRandomCocktail()
         {
             var count = await _context.Cocktails.CountAsync(new BsonDocument());

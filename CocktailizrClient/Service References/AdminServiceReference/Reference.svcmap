@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ff977142-52d5-4022-a78b-9e4d1f609bbb" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="3c7cd200-f168-4a30-8b24-dcb83fb6b950" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -13,22 +13,24 @@
     <GenerateSerializableTypes>true</GenerateSerializableTypes>
     <Serializer>Auto</Serializer>
     <UseSerializerForFaults>true</UseSerializerForFaults>
-    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
-    <ReferencedAssemblies />
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies>
+      <ReferencedAssembly AssemblyName="CocktailizrTypes" />
+    </ReferencedAssemblies>
     <ReferencedDataContractTypes />
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:19609/Service/Impl/AdminService.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="https://localhost:44300/Service/Impl/AdminService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="AdminService1.xsd" MetadataType="Schema" ID="5bbf9960-bba5-492d-9eea-4046d8fa4eb2" SourceId="1" SourceUrl="http://localhost:19609/Service/Impl/AdminService.svc?xsd=xsd0" />
-    <MetadataFile FileName="AdminService.wsdl" MetadataType="Wsdl" ID="bb92cc8e-96bc-4160-9542-bddb4cae2c4b" SourceId="1" SourceUrl="http://localhost:19609/Service/Impl/AdminService.svc?wsdl" />
-    <MetadataFile FileName="AdminService.disco" MetadataType="Disco" ID="e9ca1f13-a45b-4c6b-be32-a2feb33cb5a2" SourceId="1" SourceUrl="http://localhost:19609/Service/Impl/AdminService.svc?disco" />
-    <MetadataFile FileName="AdminService3.xsd" MetadataType="Schema" ID="4b2c4440-013e-465b-9f8a-0e4a0ac21ed5" SourceId="1" SourceUrl="http://localhost:19609/Service/Impl/AdminService.svc?xsd=xsd4" />
-    <MetadataFile FileName="AdminService31.xsd" MetadataType="Schema" ID="7c8d790a-944e-4609-8b27-759c259c9545" SourceId="1" SourceUrl="http://localhost:19609/Service/Impl/AdminService.svc?xsd=xsd3" />
-    <MetadataFile FileName="AdminService.xsd" MetadataType="Schema" ID="ec8df92a-ac50-4c03-8ff3-4f51d6b570cd" SourceId="1" SourceUrl="http://localhost:19609/Service/Impl/AdminService.svc?xsd=xsd2" />
-    <MetadataFile FileName="AdminService2.xsd" MetadataType="Schema" ID="102ea082-3502-4bcf-9248-3046f1dcfab3" SourceId="1" SourceUrl="http://localhost:19609/Service/Impl/AdminService.svc?xsd=xsd1" />
+    <MetadataFile FileName="AdminService.xsd" MetadataType="Schema" ID="fe8b2121-5e14-4d4b-b2a8-7f6f60aa77af" SourceId="1" SourceUrl="https://localhost:44300/Service/Impl/AdminService.svc?xsd=xsd1" />
+    <MetadataFile FileName="AdminService1.xsd" MetadataType="Schema" ID="310b56cb-00a2-4042-a095-569c911753d2" SourceId="1" SourceUrl="https://localhost:44300/Service/Impl/AdminService.svc?xsd=xsd0" />
+    <MetadataFile FileName="AdminService.wsdl" MetadataType="Wsdl" ID="be97d4de-4384-45b6-b920-b558ca8f7d39" SourceId="1" SourceUrl="https://localhost:44300/Service/Impl/AdminService.svc?wsdl" />
+    <MetadataFile FileName="AdminService2.xsd" MetadataType="Schema" ID="aa999ab8-1cfd-4e80-b1ea-641cc628d197" SourceId="1" SourceUrl="https://localhost:44300/Service/Impl/AdminService.svc?xsd=xsd2" />
+    <MetadataFile FileName="AdminService3.xsd" MetadataType="Schema" ID="d75db8dd-8486-42c7-847f-20816456886b" SourceId="1" SourceUrl="https://localhost:44300/Service/Impl/AdminService.svc?xsd=xsd3" />
+    <MetadataFile FileName="AdminService4.xsd" MetadataType="Schema" ID="d97b63d4-b66b-4a47-9fe3-3973fe84a1da" SourceId="1" SourceUrl="https://localhost:44300/Service/Impl/AdminService.svc?xsd=xsd4" />
+    <MetadataFile FileName="AdminService.disco" MetadataType="Disco" ID="8020e231-b462-45ab-9e2f-a1626f8959ce" SourceId="1" SourceUrl="https://localhost:44300/Service/Impl/AdminService.svc?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

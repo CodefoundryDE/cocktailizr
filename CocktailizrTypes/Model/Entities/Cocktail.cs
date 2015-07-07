@@ -3,12 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Runtime.Serialization;
-using Cocktailizr.Helper.Serializer;
+using CocktailizrTypes.Helper.Serializer;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson.Serialization.Options;
 
-namespace Cocktailizr.Model.Entities
+namespace CocktailizrTypes.Model.Entities
 {
     [DataContract]
     [BsonIgnoreExtraElements]
@@ -130,10 +130,15 @@ namespace Cocktailizr.Model.Entities
     [DataContract]
     public enum ZutatenSkala
     {
+        [EnumMember]
         Cl,
+        [EnumMember]
         Liter,
+        [EnumMember]
         Stueck,
+        [EnumMember]
         Gramm,
+        [EnumMember]
         Priese,
     }
 }

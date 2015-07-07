@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocktailizrClient", "..\Coc
 		{EDCD31E4-3CE9-4179-9805-3F7A3094A395} = {EDCD31E4-3CE9-4179-9805-3F7A3094A395}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocktailizrTypes", "..\CocktailizrTypes\CocktailizrTypes.csproj", "{80438336-F2AA-4286-BB15-8B84D471CA45}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +26,10 @@ Global
 		{DFA23BCA-455A-4E12-83F0-78EDAC02D9A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFA23BCA-455A-4E12-83F0-78EDAC02D9A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DFA23BCA-455A-4E12-83F0-78EDAC02D9A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80438336-F2AA-4286-BB15-8B84D471CA45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80438336-F2AA-4286-BB15-8B84D471CA45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80438336-F2AA-4286-BB15-8B84D471CA45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80438336-F2AA-4286-BB15-8B84D471CA45}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
