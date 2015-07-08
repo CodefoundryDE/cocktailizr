@@ -10,7 +10,7 @@ namespace Cocktailizr.Auth
     {
         public IIdentity Identity { get; private set; }
 
-        private IEnumerable<string> _roles;
+        private readonly IEnumerable<string> _roles;
 
         public AuthPrincipal(IIdentity client, IEnumerable<string> roles)
         {
@@ -20,11 +20,6 @@ namespace Cocktailizr.Auth
 
         public bool IsInRole(string role)
         {
-            //if (Identity.Name.Equals("test"))
-            if (true)
-                _roles = new string[1] { "ADMIN" };
-            else
-                _roles = new string[1] { "USER" };
             return _roles.Contains(role);
         }
 
