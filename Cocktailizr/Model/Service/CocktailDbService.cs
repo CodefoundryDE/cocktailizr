@@ -47,45 +47,14 @@ namespace Cocktailizr.Model.Service
 
         public async Task<ISet<Zutat>> GetAllZutaten()
         {
-            try
+            var cocktails = await _context.Cocktails.Find(c => c.Zutaten.Any()).ToListAsync();
+            ISet<Zutat> zutatenSet = new HashSet<Zutat>();
+            foreach (var zutat in cocktails.SelectMany(cocktail => cocktail.Zutaten))
             {
-                var unwind = new BsonDocument()
-                {
-                    {
-                        "$unwind", "$Zutaten"
-                    }
-                };
-                var match = new BsonDocument
-                {
-                    {
-                        "$match",
-                        new BsonDocument
-                        {
-                            {"Zutaten", new BsonDocument
-                              {
-                                    {"$exists", true}
-                                }
-                         }
-                        }
-                    }
-                };
-
-                var pipeline = new[] { match, unwind};
-                var result = await _context.Cocktails.AggregateAsync<object>(pipeline);
-
-                
-                var completeZutatenList = await result.ToListAsync();
-                ISet<Zutat> zutatenSet =
-                    new SortedSet<Zutat>(completeZutatenList.Select(c => ((Cocktail) c).Zutaten.First().Key));
-
-
-                return zutatenSet;
+                zutat.Key.IsOptional = false;
+                zutatenSet.Add(zutat.Key);
             }
-            catch (Exception e)
-            {
-                var error = e.Message;
-            }
-            return null;
+            return zutatenSet;
         }
     }
 }
