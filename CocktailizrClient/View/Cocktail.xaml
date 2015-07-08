@@ -21,16 +21,17 @@
 
             <StackPanel Grid.Column="0">
                 <Label Content="Ergebnisse für Binding"></Label>
-                <Label HorizontalAlignment="Center" Content="Bloody Marry" FontSize="{StaticResource HeadingFontSize}"></Label>
-                <Image Source="/Assets/wmojtobasse.png" HorizontalAlignment="Center" Height="500"></Image>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Button Margin="5" Style="{DynamicResource MaterialDesignFloatingActionButton}">
                         <Image Source="/Assets/ic_action_back.png"></Image>
                     </Button>
+                    <Label HorizontalAlignment="Center" Content="Bloody Marry" FontSize="{StaticResource HeadingFontSize}"></Label>
                     <Button Margin="5" Style="{DynamicResource MaterialDesignFloatingActionButton}">
                         <Image Source="/Assets/ic_action_forward.png"></Image>
                     </Button>
-                </StackPanel>
+                </StackPanel>                
+                <Image Source="/Assets/wmojtobasse.png" HorizontalAlignment="Center" Height="500"></Image>
+                
                 <Label Content="Zubereitung:"></Label>
                 <Label Content="Binding für den Zubereirungs-Text blablablabla"></Label>
             </StackPanel>
