@@ -12,6 +12,8 @@
   See http://www.galasoft.ch/mvvm
 */
 
+using System.ServiceModel.Security;
+using CocktailizrClient.CocktailServiceReference;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Practices.ServiceLocation;
@@ -41,6 +43,15 @@ namespace CocktailizrClient.ViewModel
             ////    // Create run time view services and models
             ////    SimpleIoc.Default.Register<IDataService, DataService>();
             ////}
+
+            SimpleIoc.Default.Register(() =>
+            {
+                var client = new CocktailServiceClient();
+                client.ClientCredentials.UserName.UserName = "Admin";
+                client.ClientCredentials.UserName.Password = "Cocktailizor";
+                client.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode = X509CertificateValidationMode.None;
+                return client;
+            });
 
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<CocktailViewModel>();

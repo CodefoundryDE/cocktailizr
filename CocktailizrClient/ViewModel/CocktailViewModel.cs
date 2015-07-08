@@ -1,16 +1,34 @@
 ﻿using System;
 using System.Threading.Tasks;
+using CocktailizrClient.CocktailServiceReference;
 using CocktailizrClient.Message;
+using CocktailizrTypes.Model.Entities;
 
 namespace CocktailizrClient.ViewModel
 {
     public class CocktailViewModel : CocktailizrClientViewModelBase
     {
+        private CocktailServiceClient _serviceClient;
+        private Cocktail _shownCocktail;
 
-        public CocktailViewModel()
+        public Cocktail ShownCocktail
         {
+            get { return _shownCocktail; }
+            set
+            {
+                _shownCocktail = value;
+                RaisePropertyChanged(() => ShownCocktail);
+            }
+        }
+
+
+        #region Constructor
+        public CocktailViewModel(CocktailServiceClient serviceClient)
+        {
+            _serviceClient = serviceClient;
             MessengerInstance.Register<CocktailSearchMessage>(this, RecieveCocktailSearchMessage);
         }
+        #endregion
 
 
         private void RecieveCocktailSearchMessage(CocktailSearchMessage message)
@@ -25,7 +43,7 @@ namespace CocktailizrClient.ViewModel
                     {
                         case CocktailSearchType.Random:
                             {
-                                GetRandomCocktail();
+                                ShowRandomCocktail();
                                 break;
                             }
                         case CocktailSearchType.ByIngredients:
@@ -45,13 +63,12 @@ namespace CocktailizrClient.ViewModel
                 {
                     ExitLoading();
                 }
-                IsVisible = true;
             });
         }
 
-        private void GetRandomCocktail()
+        private void ShowRandomCocktail()
         {
-
+            ShownCocktail = _serviceClient.GetRandomCocktail();
         }
     }
 }

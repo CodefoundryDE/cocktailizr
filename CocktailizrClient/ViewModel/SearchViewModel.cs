@@ -17,18 +17,6 @@ namespace CocktailizrClient.ViewModel
     {
         #region Properties
 
-        private Cocktail _selectedCocktail;
-
-        public Cocktail SelectedCocktail
-        {
-            get { return _selectedCocktail; }
-            set
-            {
-                _selectedCocktail = value;
-                RaisePropertyChanged(() => SelectedCocktail);
-            }
-        }
-
         #endregion
 
         #region Commands

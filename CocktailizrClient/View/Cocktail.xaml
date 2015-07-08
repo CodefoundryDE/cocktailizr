@@ -27,7 +27,7 @@
                     <Button Margin="5" Style="{DynamicResource MaterialDesignFloatingActionButton}">
                         <Image Source="/Assets/ic_action_back.png"></Image>
                     </Button>
-                    <Label HorizontalAlignment="Center" Content="Bloody Marry" FontSize="{StaticResource HeadingFontSize}"></Label>
+                    <Label HorizontalAlignment="Center" Content="{Binding ShownCocktail.Name}" FontSize="{StaticResource HeadingFontSize}"></Label>
                     <Button Margin="5" Style="{DynamicResource MaterialDesignFloatingActionButton}">
                         <Image Source="/Assets/ic_action_forward.png"></Image>
                     </Button>
@@ -40,7 +40,19 @@
 
             <StackPanel Grid.Column="1">
                 <Label Content="Benötigte Zutaten:"></Label>
-                <Label Content="Binding für Zutaten"></Label>
+                <ItemsControl ItemsSource="{Binding ShownCocktail.Zutaten}" Margin="5">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock>
+                                     <Run Text="{Binding Path=Value, Mode=OneWay}" />
+                                     <Run Text="{Binding Path=Key.Skala}" />
+                                     <Run Text="{Binding Path=Key.Name}" />
+                                </TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
             </StackPanel>
 
         </Grid>
