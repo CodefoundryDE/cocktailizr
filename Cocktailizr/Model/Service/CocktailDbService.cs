@@ -33,7 +33,9 @@ namespace Cocktailizr.Model.Service
             {
                 rnd = new Random().Next();
             }
-            return await _context.Cocktails.Find(new BsonDocument()).Skip(rnd).FirstOrDefaultAsync();
+
+            var cocktail = await _context.Cocktails.Find(new BsonDocument()).Skip(rnd).FirstOrDefaultAsync();
+            return cocktail;
         }
 
         public async Task<IAsyncCursor<Cocktail>> GetCocktailsByName(string name)
@@ -61,5 +63,12 @@ namespace Cocktailizr.Model.Service
         }
 
 
+
+        public async Task<Cocktail> GetCocktailById(Guid guid)
+        {
+            var cocktailCursor = await _context.Cocktails.FindAsync(c => c.Id.Equals(new Guid("6bd35665-0109-4e94-806c-baa9cf58584a")));
+            var matchingCocktails = await cocktailCursor.ToListAsync();
+            return matchingCocktails.FirstOrDefault();
+        }
     }
 }
