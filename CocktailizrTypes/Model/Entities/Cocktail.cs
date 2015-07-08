@@ -20,7 +20,7 @@ namespace CocktailizrTypes.Model.Entities
 
         [DataMember]
         [BsonElement]
-        public IEnumerable Tags { get; set; }
+        public IEnumerable<string> Tags { get; set; }
 
         [DataMember]
         [BsonElement, BsonSerializer(typeof(ColorSerializer))]

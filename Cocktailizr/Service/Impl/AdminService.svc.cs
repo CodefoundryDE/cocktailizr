@@ -8,6 +8,7 @@ using System.Security.Permissions;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using Cocktailizr.Model.Service;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
@@ -17,40 +18,29 @@ namespace Cocktailizr.Service.Impl
     // HINWEIS: Wählen Sie zum Starten des WCF-Testclients zum Testen dieses Diensts AdminService.svc oder AdminService.svc.cs im Projektmappen-Explorer aus, und starten Sie das Debuggen.
     public class AdminService : IAdminService
     {
-        private readonly CocktailizrDataContext _context;
+        private readonly CocktailDbService _cocktailDbService;
 
         public AdminService()
         {
-            _context = new CocktailizrDataContext();
+            _cocktailDbService = CocktailizrServiceLocator.CocktailDbService;
         }
 
         [PrincipalPermission(SecurityAction.Demand, Role = "ADMIN")]
         public async Task<Cocktail> AddCocktail(Cocktail cocktail)
         {
-            await _context.Cocktails.InsertOneAsync(cocktail);
-            return cocktail;
+            return await _cocktailDbService.AddCocktail(cocktail);
         }
 
         [PrincipalPermission(SecurityAction.Demand, Role = "ADMIN")]
         public async Task<Cocktail> ModifyCocktail(Guid cocktailId, Cocktail cocktail)
         {
-            await _context.Cocktails.ReplaceOneAsync(Builders<Cocktail>.Filter.Eq(x => x.Id, cocktailId), cocktail);
-            return cocktail;
+            return await _cocktailDbService.ModifyCocktail(cocktailId, cocktail);
         }
 
         [PrincipalPermission(SecurityAction.Demand, Role = "ADMIN")]
         public async Task<bool> RemoveCocktail(Guid cocktailId)
         {
-            try
-            {
-                await _context.Cocktails.DeleteOneAsync(Builders<Cocktail>.Filter.Eq(x => x.Id, cocktailId));
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-
+            return await _cocktailDbService.DeleteCocktail(cocktailId);
         }
     }
 }

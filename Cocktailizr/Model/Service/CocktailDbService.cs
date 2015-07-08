@@ -35,6 +35,13 @@ namespace Cocktailizr.Model.Service
             return await _context.Cocktails.Find(new BsonDocument()).Skip(rnd).FirstOrDefaultAsync();
         }
 
+        public async Task<Cocktail> GetCocktailById(Guid guid)
+        {
+            var cocktailCursor = await _context.Cocktails.FindAsync(c => c.Id.Equals(guid));
+            var matchingCocktails = await cocktailCursor.ToListAsync();
+            return matchingCocktails.FirstOrDefault();
+        }
+
         public async Task<IAsyncCursor<Cocktail>> GetCocktailsByName(string name)
         {
             return await _context.Cocktails.FindAsync(cocktail => cocktail.Name.Contains(name));
@@ -43,6 +50,32 @@ namespace Cocktailizr.Model.Service
         public async Task<IAsyncCursor<Cocktail>> GetCocktailsByIndigrents(IEnumerable<Zutat> zutaten)
         {
             return await _context.Cocktails.FindAsync(cocktail => !cocktail.Zutaten.Keys.Except(zutaten).Any());
+        }
+
+        public async Task<Cocktail> AddCocktail(Cocktail cocktail)
+        {
+            await _context.Cocktails.InsertOneAsync(cocktail);
+            return cocktail;
+        }
+
+        public async Task<Cocktail> ModifyCocktail(Guid cocktailId, Cocktail cocktail)
+        {
+            await _context.Cocktails.ReplaceOneAsync(Builders<Cocktail>.Filter.Eq(x => x.Id, cocktailId), cocktail);
+            return cocktail;
+        }
+
+        public async Task<bool> DeleteCocktail(Guid cocktailId)
+        {
+            try
+            {
+                await _context.Cocktails.DeleteOneAsync(Builders<Cocktail>.Filter.Eq(x => x.Id, cocktailId));
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
         }
     }
 }
