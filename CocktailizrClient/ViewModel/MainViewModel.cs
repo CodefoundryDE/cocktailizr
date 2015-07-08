@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.ServiceModel.Description;
 using System.Windows.Media.Animation;
@@ -6,6 +8,7 @@ using System.Windows;
 using System.ServiceModel.Security;
 using CocktailizrClient.AdminServiceReference;
 using CocktailizrClient.CocktailServiceReference;
+using CocktailizrTypes.Model.Entities;
 
 namespace CocktailizrClient.ViewModel
 {
@@ -33,10 +36,17 @@ namespace CocktailizrClient.ViewModel
                 client.ClientCredentials.UserName.UserName = "Admin";
                 client.ClientCredentials.UserName.Password = "Cocktailizor";
                 client.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode = X509CertificateValidationMode.None;
-                MessageBox.Show(client.GetRandomCocktail().ToString());
+                var zutaten = client.GetAllZutaten();
 
+                var apfel = zutaten.Single(z => z.Name.ToLowerInvariant().Equals("äpfel"));
+                var eisWürfel = zutaten.Single(z => z.Name.ToLowerInvariant().Equals("eiswürfel"));
+                var limette = zutaten.Single(z => z.Name.ToLowerInvariant().Equals("limette"));
+                var salz = zutaten.Single(z => z.Name.ToLowerInvariant().Equals("salz"));
+                var pfeffer = zutaten.Single(z => z.Name.ToLowerInvariant().Equals("pfeffer"));
+                var tomatens = zutaten.Single(z => z.Name.ToLowerInvariant().Equals("tomatensaft"));
+
+                var cocktailsByIngredients = client.GetCocktailsByIndigrents(new[] { apfel, eisWürfel, limette, salz, pfeffer, tomatens });
             }
-
             using (var client = new AdminServiceClient())
             {
 

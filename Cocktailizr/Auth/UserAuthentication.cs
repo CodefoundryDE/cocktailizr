@@ -13,7 +13,7 @@ namespace Cocktailizr.Auth
             _benutzerService = CocktailizrServiceLocator.BenutzerService;
         }
 
-        public UserAuthentication(BenutzerService benutzerService)
+        public UserAuthentication(BenutzerDbService benutzerService)
         {
             _benutzerService = benutzerService;
         }

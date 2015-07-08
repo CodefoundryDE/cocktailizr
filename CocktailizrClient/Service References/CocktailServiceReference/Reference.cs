@@ -133,6 +133,12 @@ namespace CocktailizrClient.CocktailServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICocktailService/GetCocktailsByIndigrents", ReplyAction="http://tempuri.org/ICocktailService/GetCocktailsByIndigrentsResponse")]
         System.Threading.Tasks.Task<CocktailizrTypes.Model.Entities.Cocktail[]> GetCocktailsByIndigrentsAsync(CocktailizrTypes.Model.Entities.Zutat[] zutaten);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICocktailService/GetAllZutaten", ReplyAction="http://tempuri.org/ICocktailService/GetAllZutatenResponse")]
+        CocktailizrTypes.Model.Entities.Zutat[] GetAllZutaten();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICocktailService/GetAllZutaten", ReplyAction="http://tempuri.org/ICocktailService/GetAllZutatenResponse")]
+        System.Threading.Tasks.Task<CocktailizrTypes.Model.Entities.Zutat[]> GetAllZutatenAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -184,6 +190,14 @@ namespace CocktailizrClient.CocktailServiceReference {
         
         public System.Threading.Tasks.Task<CocktailizrTypes.Model.Entities.Cocktail[]> GetCocktailsByIndigrentsAsync(CocktailizrTypes.Model.Entities.Zutat[] zutaten) {
             return base.Channel.GetCocktailsByIndigrentsAsync(zutaten);
+        }
+        
+        public CocktailizrTypes.Model.Entities.Zutat[] GetAllZutaten() {
+            return base.Channel.GetAllZutaten();
+        }
+        
+        public System.Threading.Tasks.Task<CocktailizrTypes.Model.Entities.Zutat[]> GetAllZutatenAsync() {
+            return base.Channel.GetAllZutatenAsync();
         }
     }
 }
