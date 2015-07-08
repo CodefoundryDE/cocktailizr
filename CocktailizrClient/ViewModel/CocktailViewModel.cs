@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using CocktailizrClient.CocktailServiceReference;
 using CocktailizrClient.Message;
 using CocktailizrTypes.Model.Entities;
+using GalaSoft.MvvmLight.CommandWpf;
 
 namespace CocktailizrClient.ViewModel
 {
     public class CocktailViewModel : CocktailizrClientViewModelBase
     {
+        #region Properties
         private CocktailServiceClient _serviceClient;
         private Cocktail _shownCocktail;
 
@@ -20,7 +23,13 @@ namespace CocktailizrClient.ViewModel
                 RaisePropertyChanged(() => ShownCocktail);
             }
         }
+        #endregion
 
+        #region Commands
+
+        public ICommand BackToSearchClickedCommand { get { return new RelayCommand(NavigateToSearch); } }
+
+        #endregion
 
         #region Constructor
         public CocktailViewModel(CocktailServiceClient serviceClient)
@@ -69,6 +78,12 @@ namespace CocktailizrClient.ViewModel
         private void ShowRandomCocktail()
         {
             ShownCocktail = _serviceClient.GetRandomCocktail();
+        }
+
+        private void NavigateToSearch()
+        {
+            MessengerInstance.Send(new LoadSucheMessage());
+            IsVisible = false;
         }
     }
 }

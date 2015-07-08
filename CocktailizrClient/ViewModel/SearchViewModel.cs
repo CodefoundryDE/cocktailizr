@@ -37,7 +37,15 @@ namespace CocktailizrClient.ViewModel
             IsVisible = false;
         }
 
+        #region Constructor
         public SearchViewModel()
+        {
+            IsVisible = true;
+            MessengerInstance.Register<LoadSucheMessage>(this, LoadSuche);
+        }
+        #endregion
+
+        private void LoadSuche(LoadSucheMessage obj)
         {
             IsVisible = true;
         }

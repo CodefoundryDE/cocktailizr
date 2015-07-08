@@ -4,9 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d" 
-             d:DesignHeight="1280" d:DesignWidth="1024"
-             Visibility="{Binding IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
-             DataContext="{Binding Search, Source={StaticResource Locator}}">
+             d:DesignHeight="1280" d:DesignWidth="1024"             
+             DataContext="{Binding Search, Source={StaticResource Locator}}"
+             Visibility="{Binding IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
     <UserControl.Resources>
         <ResourceDictionary Source="../Themes/Generic.xaml"></ResourceDictionary>
     </UserControl.Resources>
