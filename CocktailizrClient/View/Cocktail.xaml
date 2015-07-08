@@ -22,23 +22,33 @@
                     <Image Source="/Assets/ic_action_back.png"></Image>
                 </Button>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Command="{Binding PreviousCocktailCommand}" Margin="5" Style="{DynamicResource MaterialDesignFloatingActionButton}">
+                    <Button Command="{Binding PreviousCocktailCommand}" IsEnabled="{Binding HasPreviousCocktail, UpdateSourceTrigger=PropertyChanged}" Margin="5" Style="{DynamicResource MaterialDesignFloatingActionButton}">
                         <Image Source="/Assets/ic_action_back.png"></Image>
                     </Button>
                     <Label HorizontalAlignment="Center" Content="{Binding ShownCocktail.Name}" FontSize="{StaticResource HeadingFontSize}"></Label>
-                    <Button Command="{Binding NextCocktailCommand}" Margin="5" Style="{DynamicResource MaterialDesignFloatingActionButton}">
+                    <Button Command="{Binding NextCocktailCommand}" IsEnabled="{Binding HasNextCocktail, UpdateSourceTrigger=PropertyChanged}" Margin="5" Style="{DynamicResource MaterialDesignFloatingActionButton}">
                         <Image Source="/Assets/ic_action_forward.png"></Image>
                     </Button>
                 </StackPanel>
                 <Image Source="/Assets/wmojtobasse.png" HorizontalAlignment="Center" Height="500"></Image>
 
-                <Label Content="Zubereitung:"></Label>
-                <Label Content="Binding für den Zubereirungs-Text blablablabla"></Label>
+                <StackPanel>
+                    <Label Content="Zubereitung:" HorizontalAlignment="Center"></Label>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Margin="5" Style="{DynamicResource MaterialDesignFloatingActionButton}">
+                            <Image Source="/Assets/ic_action_back.png"></Image>
+                        </Button>
+                        <Label Content="Binding für den Zubereirungs-Text blablablabla"></Label>
+                        <Button Margin="5" Style="{DynamicResource MaterialDesignFloatingActionButton}">
+                            <Image Source="/Assets/ic_action_forward.png"></Image>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
             </StackPanel>
 
             <StackPanel Grid.Column="1">
                 <Label Content="Benötigte Zutaten:"></Label>
-                <ItemsControl ItemsSource="{Binding ShownCocktail.Zutaten}" Margin="5">
+                <ItemsControl ItemsSource="{Binding ShownCocktail.Zutaten, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <StackPanel>

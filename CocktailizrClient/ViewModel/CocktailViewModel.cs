@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -15,9 +16,9 @@ namespace CocktailizrClient.ViewModel
         #region Properties
         private CocktailServiceClient _serviceClient;
 
-        private IList<Cocktail> _searchResults = new List<Cocktail>();
+        private ObservableCollection<Cocktail> _searchResults = new ObservableCollection<Cocktail>();
 
-        public IList<Cocktail> SearchResults
+        public ObservableCollection<Cocktail> SearchResults
         {
             get { return _searchResults; }
             set
@@ -25,8 +26,31 @@ namespace CocktailizrClient.ViewModel
                 _searchResults = value;
                 ShownCocktail = _searchResults.FirstOrDefault();
                 RaisePropertyChanged(() => SearchResults);
+                RaisePropertyChanged(() => HasNextCocktail);
+                RaisePropertyChanged(() => HasPreviousCocktail);
             }
         }
+
+        public bool HasNextCocktail
+        {
+            get
+            {
+                int recentIndex = SearchResults.IndexOf(ShownCocktail);
+                int nextIndex = recentIndex + 1;
+                return SearchResults.Count > nextIndex;
+            }
+        }
+
+        public bool HasPreviousCocktail
+        {
+            get
+            {
+                int recentIndex = SearchResults.IndexOf(ShownCocktail);
+                int previousIndex = recentIndex - 1;
+                return previousIndex >= 0;             
+            }
+        }
+
 
 
         private Cocktail _shownCocktail;
@@ -50,6 +74,10 @@ namespace CocktailizrClient.ViewModel
 
         public ICommand PreviousCocktailCommand { get { return new RelayCommand(ShowPreviousCocktail); } }
 
+        #endregion
+
+        #region Validation
+    
         #endregion
 
         #region Constructor
@@ -98,35 +126,37 @@ namespace CocktailizrClient.ViewModel
 
         private void ShowRandomCocktail()
         {
-            SearchResults = new List<Cocktail>() { _serviceClient.GetRandomCocktail() };
+            SearchResults = new ObservableCollection<Cocktail>() { _serviceClient.GetRandomCocktail() };
         }
 
         private void ShowCocktailWithGivenIngredients(IEnumerable<Zutat> ingredients)
         {
             Cocktail[] results = _serviceClient.GetCocktailsByIndigrents(ingredients.ToArray());
-            SearchResults = results;
+            SearchResults = new ObservableCollection<Cocktail>(results);
         }
 
         private void ShowSearchResults(string searchText)
         {
             Cocktail[] results = _serviceClient.GetCocktailsByName(searchText);
-            SearchResults = results;
+            SearchResults = new ObservableCollection<Cocktail>(results);
         }
 
         private void ShowNextCocktail()
         {
             int recentIndex = SearchResults.IndexOf(ShownCocktail);
             int nextIndex = recentIndex + 1;
-            if (SearchResults.Count > nextIndex)
-                ShownCocktail = SearchResults.ElementAt(nextIndex);
+            ShownCocktail = SearchResults.ElementAt(nextIndex);
+            RaisePropertyChanged(() => HasNextCocktail);
+            RaisePropertyChanged(() => HasPreviousCocktail);
         }
 
         private void ShowPreviousCocktail()
         {
             int recentIndex = SearchResults.IndexOf(ShownCocktail);
             int previousIndex = recentIndex - 1;
-            if (previousIndex >= 0)
-                ShownCocktail = SearchResults.ElementAt(previousIndex);
+            ShownCocktail = SearchResults.ElementAt(previousIndex);
+            RaisePropertyChanged(() => HasNextCocktail);
+            RaisePropertyChanged(() => HasPreviousCocktail);
         }
 
         private void NavigateBackToSearch()
@@ -134,7 +164,6 @@ namespace CocktailizrClient.ViewModel
             MessengerInstance.Send(new LoadSearchMessage { LoadExtendedSearch = false });
             IsVisible = false;
         }
-
         #endregion
     }
 }
