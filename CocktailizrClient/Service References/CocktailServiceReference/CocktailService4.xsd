@@ -9,6 +9,7 @@
         <xs:sequence>
           <xs:element minOccurs="0" name="Alcoholic" type="xs:boolean" />
           <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/System.Drawing" minOccurs="0" name="DrinkColor" type="q1:Color" />
+          <xs:element minOccurs="0" name="ImageBytes" nillable="true" type="xs:base64Binary" />
           <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Rezept" nillable="true" type="tns:Rezept" />
           <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Tags" nillable="true" type="q2:ArrayOfanyType" />
@@ -62,6 +63,12 @@
     </xs:restriction>
   </xs:simpleType>
   <xs:element name="ZutatenSkala" nillable="true" type="tns:ZutatenSkala" />
+  <xs:complexType name="ArrayOfCocktail">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Cocktail" nillable="true" type="tns:Cocktail" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCocktail" nillable="true" type="tns:ArrayOfCocktail" />
   <xs:complexType name="ArrayOfZutat">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Zutat" nillable="true" type="tns:Zutat" />

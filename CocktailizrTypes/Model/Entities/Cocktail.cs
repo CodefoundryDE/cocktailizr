@@ -40,6 +40,7 @@ namespace CocktailizrTypes.Model.Entities
         [BsonElement]
         public Rezept Rezept { get; set; }
 
+        [DataMember]
         [BsonElement]
         public byte[] ImageBytes { get; set; }
 

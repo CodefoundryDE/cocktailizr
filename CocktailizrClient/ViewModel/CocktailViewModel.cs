@@ -68,7 +68,14 @@ namespace CocktailizrClient.ViewModel
 
         private void ShowRandomCocktail()
         {
-            ShownCocktail = _serviceClient.GetRandomCocktail();
+            try
+            {
+                ShownCocktail = _serviceClient.GetRandomCocktail();
+            }
+            catch (Exception e)
+            {
+                var msg = e.Message;
+            }
         }
     }
 }
