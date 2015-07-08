@@ -7,5 +7,6 @@
     <Grid>
         <view:Cocktail/>
         <view:Search/>
+        <Image Style="{StaticResource LoadingGif}" Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}" />
     </Grid>
 </Window>
