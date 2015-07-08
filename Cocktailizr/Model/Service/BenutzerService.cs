@@ -27,5 +27,12 @@ namespace Cocktailizr.Model.Service
 
             return PasswordHashHelper.VerifyPassword(benutzer.HashedPassword, password);
         }
+
+        public async Task<IEnumerable<string>> GetUserRoles(string userName)
+        {
+            var benutzer = await _context.Benutzer.FindAsync(x => x.Name.Equals(userName));
+
+            return new [] { (await benutzer.ToListAsync()).First().Role };
+        }
     }
 }

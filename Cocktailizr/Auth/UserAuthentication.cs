@@ -6,7 +6,7 @@ namespace Cocktailizr.Auth
 {
     public class UserAuthentication : UserNamePasswordValidator
     {
-        private BenutzerService _benutzerService;
+        private readonly BenutzerService _benutzerService;
 
         public UserAuthentication()
         {
