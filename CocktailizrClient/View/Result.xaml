@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="1280" d:DesignWidth="1024">
+             d:DesignHeight="1280" d:DesignWidth="1024"
+             DataContext="{Binding Main, Source={StaticResource Locator}}">
     <UserControl.Resources>
         <ResourceDictionary Source="../Themes/Generic.xaml"></ResourceDictionary>
     </UserControl.Resources>
@@ -21,8 +22,8 @@
 
             <StackPanel Grid.Column="0">
                 <Label Content="Ergebnisse für Binding"></Label>
-                <Label HorizontalAlignment="Center" Content="Bloody Marry" FontSize="{StaticResource HeadingFontSize}"></Label>
-                <Image Source="/Assets/wmojtobasse.png" HorizontalAlignment="Center" Height="500"></Image>
+                <Label HorizontalAlignment="Center" Content="{Binding Cocktail.Name}" FontSize="{StaticResource HeadingFontSize}"></Label>
+                <Image Source="{Binding Cocktail.Image}" HorizontalAlignment="Center" Height="500"></Image>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Button Margin="5" Style="{DynamicResource MaterialDesignFloatingActionButton}">
                         <Image Source="/Assets/ic_action_back.png"></Image>

@@ -1,3 +1,4 @@
+using System;
 using System.Security.Cryptography.X509Certificates;
 using System.ServiceModel.Description;
 using System.Windows.Media.Animation;
@@ -6,6 +7,7 @@ using System.Windows;
 using System.ServiceModel.Security;
 using CocktailizrClient.AdminServiceReference;
 using CocktailizrClient.CocktailServiceReference;
+using CocktailizrTypes.Model.Entities;
 
 namespace CocktailizrClient.ViewModel
 {
@@ -26,6 +28,22 @@ namespace CocktailizrClient.ViewModel
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
+
+
+
+        
+        private Cocktail _cocktail;
+        public Cocktail Cocktail
+        {
+            get { return _cocktail; }
+            set
+            {
+                _cocktail = value;
+                RaisePropertyChanged(() => Cocktail);
+            }
+        }
+
+
         public MainViewModel()
         {
             using (var client = new CocktailServiceClient())
@@ -33,7 +51,7 @@ namespace CocktailizrClient.ViewModel
                 client.ClientCredentials.UserName.UserName = "Admin";
                 client.ClientCredentials.UserName.Password = "Cocktailizor";
                 client.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode = X509CertificateValidationMode.None;
-                MessageBox.Show(client.GetRandomCocktail().ToString());
+                Cocktail = client.GetRandomCocktail();
 
             }
 

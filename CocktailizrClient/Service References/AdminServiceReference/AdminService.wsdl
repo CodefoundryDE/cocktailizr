@@ -128,24 +128,6 @@
   <wsdl:message name="IAdminService_RemoveCocktail_OutputMessage">
     <wsdl:part name="parameters" element="tns:RemoveCocktailResponse" />
   </wsdl:message>
-  <wsdl:message name="IAdminService_AddZutat_InputMessage">
-    <wsdl:part name="parameters" element="tns:AddZutat" />
-  </wsdl:message>
-  <wsdl:message name="IAdminService_AddZutat_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AddZutatResponse" />
-  </wsdl:message>
-  <wsdl:message name="IAdminService_ModifyZutat_InputMessage">
-    <wsdl:part name="parameters" element="tns:ModifyZutat" />
-  </wsdl:message>
-  <wsdl:message name="IAdminService_ModifyZutat_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ModifyZutatResponse" />
-  </wsdl:message>
-  <wsdl:message name="IAdminService_RemoveZutat_InputMessage">
-    <wsdl:part name="parameters" element="tns:RemoveZutat" />
-  </wsdl:message>
-  <wsdl:message name="IAdminService_RemoveZutat_OutputMessage">
-    <wsdl:part name="parameters" element="tns:RemoveZutatResponse" />
-  </wsdl:message>
   <wsdl:portType name="IAdminService">
     <wsdl:operation name="AddCocktail">
       <wsdl:input wsaw:Action="http://tempuri.org/IAdminService/AddCocktail" message="tns:IAdminService_AddCocktail_InputMessage" />
@@ -158,18 +140,6 @@
     <wsdl:operation name="RemoveCocktail">
       <wsdl:input wsaw:Action="http://tempuri.org/IAdminService/RemoveCocktail" message="tns:IAdminService_RemoveCocktail_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAdminService/RemoveCocktailResponse" message="tns:IAdminService_RemoveCocktail_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="AddZutat">
-      <wsdl:input wsaw:Action="http://tempuri.org/IAdminService/AddZutat" message="tns:IAdminService_AddZutat_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IAdminService/AddZutatResponse" message="tns:IAdminService_AddZutat_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="ModifyZutat">
-      <wsdl:input wsaw:Action="http://tempuri.org/IAdminService/ModifyZutat" message="tns:IAdminService_ModifyZutat_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IAdminService/ModifyZutatResponse" message="tns:IAdminService_ModifyZutat_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="RemoveZutat">
-      <wsdl:input wsaw:Action="http://tempuri.org/IAdminService/RemoveZutat" message="tns:IAdminService_RemoveZutat_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IAdminService/RemoveZutatResponse" message="tns:IAdminService_RemoveZutat_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSHttpBinding_IAdminService" type="tns:IAdminService">
@@ -195,33 +165,6 @@
     </wsdl:operation>
     <wsdl:operation name="RemoveCocktail">
       <soap12:operation soapAction="http://tempuri.org/IAdminService/RemoveCocktail" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="AddZutat">
-      <soap12:operation soapAction="http://tempuri.org/IAdminService/AddZutat" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ModifyZutat">
-      <soap12:operation soapAction="http://tempuri.org/IAdminService/ModifyZutat" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="RemoveZutat">
-      <soap12:operation soapAction="http://tempuri.org/IAdminService/RemoveZutat" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

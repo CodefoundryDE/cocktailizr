@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="https://localhost:44300/Service/Impl/CocktailService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/CocktailizrTypes.Model.Entities" />
+  <xs:import schemaLocation="https://localhost:44300/Service/Impl/CocktailService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:element name="GetRandomCocktail">
     <xs:complexType>
       <xs:sequence />
@@ -23,21 +24,35 @@
   <xs:element name="GetCocktailsByNameResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/CocktailizrTypes.Model.Entities" minOccurs="0" name="GetCocktailsByNameResult" nillable="true" type="q2:ArrayOfCocktail" />
+        <xs:element minOccurs="0" name="GetCocktailsByNameResult" nillable="true" type="xs:anyType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCocktailById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="guid" type="q2:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCocktailByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/CocktailizrTypes.Model.Entities" minOccurs="0" name="GetCocktailByIdResult" nillable="true" type="q3:Cocktail" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetCocktailsByIndigrents">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/CocktailizrTypes.Model.Entities" minOccurs="0" name="zutaten" nillable="true" type="q3:ArrayOfZutat" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/CocktailizrTypes.Model.Entities" minOccurs="0" name="zutaten" nillable="true" type="q4:ArrayOfZutat" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetCocktailsByIndigrentsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/CocktailizrTypes.Model.Entities" minOccurs="0" name="GetCocktailsByIndigrentsResult" nillable="true" type="q4:ArrayOfCocktail" />
+        <xs:element minOccurs="0" name="GetCocktailsByIndigrentsResult" nillable="true" type="xs:anyType" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -4,7 +4,9 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Web;
 using System.Web.Configuration;
+using CocktailizrTypes.Helper.Serializer;
 using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson.Serialization.IdGenerators;
 
 namespace CocktailizrTypes.Model.Entities
 {
@@ -19,7 +21,7 @@ namespace CocktailizrTypes.Model.Entities
         }
 
         [BsonElement]
-        [DataMember]
+        [DataMember, BsonSerializer(typeof(GuidSerializer))]
         public Guid Id { get; set; }
     }
 

@@ -21,6 +21,11 @@ namespace Cocktailizr.Service
         Task<IAsyncCursor<Cocktail>> GetCocktailsByName(string name);
 
         [OperationContract]
+        Task<Cocktail> GetCocktailById(Guid guid);
+
+        [OperationContract]
         Task<IAsyncCursor<Cocktail>> GetCocktailsByIndigrents(IEnumerable<Zutat> zutaten);
+
+
     }
 }

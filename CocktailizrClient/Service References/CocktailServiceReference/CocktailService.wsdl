@@ -122,6 +122,12 @@
   <wsdl:message name="ICocktailService_GetCocktailsByName_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetCocktailsByNameResponse" />
   </wsdl:message>
+  <wsdl:message name="ICocktailService_GetCocktailById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCocktailById" />
+  </wsdl:message>
+  <wsdl:message name="ICocktailService_GetCocktailById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCocktailByIdResponse" />
+  </wsdl:message>
   <wsdl:message name="ICocktailService_GetCocktailsByIndigrents_InputMessage">
     <wsdl:part name="parameters" element="tns:GetCocktailsByIndigrents" />
   </wsdl:message>
@@ -136,6 +142,10 @@
     <wsdl:operation name="GetCocktailsByName">
       <wsdl:input wsaw:Action="http://tempuri.org/ICocktailService/GetCocktailsByName" message="tns:ICocktailService_GetCocktailsByName_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICocktailService/GetCocktailsByNameResponse" message="tns:ICocktailService_GetCocktailsByName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCocktailById">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICocktailService/GetCocktailById" message="tns:ICocktailService_GetCocktailById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICocktailService/GetCocktailByIdResponse" message="tns:ICocktailService_GetCocktailById_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetCocktailsByIndigrents">
       <wsdl:input wsaw:Action="http://tempuri.org/ICocktailService/GetCocktailsByIndigrents" message="tns:ICocktailService_GetCocktailsByIndigrents_InputMessage" />
@@ -156,6 +166,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetCocktailsByName">
       <soap12:operation soapAction="http://tempuri.org/ICocktailService/GetCocktailsByName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCocktailById">
+      <soap12:operation soapAction="http://tempuri.org/ICocktailService/GetCocktailById" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
