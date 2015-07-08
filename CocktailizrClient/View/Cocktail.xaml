@@ -2,15 +2,11 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d" 
              d:DesignHeight="1280" d:DesignWidth="1024"
              DataContext="{Binding Cocktail, Source={StaticResource Locator}}"
              Visibility="{Binding IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
-    <UserControl.Resources>
-        <ResourceDictionary Source="../Themes/Generic.xaml"></ResourceDictionary>
-    </UserControl.Resources>
-
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/Assets/beach.jpg" Opacity="0.3"/>
@@ -59,5 +55,7 @@
 
         </Grid>
 
+        <!-- Loading-Gif -->
+        <Image Style="{StaticResource LoadingGif}" Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}" />
     </Grid>
 </UserControl>
