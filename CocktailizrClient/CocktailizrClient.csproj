@@ -108,6 +108,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\CocktailizrClientViewModelBase.cs" />
+    <Compile Include="ViewModel\CocktailViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="View\Converter\BooleanToBrushConverter.cs" />

@@ -43,6 +43,7 @@ namespace CocktailizrClient.ViewModel
             ////}
 
             SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<CocktailViewModel>();
         }
 
         public MainViewModel Main
@@ -52,7 +53,15 @@ namespace CocktailizrClient.ViewModel
                 return ServiceLocator.Current.GetInstance<MainViewModel>();
             }
         }
-        
+
+        public CocktailViewModel Cocktail
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<CocktailViewModel>();
+            }
+        }
+
         public static void Cleanup()
         {
             // TODO Clear the ViewModels
