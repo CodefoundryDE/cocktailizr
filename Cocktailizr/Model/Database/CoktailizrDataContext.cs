@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using Cocktailizr.Security;
 using CocktailizrTypes.Model.Entities;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace Cocktailizr.Model.Database
@@ -18,7 +20,6 @@ namespace Cocktailizr.Model.Database
         public CocktailizrDataContext()
         {
             _mongoDb = MongoClientFactory.DatabaseConnection;
-
             Seed();
         }
 
@@ -40,7 +41,7 @@ namespace Cocktailizr.Model.Database
             if (Cocktails.Find(c => c.Id.Equals(new Guid("6bd35665-0109-4e94-806c-baa9cf58584a"))).CountAsync().Result == 0)
             {
                 #region Apfelsaft-DemoCocktail
-                Cocktails.InsertOneAsync(new Cocktail()
+                var cocktail = new Cocktail()
                 {
                     Id = new Guid("6bd35665-0109-4e94-806c-baa9cf58584a"),
                     Alcoholic = false,
@@ -81,14 +82,29 @@ namespace Cocktailizr.Model.Database
                             }, 3
                         },
                     },
-                });
+                };
+                try
+                {
+                    string path = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);                   
+                    string imgPath = path.Substring(6) + @"\Assets\cocktail.png";
+                    cocktail.Image = Image.FromFile(imgPath);
+
+                    Cocktails.InsertOneAsync(cocktail);
+                }
+                catch (Exception)
+                {
+
+                }
+
+
                 #endregion
             }
 
             if (Cocktails.Find(c => c.Id.Equals(new Guid("6bd35665-0109-4e94-806c-baa9cf58984a"))).CountAsync().Result == 0)
             {
                 #region BloodyMarry-DemoCocktail
-                Cocktails.InsertOneAsync(new Cocktail()
+
+                var cocktail = new Cocktail()
                 {
                     Id = new Guid("6bd35665-0109-4e94-806c-baa9cf58984a"),
                     Alcoholic = true,
@@ -168,7 +184,20 @@ namespace Cocktailizr.Model.Database
                             }, 5m
                         },
                     },
-                });
+                };
+
+                try
+                {
+                    string path = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+                    string imgPath = path.Substring(6) + @"\Assets\cocktail.png";
+                    cocktail.Image = Image.FromFile(imgPath);
+
+                    Cocktails.InsertOneAsync(cocktail);
+                }
+                catch (Exception)
+                {
+
+                }
                 #endregion
             }
         }

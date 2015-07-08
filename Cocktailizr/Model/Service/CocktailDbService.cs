@@ -33,7 +33,9 @@ namespace Cocktailizr.Model.Service
             {
                 rnd = new Random().Next();
             }
-            return await _context.Cocktails.Find(new BsonDocument()).Skip(rnd).FirstOrDefaultAsync();
+
+            var cocktail = await _context.Cocktails.Find(new BsonDocument()).Skip(rnd).FirstOrDefaultAsync();
+            return cocktail;
         }
 
         public async Task<Cocktail> GetCocktailById(Guid guid)

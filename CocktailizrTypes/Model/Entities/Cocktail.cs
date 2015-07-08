@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Runtime.Serialization;
 using CocktailizrTypes.Helper.Serializer;
 using MongoDB.Bson;
@@ -14,29 +16,118 @@ namespace CocktailizrTypes.Model.Entities
     [BsonIgnoreExtraElements]
     public class Cocktail : CocktailizrEntityBase
     {
-        [DataMember]
-        [BsonElement]
-        public string Name { get; set; }
+        private string _name;
+
 
         [DataMember]
         [BsonElement]
-        public IEnumerable<string> Tags { get; set; }
+        public string Name
+        {
+            get { return _name; }
+            set
+            {
+                _name = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private IEnumerable<string> _tags;
+        [DataMember]
+        [BsonElement]
+        public IEnumerable<string> Tags
+        {
+            get { return _tags; }
+            set
+            {
+                _tags = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private Color _drinkColor;
 
         [DataMember]
-        [BsonElement, BsonSerializer(typeof(ColorSerializer))]
-        public Color DrinkColor { get; set; }
+        [BsonElement, BsonSerializer(typeof(ColorBsonSerializer))]
+        public Color DrinkColor
+        {
+            get { return _drinkColor; }
+            set
+            {
+                _drinkColor = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _alcoholic;
 
         [DataMember]
         [BsonElement]
-        public bool Alcoholic { get; set; }
+        public bool Alcoholic
+        {
+            get { return _alcoholic; }
+            set
+            {
+                _alcoholic = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private IDictionary<Zutat, decimal> _zutaten;
 
         [DataMember]
         [BsonElement, BsonDictionaryOptions(DictionaryRepresentation.ArrayOfDocuments)]
-        public IDictionary<Zutat, decimal> Zutaten { get; set; }
+        public IDictionary<Zutat, decimal> Zutaten
+        {
+            get { return _zutaten; }
+            set
+            {
+                _zutaten = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private Rezept _rezept;
 
         [DataMember]
         [BsonElement]
-        public Rezept Rezept { get; set; }
+        public Rezept Rezept
+        {
+            get { return _rezept; }
+            set
+            {
+                _rezept = value;
+                OnPropertyChanged();
+            }
+        }
+
+        [BsonElement]
+        public byte[] ImageBytes { get; set; }
+
+        [BsonIgnore]
+        public Image Image
+        {
+            get
+            {
+                if (ImageBytes == null) { return null; }
+                using (var ms = new MemoryStream(ImageBytes))
+                {
+                    return ms.Length > 0 ? new Bitmap(ms) : null;
+                }
+            }
+            set
+            {
+                if (value == null)
+                {
+                    ImageBytes = new byte[] { };
+                    return;
+                }
+                using (var ms = new MemoryStream())
+                {
+                    value.Save(ms, ImageFormat.Bmp);
+                    ImageBytes = ms.ToArray();
+                }
+            }
+        }
 
         public override string ToString()
         {
@@ -87,6 +178,9 @@ namespace CocktailizrTypes.Model.Entities
         [DataMember]
         [BsonElement, BsonRepresentation(BsonType.String)]
         public ZutatenSkala Skala { get; set; }
+
+        [BsonIgnore]
+        public bool IsSelected { get; set; }
 
         public override bool Equals(Object obj)
         {

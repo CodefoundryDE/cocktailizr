@@ -4,9 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d" 
-             d:DesignHeight="1280" d:DesignWidth="1024"
-             Visibility="{Binding IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
-             DataContext="{Binding Search, Source={StaticResource Locator}}">
+             d:DesignHeight="1280" d:DesignWidth="1024"             
+             DataContext="{Binding Search, Source={StaticResource Locator}}"
+             Visibility="{Binding IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
     <UserControl.Resources>
         <ResourceDictionary Source="../Themes/Generic.xaml"></ResourceDictionary>
     </UserControl.Resources>
@@ -16,12 +16,12 @@
         </Grid.Background>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Margin="80,80">
             <Label FontSize="{StaticResource HeadingFontSize}" Content="Cocktailizr" HorizontalAlignment="Center"  VerticalAlignment="Bottom"/>
-            <TextBox HorizontalAlignment="Center" Height="Auto" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" RenderTransformOrigin="0.156,-1.717"/>
+            <TextBox Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Height="Auto" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" RenderTransformOrigin="0.156,-1.717"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
-                <Button Content="Suche" Width="Auto" Margin="5"/>
+                <Button Command="{Binding SearchClickedCommand}" Content="Suche" Width="Auto" Margin="5"/>
                 <Button Command="{Binding RandomClickedCommand}" Content="Auf gut Glück!" Width="Auto" Margin="5"/>
             </StackPanel>
-            <TextBlock HorizontalAlignment="Center"><Hyperlink><Run Text="Erweiterte Suche"/></Hyperlink></TextBlock>
+            <TextBlock HorizontalAlignment="Center"><Hyperlink Command="{Binding ExtendedSearchClickedCommand}"><Run Text="Erweiterte Suche"/></Hyperlink></TextBlock>
 
         </StackPanel>
 

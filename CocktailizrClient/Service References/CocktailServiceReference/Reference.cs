@@ -117,6 +117,12 @@ namespace CocktailizrClient.CocktailServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICocktailService/GetCocktailsByName", ReplyAction="http://tempuri.org/ICocktailService/GetCocktailsByNameResponse")]
         System.Threading.Tasks.Task<CocktailizrTypes.Model.Entities.Cocktail[]> GetCocktailsByNameAsync(string name);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICocktailService/GetCocktailById", ReplyAction="http://tempuri.org/ICocktailService/GetCocktailByIdResponse")]
+        CocktailizrTypes.Model.Entities.Cocktail GetCocktailById(System.Guid guid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICocktailService/GetCocktailById", ReplyAction="http://tempuri.org/ICocktailService/GetCocktailByIdResponse")]
+        System.Threading.Tasks.Task<CocktailizrTypes.Model.Entities.Cocktail> GetCocktailByIdAsync(System.Guid guid);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICocktailService/GetCocktailsByIndigrents", ReplyAction="http://tempuri.org/ICocktailService/GetCocktailsByIndigrentsResponse")]
         CocktailizrTypes.Model.Entities.Cocktail[] GetCocktailsByIndigrents(CocktailizrTypes.Model.Entities.Zutat[] zutaten);
         
@@ -171,6 +177,14 @@ namespace CocktailizrClient.CocktailServiceReference {
         
         public System.Threading.Tasks.Task<CocktailizrTypes.Model.Entities.Cocktail[]> GetCocktailsByNameAsync(string name) {
             return base.Channel.GetCocktailsByNameAsync(name);
+        }
+        
+        public CocktailizrTypes.Model.Entities.Cocktail GetCocktailById(System.Guid guid) {
+            return base.Channel.GetCocktailById(guid);
+        }
+        
+        public System.Threading.Tasks.Task<CocktailizrTypes.Model.Entities.Cocktail> GetCocktailByIdAsync(System.Guid guid) {
+            return base.Channel.GetCocktailByIdAsync(guid);
         }
         
         public CocktailizrTypes.Model.Entities.Cocktail[] GetCocktailsByIndigrents(CocktailizrTypes.Model.Entities.Zutat[] zutaten) {
