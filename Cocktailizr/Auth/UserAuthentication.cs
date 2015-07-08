@@ -1,29 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IdentityModel.Selectors;
+﻿using System.IdentityModel.Selectors;
 using System.IdentityModel.Tokens;
-using System.Linq;
-using System.ServiceModel;
-using System.Web;
-using Cocktailizr.Model.Database;
 using Cocktailizr.Model.Service;
-using GalaSoft.MvvmLight.Ioc;
-using Microsoft.Practices.ServiceLocation;
-using MongoDB.Bson;
-using MongoDB.Driver;
 
 namespace Cocktailizr.Auth
 {
     public class UserAuthentication : UserNamePasswordValidator
     {
-        private BenutzerService _benutzerService;
+        private readonly BenutzerService _benutzerService;
 
         public UserAuthentication()
         {
             _benutzerService = CocktailizrServiceLocator.BenutzerService;
         }
 
-        public UserAuthentication(BenutzerService benutzerService)
+        public UserAuthentication(BenutzerDbService benutzerService)
         {
             _benutzerService = benutzerService;
         }

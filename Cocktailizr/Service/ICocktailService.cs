@@ -18,9 +18,12 @@ namespace Cocktailizr.Service
         Task<Cocktail> GetRandomCocktail();
 
         [OperationContract]
-        Task<IAsyncCursor<Cocktail>> GetCocktailsByName(string name);
+        Task<IEnumerable<Cocktail>> GetCocktailsByName(string name);
 
         [OperationContract]
-        Task<IAsyncCursor<Cocktail>> GetCocktailsByIndigrents(IEnumerable<Zutat> zutaten);
+        Task<IEnumerable<Cocktail>> GetCocktailsByIndigrents(IEnumerable<Zutat> zutaten);
+
+        [OperationContract]
+        Task<IEnumerable<Zutat>> GetAllZutaten();
     }
 }

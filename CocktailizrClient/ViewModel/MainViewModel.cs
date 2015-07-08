@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.ServiceModel.Description;
 using System.Windows.Media.Animation;
@@ -6,6 +8,7 @@ using System.Windows;
 using System.ServiceModel.Security;
 using CocktailizrClient.AdminServiceReference;
 using CocktailizrClient.CocktailServiceReference;
+using CocktailizrTypes.Model.Entities;
 
 namespace CocktailizrClient.ViewModel
 {
