@@ -16,29 +16,90 @@ namespace CocktailizrTypes.Model.Entities
     [BsonIgnoreExtraElements]
     public class Cocktail : CocktailizrEntityBase
     {
-        [DataMember]
-        [BsonElement]
-        public string Name { get; set; }
+        private string _name;
+
 
         [DataMember]
         [BsonElement]
-        public IEnumerable Tags { get; set; }
+        public string Name
+        {
+            get { return _name; }
+            set
+            {
+                _name = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private IEnumerable _tags;
+
+        [DataMember]
+        [BsonElement]
+        public IEnumerable Tags
+        {
+            get { return _tags; }
+            set
+            {
+                _tags = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private Color _drinkColor;
 
         [DataMember]
         [BsonElement, BsonSerializer(typeof(ColorBsonSerializer))]
-        public Color DrinkColor { get; set; }
+        public Color DrinkColor
+        {
+            get { return _drinkColor; }
+            set
+            {
+                _drinkColor = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _alcoholic;
 
         [DataMember]
         [BsonElement]
-        public bool Alcoholic { get; set; }
+        public bool Alcoholic
+        {
+            get { return _alcoholic; }
+            set
+            {
+                _alcoholic = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private IDictionary<Zutat, decimal> _zutaten;
 
         [DataMember]
         [BsonElement, BsonDictionaryOptions(DictionaryRepresentation.ArrayOfDocuments)]
-        public IDictionary<Zutat, decimal> Zutaten { get; set; }
+        public IDictionary<Zutat, decimal> Zutaten
+        {
+            get { return _zutaten; }
+            set
+            {
+                _zutaten = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private Rezept _rezept;
 
         [DataMember]
         [BsonElement]
-        public Rezept Rezept { get; set; }
+        public Rezept Rezept
+        {
+            get { return _rezept; }
+            set
+            {
+                _rezept = value;
+                OnPropertyChanged();
+            }
+        }
 
         [BsonElement]
         public byte[] ImageBytes { get; set; }
@@ -118,6 +179,9 @@ namespace CocktailizrTypes.Model.Entities
         [DataMember]
         [BsonElement, BsonRepresentation(BsonType.String)]
         public ZutatenSkala Skala { get; set; }
+
+        [BsonIgnore]
+        public bool IsSelected { get; set; }
 
         public override bool Equals(Object obj)
         {

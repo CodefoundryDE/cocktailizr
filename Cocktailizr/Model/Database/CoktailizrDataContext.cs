@@ -83,10 +83,19 @@ namespace Cocktailizr.Model.Database
                         },
                     },
                 };
-                string imgPath = @"C:\Users\Saphirim\Documents\Visual Studio 2013\Projects\cocktailizr\Cocktailizr\bin\Assets\cocktail.png";
-                cocktail.Image = Image.FromFile(imgPath);
-                
-                Cocktails.InsertOneAsync(cocktail);
+                try
+                {
+                    string path = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);                   
+                    string imgPath = path.Substring(6) + @"\Assets\cocktail.png";
+                    cocktail.Image = Image.FromFile(imgPath);
+
+                    Cocktails.InsertOneAsync(cocktail);
+                }
+                catch (Exception)
+                {
+
+                }
+
 
                 #endregion
             }
@@ -177,10 +186,18 @@ namespace Cocktailizr.Model.Database
                     },
                 };
 
-                string imgPath = @"C:\Users\Saphirim\Documents\Visual Studio 2013\Projects\cocktailizr\Cocktailizr\bin\Assets\cocktail.png";
-                cocktail.Image = Image.FromFile(imgPath);
+                try
+                {
+                    string path = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+                    string imgPath = path.Substring(6) + @"\Assets\cocktail.png";
+                    cocktail.Image = Image.FromFile(imgPath);
 
-                Cocktails.InsertOneAsync(cocktail);
+                    Cocktails.InsertOneAsync(cocktail);
+                }
+                catch (Exception)
+                {
+
+                }
                 #endregion
             }
         }

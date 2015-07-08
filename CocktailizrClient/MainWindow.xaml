@@ -3,10 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:view="clr-namespace:CocktailizrClient.View"
         Title="MainWindow" Height="350" Width="525"
-        DataContext="{Binding Main, Source={StaticResource Locator}}">
+        DataContext="{Binding Main, Source={StaticResource Locator}}" 
+        WindowState="Maximized" MinWidth="1280" MinHeight="768">
     <Grid>
         <view:Cocktail/>
         <view:Search/>
+        <view:ExtendedSearch/>
         <Image Style="{StaticResource LoadingGif}" Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}" />
     </Grid>
 </Window>

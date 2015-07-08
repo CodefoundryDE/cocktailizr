@@ -18,13 +18,15 @@
             </Grid.ColumnDefinitions>
 
             <StackPanel Grid.Column="0">
-                <Label Content="Ergebnisse für Binding"></Label>
+                <Button Command="{Binding BackToSearchClickedCommand}" Width="Auto" Margin="5" HorizontalAlignment="Left" Style="{DynamicResource MaterialDesignFloatingActionButton}">
+                    <Image Source="/Assets/ic_action_back.png"></Image>
+                </Button>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Margin="5" Style="{DynamicResource MaterialDesignFloatingActionButton}">
+                    <Button Command="{Binding PreviousCocktailCommand}" Margin="5" Style="{DynamicResource MaterialDesignFloatingActionButton}">
                         <Image Source="/Assets/ic_action_back.png"></Image>
                     </Button>
                     <Label HorizontalAlignment="Center" Content="{Binding ShownCocktail.Name}" FontSize="{StaticResource HeadingFontSize}"></Label>
-                    <Button Margin="5" Style="{DynamicResource MaterialDesignFloatingActionButton}">
+                    <Button Command="{Binding NextCocktailCommand}" Margin="5" Style="{DynamicResource MaterialDesignFloatingActionButton}">
                         <Image Source="/Assets/ic_action_forward.png"></Image>
                     </Button>
                 </StackPanel>
