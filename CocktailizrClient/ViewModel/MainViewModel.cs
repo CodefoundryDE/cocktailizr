@@ -24,33 +24,22 @@ namespace CocktailizrClient.ViewModel
     /// See http://www.galasoft.ch/mvvm
     /// </para>
     /// </summary>
-    public class MainViewModel : ViewModelBase
+    public class MainViewModel : CocktailizrClientViewModelBase
     {
+        #region Properties
+        
+
+        #endregion
+
+        #region Constructor
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
         public MainViewModel()
         {
-            using (var client = new CocktailServiceClient())
-            {
-                client.ClientCredentials.UserName.UserName = "Admin";
-                client.ClientCredentials.UserName.Password = "Cocktailizor";
-                client.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode = X509CertificateValidationMode.None;
-                var zutaten = client.GetAllZutaten();
-
-                var apfel = zutaten.Single(z => z.Name.ToLowerInvariant().Equals("äpfel"));
-                var eisWürfel = zutaten.Single(z => z.Name.ToLowerInvariant().Equals("eiswürfel"));
-                var limette = zutaten.Single(z => z.Name.ToLowerInvariant().Equals("limette"));
-                var salz = zutaten.Single(z => z.Name.ToLowerInvariant().Equals("salz"));
-                var pfeffer = zutaten.Single(z => z.Name.ToLowerInvariant().Equals("pfeffer"));
-                var tomatens = zutaten.Single(z => z.Name.ToLowerInvariant().Equals("tomatensaft"));
-
-                var cocktailsByIngredients = client.GetCocktailsByIndigrents(new[] { apfel, eisWürfel, limette, salz, pfeffer, tomatens });
-            }
-            using (var client = new AdminServiceClient())
-            {
-
-            }
+           
         }
+
+        #endregion
     }
 }

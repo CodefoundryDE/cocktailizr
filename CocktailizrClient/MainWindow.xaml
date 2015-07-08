@@ -5,6 +5,7 @@
         Title="MainWindow" Height="350" Width="525"
         DataContext="{Binding Main, Source={StaticResource Locator}}">
     <Grid>
-        <view:Result/>
+        <view:Cocktail/>
+        <view:Search/>
     </Grid>
 </Window>
