@@ -58,8 +58,14 @@ namespace Cocktailizr.Service.Impl
             return await _cocktailDbService.GetCocktailsByIndigrents(zutaten);
         }
 
-        
+        public async Task<IAsyncCursor<Cocktail>> GetAllZutaten()
+        {
+            return await _cocktailDbService.GetAllZutaten();
+        }
 
         #endregion
+
+
+
     }
 }

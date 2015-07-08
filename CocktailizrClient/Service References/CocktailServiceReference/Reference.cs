@@ -115,7 +115,6 @@ namespace CocktailizrClient.CocktailServiceReference {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Step))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Zutat))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.ZutatenSkala))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Cocktail[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Zutat[]))]
         CocktailizrTypes.Model.Entities.Cocktail GetRandomCocktail();
         
@@ -123,16 +122,55 @@ namespace CocktailizrClient.CocktailServiceReference {
         System.Threading.Tasks.Task<CocktailizrTypes.Model.Entities.Cocktail> GetRandomCocktailAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICocktailService/GetCocktailsByName", ReplyAction="http://tempuri.org/ICocktailService/GetCocktailsByNameResponse")]
-        CocktailizrTypes.Model.Entities.Cocktail[] GetCocktailsByName(string name);
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.Dictionary<CocktailizrTypes.Model.Entities.Zutat, decimal>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrClient.CocktailServiceReference.Color))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Cocktail))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.CocktailizrEntityBase))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Rezept))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Step[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Step))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Zutat))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.ZutatenSkala))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Zutat[]))]
+        object GetCocktailsByName(string name);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICocktailService/GetCocktailsByName", ReplyAction="http://tempuri.org/ICocktailService/GetCocktailsByNameResponse")]
-        System.Threading.Tasks.Task<CocktailizrTypes.Model.Entities.Cocktail[]> GetCocktailsByNameAsync(string name);
+        System.Threading.Tasks.Task<object> GetCocktailsByNameAsync(string name);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICocktailService/GetCocktailsByIndigrents", ReplyAction="http://tempuri.org/ICocktailService/GetCocktailsByIndigrentsResponse")]
-        CocktailizrTypes.Model.Entities.Cocktail[] GetCocktailsByIndigrents(CocktailizrTypes.Model.Entities.Zutat[] zutaten);
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.Dictionary<CocktailizrTypes.Model.Entities.Zutat, decimal>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrClient.CocktailServiceReference.Color))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Cocktail))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.CocktailizrEntityBase))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Rezept))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Step[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Step))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Zutat))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.ZutatenSkala))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Zutat[]))]
+        object GetCocktailsByIndigrents(CocktailizrTypes.Model.Entities.Zutat[] zutaten);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICocktailService/GetCocktailsByIndigrents", ReplyAction="http://tempuri.org/ICocktailService/GetCocktailsByIndigrentsResponse")]
-        System.Threading.Tasks.Task<CocktailizrTypes.Model.Entities.Cocktail[]> GetCocktailsByIndigrentsAsync(CocktailizrTypes.Model.Entities.Zutat[] zutaten);
+        System.Threading.Tasks.Task<object> GetCocktailsByIndigrentsAsync(CocktailizrTypes.Model.Entities.Zutat[] zutaten);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICocktailService/GetAllZutaten", ReplyAction="http://tempuri.org/ICocktailService/GetAllZutatenResponse")]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.Dictionary<CocktailizrTypes.Model.Entities.Zutat, decimal>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrClient.CocktailServiceReference.Color))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Cocktail))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.CocktailizrEntityBase))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Rezept))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Step[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Step))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Zutat))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.ZutatenSkala))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Zutat[]))]
+        object GetAllZutaten();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICocktailService/GetAllZutaten", ReplyAction="http://tempuri.org/ICocktailService/GetAllZutatenResponse")]
+        System.Threading.Tasks.Task<object> GetAllZutatenAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -170,20 +208,28 @@ namespace CocktailizrClient.CocktailServiceReference {
             return base.Channel.GetRandomCocktailAsync();
         }
         
-        public CocktailizrTypes.Model.Entities.Cocktail[] GetCocktailsByName(string name) {
+        public object GetCocktailsByName(string name) {
             return base.Channel.GetCocktailsByName(name);
         }
         
-        public System.Threading.Tasks.Task<CocktailizrTypes.Model.Entities.Cocktail[]> GetCocktailsByNameAsync(string name) {
+        public System.Threading.Tasks.Task<object> GetCocktailsByNameAsync(string name) {
             return base.Channel.GetCocktailsByNameAsync(name);
         }
         
-        public CocktailizrTypes.Model.Entities.Cocktail[] GetCocktailsByIndigrents(CocktailizrTypes.Model.Entities.Zutat[] zutaten) {
+        public object GetCocktailsByIndigrents(CocktailizrTypes.Model.Entities.Zutat[] zutaten) {
             return base.Channel.GetCocktailsByIndigrents(zutaten);
         }
         
-        public System.Threading.Tasks.Task<CocktailizrTypes.Model.Entities.Cocktail[]> GetCocktailsByIndigrentsAsync(CocktailizrTypes.Model.Entities.Zutat[] zutaten) {
+        public System.Threading.Tasks.Task<object> GetCocktailsByIndigrentsAsync(CocktailizrTypes.Model.Entities.Zutat[] zutaten) {
             return base.Channel.GetCocktailsByIndigrentsAsync(zutaten);
+        }
+        
+        public object GetAllZutaten() {
+            return base.Channel.GetAllZutaten();
+        }
+        
+        public System.Threading.Tasks.Task<object> GetAllZutatenAsync() {
+            return base.Channel.GetAllZutatenAsync();
         }
     }
 }

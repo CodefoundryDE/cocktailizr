@@ -44,5 +44,46 @@ namespace Cocktailizr.Model.Service
         {
             return await _context.Cocktails.FindAsync(cocktail => !cocktail.Zutaten.Keys.Except(zutaten).Any());
         }
+
+        public async Task<IAsyncCursor<Cocktail>> GetAllZutaten()
+        {
+            try
+            {
+                var unwind = new BsonDocument()
+                {
+                    {
+                        "$unwind", "$Zutaten"
+                    }
+                };
+                var match = new BsonDocument
+            {
+                {
+                    "$match",
+                    new BsonDocument
+                    {
+                        {"Zutaten", new BsonDocument
+                            {
+                                {"$exists", true}
+                            }
+                        }
+                    }
+                }
+            };
+
+            var pipeline = new[] { match, unwind };
+                
+                var result = await _context.Cocktails.AggregateAsync<object>(pipeline);
+
+                await result.MoveNextAsync();
+                var x = result.Current;
+
+                return null;
+            }
+            catch (Exception e)
+            {
+                var error = e.Message;
+            }
+            return null;
+        }
     }
 }

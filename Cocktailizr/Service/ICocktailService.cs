@@ -22,5 +22,8 @@ namespace Cocktailizr.Service
 
         [OperationContract]
         Task<IAsyncCursor<Cocktail>> GetCocktailsByIndigrents(IEnumerable<Zutat> zutaten);
+
+        [OperationContract]
+        Task<IAsyncCursor<Cocktail>> GetAllZutaten();
     }
 }
