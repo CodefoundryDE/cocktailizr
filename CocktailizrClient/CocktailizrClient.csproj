@@ -98,7 +98,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Message\CocktailSearchMessage.cs" />
-    <Compile Include="Message\LoadSucheMessage.cs" />
+    <Compile Include="Message\LoadSearchMessage.cs" />
     <Compile Include="Service References\AdminServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -111,6 +111,7 @@
     </Compile>
     <Compile Include="ViewModel\CocktailizrClientViewModelBase.cs" />
     <Compile Include="ViewModel\CocktailViewModel.cs" />
+    <Compile Include="ViewModel\ExtendedSearchViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\SearchViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />

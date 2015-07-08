@@ -8,5 +8,6 @@
     <Grid>
         <view:Cocktail/>
         <view:Search/>
+        <view:ExtendedSearch/>
     </Grid>
 </Window>

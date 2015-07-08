@@ -44,7 +44,7 @@ namespace CocktailizrClient.ViewModel
 
         #region Commands
 
-        public ICommand BackToSearchClickedCommand { get { return new RelayCommand(NavigateToSearch); } }
+        public ICommand BackToSearchClickedCommand { get { return new RelayCommand(NavigateBackToSearch); } }
 
         public ICommand NextCocktailCommand { get { return new RelayCommand(ShowNextCocktail); } }
 
@@ -123,9 +123,9 @@ namespace CocktailizrClient.ViewModel
             SearchResults = results;
         }
 
-        private void NavigateToSearch()
+        private void NavigateBackToSearch()
         {
-            MessengerInstance.Send(new LoadSucheMessage());
+            MessengerInstance.Send(new LoadSearchMessage{LoadExtendedSearch = false});
             IsVisible = false;
         }
 

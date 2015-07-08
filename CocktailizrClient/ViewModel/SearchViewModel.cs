@@ -31,6 +31,14 @@ namespace CocktailizrClient.ViewModel
 
         #endregion
 
+        #region Validation
+        private bool ValidateSearchString()
+        {
+            return !string.IsNullOrEmpty(SearchText);
+        }
+
+        #endregion
+
         #region Commands
 
         public ICommand RandomClickedCommand
@@ -43,8 +51,22 @@ namespace CocktailizrClient.ViewModel
             get { return new RelayCommand(GetCocktailBySearchString, ValidateSearchString); }
         }
 
+        public ICommand ExtendedSearchClickedCommand
+        {
+            get { return new RelayCommand(NavigateToExtendedSearch); }
+        }
+
         #endregion
 
+        #region Constructor
+        public SearchViewModel()
+        {
+            IsVisible = true;
+            MessengerInstance.Register<LoadSearchMessage>(this, LoadSearch);
+        }
+        #endregion
+
+        #region Methods
         private void GetRandomCocktail()
         {
             MessengerInstance.Send(new CocktailSearchMessage
@@ -64,22 +86,20 @@ namespace CocktailizrClient.ViewModel
             IsVisible = false;
         }
 
-        #region Constructor
-        public SearchViewModel()
+        private void LoadSearch(LoadSearchMessage message)
         {
-            IsVisible = true;
-            MessengerInstance.Register<LoadSucheMessage>(this, LoadSuche);
+            if (!message.LoadExtendedSearch)
+            {
+                IsVisible = true;
+            }
+
+        }
+
+        private void NavigateToExtendedSearch()
+        {
+            MessengerInstance.Send(new LoadSearchMessage{LoadExtendedSearch = true});
+            IsVisible = false;
         }
         #endregion
-
-        private void LoadSuche(LoadSucheMessage obj)
-        {
-            IsVisible = true;
-        }
-
-        private bool ValidateSearchString()
-        {
-            return !string.IsNullOrEmpty(SearchText);
-        }
     }
 }
