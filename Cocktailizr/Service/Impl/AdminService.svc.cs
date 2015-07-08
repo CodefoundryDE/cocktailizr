@@ -40,7 +40,7 @@ namespace Cocktailizr.Service.Impl
         [PrincipalPermission(SecurityAction.Demand, Role = "ADMIN")]
         public async Task<bool> RemoveCocktail(Guid cocktailId)
         {
-            return await _cocktailDbService.DeleteCocktail(cocktailId);
+            return await _cocktailDbService.RemoveCocktail(cocktailId);
         }
     }
 }

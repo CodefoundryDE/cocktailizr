@@ -83,7 +83,7 @@ namespace Cocktailizr.Model.Service
             return cocktail;
         }
 
-        public async Task<bool> DeleteCocktail(Guid cocktailId)
+        public async Task<bool> RemoveCocktail(Guid cocktailId)
         {
             try
             {

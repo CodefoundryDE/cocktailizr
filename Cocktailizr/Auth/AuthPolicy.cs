@@ -22,7 +22,7 @@ namespace Cocktailizr.Auth
 
         public AuthPolicy()
         {
-            _benutzerService = CocktailizrServiceLocator.BenutzerService;
+            _benutzerService = CocktailizrServiceLocator.BenutzerDbService;
         }
 
         // this method gets called after the authentication stage

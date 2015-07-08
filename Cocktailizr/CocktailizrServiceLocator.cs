@@ -21,12 +21,9 @@ namespace Cocktailizr
             SimpleIoc.Default.Register<CocktailDbService>();
         }
 
-        public static BenutzerDbService BenutzerService
+        public static BenutzerDbService BenutzerDbService
         {
-            get
-            {
-                return ServiceLocator.Current.GetInstance<BenutzerDbService>();
-            }
+            get { return ServiceLocator.Current.GetInstance<BenutzerDbService>(); }
         }
 
         public static CocktailDbService CocktailDbService
