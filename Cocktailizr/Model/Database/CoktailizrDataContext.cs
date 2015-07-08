@@ -102,14 +102,14 @@ namespace Cocktailizr.Model.Database
 
             if (Cocktails.Find(c => c.Id.Equals(new Guid("6bd35665-0109-4e94-806c-baa9cf58984a"))).CountAsync().Result == 0)
             {
-                #region BloodyMarry-DemoCocktail
+                #region BloodyMary-DemoCocktail
 
                 var cocktail = new Cocktail()
                 {
                     Id = new Guid("6bd35665-0109-4e94-806c-baa9cf58984a"),
                     Alcoholic = true,
                     DrinkColor = Color.Red,
-                    Name = "Bloody Marry",
+                    Name = "Bloody Mary",
                     Tags = new List<string>() { "Spicy", "Salty", "Tomato" },
                     Rezept = new Rezept()
                     {
@@ -124,8 +124,9 @@ namespace Cocktailizr.Model.Database
                         new Step()
                         {
                             Headline = "Zubereitung /1",
-                            Beschreibung = "Salz und Pfeffer zugeben, Tabasqo drauf und WertschisterSchaier-Soße,"
-                        },                      new Step()
+                            Beschreibung = "Salz und Pfeffer zugeben, Tabasco drauf und Worcestershire-Sauce,"
+                        },                      
+                        new Step()
                         {
                             Headline = "Zubereitung /2",
                             Beschreibung = "Mit Tomatensaft und Wodka nach Maß auffüllen."
@@ -171,7 +172,7 @@ namespace Cocktailizr.Model.Database
                         },
                         {new Zutat()
                             {
-                                Name = "WertschisterSchaier-Soße",
+                                Name = "Worcestershire-Sauce",
                                 IsOptional = false,
                                 Skala = ZutatenSkala.Cl
                             }, 2m
