@@ -106,17 +106,6 @@ namespace CocktailizrClient.CocktailServiceReference {
     public interface ICocktailService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICocktailService/GetRandomCocktail", ReplyAction="http://tempuri.org/ICocktailService/GetRandomCocktailResponse")]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.Dictionary<CocktailizrTypes.Model.Entities.Zutat, decimal>))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrClient.CocktailServiceReference.Color))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.CocktailizrEntityBase))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Rezept))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Step[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Step))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Zutat))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.ZutatenSkala))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Cocktail[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Zutat[]))]
         CocktailizrTypes.Model.Entities.Cocktail GetRandomCocktail();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICocktailService/GetRandomCocktail", ReplyAction="http://tempuri.org/ICocktailService/GetRandomCocktailResponse")]
@@ -129,17 +118,6 @@ namespace CocktailizrClient.CocktailServiceReference {
         System.Threading.Tasks.Task<CocktailizrTypes.Model.Entities.Cocktail[]> GetCocktailsByNameAsync(string name);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICocktailService/GetCocktailById", ReplyAction="http://tempuri.org/ICocktailService/GetCocktailByIdResponse")]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.Dictionary<CocktailizrTypes.Model.Entities.Zutat, decimal>))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrClient.CocktailServiceReference.Color))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.CocktailizrEntityBase))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Rezept))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Step[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Step))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Zutat))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.ZutatenSkala))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Cocktail[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Zutat[]))]
         CocktailizrTypes.Model.Entities.Cocktail GetCocktailById(System.Guid guid);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICocktailService/GetCocktailById", ReplyAction="http://tempuri.org/ICocktailService/GetCocktailByIdResponse")]

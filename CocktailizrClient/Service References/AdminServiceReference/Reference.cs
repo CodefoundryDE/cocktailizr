@@ -106,34 +106,16 @@ namespace CocktailizrClient.AdminServiceReference {
     public interface IAdminService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminService/AddCocktail", ReplyAction="http://tempuri.org/IAdminService/AddCocktailResponse")]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.CocktailizrEntityBase))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Rezept))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Step[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Step))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Zutat))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.ZutatenSkala))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrClient.AdminServiceReference.Color))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.Dictionary<CocktailizrTypes.Model.Entities.Zutat, decimal>))]
-        bool AddCocktail(CocktailizrTypes.Model.Entities.Cocktail cocktail);
+        CocktailizrTypes.Model.Entities.Cocktail AddCocktail(CocktailizrTypes.Model.Entities.Cocktail cocktail);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminService/AddCocktail", ReplyAction="http://tempuri.org/IAdminService/AddCocktailResponse")]
-        System.Threading.Tasks.Task<bool> AddCocktailAsync(CocktailizrTypes.Model.Entities.Cocktail cocktail);
+        System.Threading.Tasks.Task<CocktailizrTypes.Model.Entities.Cocktail> AddCocktailAsync(CocktailizrTypes.Model.Entities.Cocktail cocktail);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminService/ModifyCocktail", ReplyAction="http://tempuri.org/IAdminService/ModifyCocktailResponse")]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.CocktailizrEntityBase))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Rezept))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Step[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Step))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.Zutat))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrTypes.Model.Entities.ZutatenSkala))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(CocktailizrClient.AdminServiceReference.Color))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.Dictionary<CocktailizrTypes.Model.Entities.Zutat, decimal>))]
-        bool ModifyCocktail(System.Guid cocktailId, CocktailizrTypes.Model.Entities.Cocktail cocktail);
+        CocktailizrTypes.Model.Entities.Cocktail ModifyCocktail(System.Guid cocktailId, CocktailizrTypes.Model.Entities.Cocktail cocktail);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminService/ModifyCocktail", ReplyAction="http://tempuri.org/IAdminService/ModifyCocktailResponse")]
-        System.Threading.Tasks.Task<bool> ModifyCocktailAsync(System.Guid cocktailId, CocktailizrTypes.Model.Entities.Cocktail cocktail);
+        System.Threading.Tasks.Task<CocktailizrTypes.Model.Entities.Cocktail> ModifyCocktailAsync(System.Guid cocktailId, CocktailizrTypes.Model.Entities.Cocktail cocktail);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminService/RemoveCocktail", ReplyAction="http://tempuri.org/IAdminService/RemoveCocktailResponse")]
         bool RemoveCocktail(System.Guid cocktailId);
@@ -169,19 +151,19 @@ namespace CocktailizrClient.AdminServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public bool AddCocktail(CocktailizrTypes.Model.Entities.Cocktail cocktail) {
+        public CocktailizrTypes.Model.Entities.Cocktail AddCocktail(CocktailizrTypes.Model.Entities.Cocktail cocktail) {
             return base.Channel.AddCocktail(cocktail);
         }
         
-        public System.Threading.Tasks.Task<bool> AddCocktailAsync(CocktailizrTypes.Model.Entities.Cocktail cocktail) {
+        public System.Threading.Tasks.Task<CocktailizrTypes.Model.Entities.Cocktail> AddCocktailAsync(CocktailizrTypes.Model.Entities.Cocktail cocktail) {
             return base.Channel.AddCocktailAsync(cocktail);
         }
         
-        public bool ModifyCocktail(System.Guid cocktailId, CocktailizrTypes.Model.Entities.Cocktail cocktail) {
+        public CocktailizrTypes.Model.Entities.Cocktail ModifyCocktail(System.Guid cocktailId, CocktailizrTypes.Model.Entities.Cocktail cocktail) {
             return base.Channel.ModifyCocktail(cocktailId, cocktail);
         }
         
-        public System.Threading.Tasks.Task<bool> ModifyCocktailAsync(System.Guid cocktailId, CocktailizrTypes.Model.Entities.Cocktail cocktail) {
+        public System.Threading.Tasks.Task<CocktailizrTypes.Model.Entities.Cocktail> ModifyCocktailAsync(System.Guid cocktailId, CocktailizrTypes.Model.Entities.Cocktail cocktail) {
             return base.Channel.ModifyCocktailAsync(cocktailId, cocktail);
         }
         
