@@ -8,8 +8,11 @@
         
         <ResourceDictionary>
             <vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True" xmlns:vm="clr-namespace:CocktailizrClient.ViewModel" />
+
             <ResourceDictionary.MergedDictionaries>
 
+                <ResourceDictionary Source="Themes/Generic.xaml" />
+                
                 <!-- light or dark theme -->
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
                 <!-- standard templates -->

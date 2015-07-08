@@ -18,9 +18,9 @@ namespace CocktailizrClient.View
     /// <summary>
     /// Interaktionslogik für Result.xaml
     /// </summary>
-    public partial class Result : UserControl
+    public partial class Cocktail : UserControl
     {
-        public Result()
+        public Cocktail()
         {
             InitializeComponent();
         }

@@ -73,6 +73,13 @@ namespace Cocktailizr.Model.Database
                                 Skala = ZutatenSkala.Stueck
                             }, 30
                         },
+                        {new Zutat()
+                            {
+                                Name = "Eiswürfel",
+                                IsOptional = true,
+                                Skala = ZutatenSkala.Stueck
+                            }, 3
+                        },
                     },
                 });
                 #endregion

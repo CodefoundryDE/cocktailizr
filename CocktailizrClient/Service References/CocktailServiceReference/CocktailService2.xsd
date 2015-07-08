@@ -41,4 +41,16 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetAllZutaten">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllZutatenResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/CocktailizrTypes.Model.Entities" minOccurs="0" name="GetAllZutatenResult" nillable="true" type="q5:ArrayOfZutat" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

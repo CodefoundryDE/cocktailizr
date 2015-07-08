@@ -17,15 +17,15 @@ namespace Cocktailizr
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
             // Services
-            SimpleIoc.Default.Register<BenutzerService>();
+            SimpleIoc.Default.Register<BenutzerDbService>();
             SimpleIoc.Default.Register<CocktailDbService>();
         }
 
-        public static BenutzerService BenutzerService
+        public static BenutzerDbService BenutzerService
         {
             get
             {
-                return ServiceLocator.Current.GetInstance<BenutzerService>();
+                return ServiceLocator.Current.GetInstance<BenutzerDbService>();
             }
         }
 

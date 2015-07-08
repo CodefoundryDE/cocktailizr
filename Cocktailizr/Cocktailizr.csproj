@@ -88,6 +88,7 @@
       <HintPath>packages\MvvmLightLibs.5.1.1.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
@@ -103,7 +104,7 @@
     <Compile Include="Auth\AuthPrincipal.cs" />
     <Compile Include="Auth\UserAuthentication.cs" />
     <Compile Include="CocktailizrServiceLocator.cs" />
-    <Compile Include="Model\Service\BenutzerService.cs" />
+    <Compile Include="Model\Service\BenutzerDbService.cs" />
     <Compile Include="Model\Service\CocktailDbService.cs" />
     <Compile Include="Security\PasswordHashHelper.cs" />
     <Compile Include="Service\Impl\AdminService.svc.cs">
@@ -126,7 +127,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Helper\Serializer\" />
-    <Folder Include="Security\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

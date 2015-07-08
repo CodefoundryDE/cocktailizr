@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.ServiceModel.Description;
 using System.Windows.Media.Animation;
@@ -26,8 +28,15 @@ namespace CocktailizrClient.ViewModel
     /// See http://www.galasoft.ch/mvvm
     /// </para>
     /// </summary>
-    public class MainViewModel : ViewModelBase
+    public class MainViewModel : CocktailizrClientViewModelBase
     {
+        #region Properties
+        
+
+        #endregion
+
+        #region Constructor
+
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
@@ -38,11 +47,8 @@ namespace CocktailizrClient.ViewModel
                 client.ClientCredentials.UserName.UserName = "Admin";
                 client.ClientCredentials.UserName.Password = "Cocktailizor";
             }
-
-            using (var client = new AdminServiceClient())
-            {
-
-            }
         }
+
+        #endregion
     }
 }
