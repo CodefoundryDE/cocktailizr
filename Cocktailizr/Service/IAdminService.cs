@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Threading.Tasks;
 using CocktailizrTypes.Model.Entities;
 
 namespace Cocktailizr.Service
@@ -13,12 +14,12 @@ namespace Cocktailizr.Service
     public interface IAdminService
     {
         [OperationContract]
-        bool AddCocktail(Cocktail cocktail);
+        Task<Cocktail> AddCocktail(Cocktail cocktail);
 
         [OperationContract]
-        bool ModifyCocktail(Guid cocktailId, Cocktail cocktail);
+        Task<Cocktail> ModifyCocktail(Guid cocktailId, Cocktail cocktail);
 
         [OperationContract]
-        bool RemoveCocktail(Guid cocktailId);
+        Task<bool> RemoveCocktail(Guid cocktailId);
     }
 }

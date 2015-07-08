@@ -8,6 +8,8 @@ using System.Security.Permissions;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using MongoDB.Bson;
+using MongoDB.Driver;
 
 namespace Cocktailizr.Service.Impl
 {
@@ -23,22 +25,32 @@ namespace Cocktailizr.Service.Impl
         }
 
         [PrincipalPermission(SecurityAction.Demand, Role = "ADMIN")]
-        public bool AddCocktail(Cocktail cocktail)
+        public async Task<Cocktail> AddCocktail(Cocktail cocktail)
         {
-            _context.Cocktails.InsertOneAsync(cocktail).Wait();
-            return true;
+            await _context.Cocktails.InsertOneAsync(cocktail);
+            return cocktail;
         }
 
         [PrincipalPermission(SecurityAction.Demand, Role = "ADMIN")]
-        public bool ModifyCocktail(Guid cocktailId, Cocktail cocktail)
+        public async Task<Cocktail> ModifyCocktail(Guid cocktailId, Cocktail cocktail)
         {
-            throw new NotImplementedException();
+            await _context.Cocktails.ReplaceOneAsync(Builders<Cocktail>.Filter.Eq(x => x.Id, cocktailId), cocktail);
+            return cocktail;
         }
 
         [PrincipalPermission(SecurityAction.Demand, Role = "ADMIN")]
-        public bool RemoveCocktail(Guid cocktailId)
+        public async Task<bool> RemoveCocktail(Guid cocktailId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                await _context.Cocktails.DeleteOneAsync(Builders<Cocktail>.Filter.Eq(x => x.Id, cocktailId));
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
         }
     }
 }
