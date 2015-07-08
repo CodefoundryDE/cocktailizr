@@ -4,7 +4,7 @@ using MongoDB.Bson.Serialization.Serializers;
 
 namespace CocktailizrTypes.Helper.Serializer
 {
-    class ColorSerializer : SerializerBase<Color>
+    class ColorBsonSerializer : SerializerBase<Color>
     {
         public override Color Deserialize(BsonDeserializationContext context, BsonDeserializationArgs args)
         {

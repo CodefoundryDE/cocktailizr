@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Runtime.Serialization;
 using CocktailizrTypes.Helper.Serializer;
 using MongoDB.Bson;
@@ -46,7 +48,7 @@ namespace CocktailizrTypes.Model.Entities
         private Color _drinkColor;
 
         [DataMember]
-        [BsonElement, BsonSerializer(typeof(ColorSerializer))]
+        [BsonElement, BsonSerializer(typeof(ColorBsonSerializer))]
         public Color DrinkColor
         {
             get { return _drinkColor; }
@@ -96,6 +98,35 @@ namespace CocktailizrTypes.Model.Entities
             {
                 _rezept = value;
                 OnPropertyChanged();
+            }
+        }
+
+        [BsonElement]
+        public byte[] ImageBytes { get; set; }
+
+        [BsonIgnore]
+        public Image Image
+        {
+            get
+            {
+                if (ImageBytes == null) { return null; }
+                using (var ms = new MemoryStream(ImageBytes))
+                {
+                    return ms.Length > 0 ? new Bitmap(ms) : null;
+                }
+            }
+            set
+            {
+                if (value == null)
+                {
+                    ImageBytes = new byte[] { };
+                    return;
+                }
+                using (var ms = new MemoryStream())
+                {
+                    value.Save(ms, ImageFormat.Bmp);
+                    ImageBytes = ms.ToArray();
+                }
             }
         }
 

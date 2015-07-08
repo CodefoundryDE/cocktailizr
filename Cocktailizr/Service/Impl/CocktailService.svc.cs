@@ -64,8 +64,14 @@ namespace Cocktailizr.Service.Impl
         {
             return await _cocktailDbService.GetAllZutaten();
         }
-
+        public async Task<Cocktail> GetCocktailById(Guid guid)
+        {
+            return await _cocktailDbService.GetCocktailById(guid);
+        }
         #endregion
+
+
+
 
 
 

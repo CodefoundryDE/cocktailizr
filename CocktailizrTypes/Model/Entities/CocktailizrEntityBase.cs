@@ -6,8 +6,10 @@ using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.Web;
 using System.Web.Configuration;
+using CocktailizrTypes.Helper.Serializer;
 using GalaSoft.MvvmLight;
 using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson.Serialization.IdGenerators;
 
 namespace CocktailizrTypes.Model.Entities
 {
@@ -23,7 +25,7 @@ namespace CocktailizrTypes.Model.Entities
         private Guid _id;
 
         [BsonElement]
-        [DataMember]
+        [DataMember, BsonSerializer(typeof(GuidSerializer))]
         public Guid Id
         {
             get { return _id; }

@@ -21,9 +21,10 @@ namespace Cocktailizr.Service
         Task<IEnumerable<Cocktail>> GetCocktailsByName(string name);
 
         [OperationContract]
-        Task<IEnumerable<Cocktail>> GetCocktailsByIndigrents(IEnumerable<Zutat> zutaten);
+        Task<Cocktail> GetCocktailById(Guid guid);
 
         [OperationContract]
-        Task<IEnumerable<Zutat>> GetAllZutaten();
+        Task<IEnumerable<Cocktail>> GetCocktailsByIndigrents(IEnumerable<Zutat> zutaten);
+
     }
 }

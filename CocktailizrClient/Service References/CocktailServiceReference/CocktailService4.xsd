@@ -62,12 +62,6 @@
     </xs:restriction>
   </xs:simpleType>
   <xs:element name="ZutatenSkala" nillable="true" type="tns:ZutatenSkala" />
-  <xs:complexType name="ArrayOfCocktail">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Cocktail" nillable="true" type="tns:Cocktail" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfCocktail" nillable="true" type="tns:ArrayOfCocktail" />
   <xs:complexType name="ArrayOfZutat">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Zutat" nillable="true" type="tns:Zutat" />
