@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using Cocktailizr.Security;
 using CocktailizrTypes.Model.Entities;
 using MongoDB.Driver;
 
@@ -30,7 +31,8 @@ namespace Cocktailizr.Model.Database
                 {
                     Id = new Guid("fc748c3e-72ce-4d23-be9d-4af064f60a66"),
                     Name = "Admin",
-                    HashedPassword = "Cocktailizor"
+                    Role = "ADMIN",
+                    HashedPassword = PasswordHashHelper.HashPassword("Cocktailizor", PasswordHashHelper.GenerateSaltValue()),
                 }).Wait();
 
                 #endregion

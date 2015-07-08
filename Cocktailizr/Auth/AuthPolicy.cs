@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cocktailizr.Model.Service;
+using System;
 using System.Collections.Generic;
 using System.IdentityModel.Claims;
 using System.IdentityModel.Policy;
@@ -17,16 +18,22 @@ namespace Cocktailizr.Auth
             get { return ClaimSet.System; }
         }
 
+        private BenutzerService _benutzerService;
+
+        public AuthPolicy()
+        {
+            _benutzerService = CocktailizrServiceLocator.BenutzerService;
+        }
+
         // this method gets called after the authentication stage
         public bool Evaluate(EvaluationContext evaluationContext, ref object state)
         {
             // get the authenticated client identity
             IIdentity client = GetClientIdentity(evaluationContext);
 
-            var roles = new List<string>();
-            if (client.Name.Equals("frank")) roles.Add("ADMIN");
+            var roles = _benutzerService.GetUserRoles(client.Name);
 
-            evaluationContext.Properties["Principal"] = new AuthPrincipal(client, roles.ToArray());
+            evaluationContext.Properties["Principal"] = new AuthPrincipal(client, roles.Result);
 
             return true;
         }
