@@ -45,7 +45,6 @@ namespace Cocktailizr.Service.Impl
         //[PrincipalPermission(SecurityAction.Demand, Role = "ADMIN")]
         public async Task<Cocktail> GetRandomCocktail()
         {
-            var cocktail = await _cocktailDbService.GetCocktailById(new Guid("6556d36b-0901-944e-806c-baa9cf58584a"));
             return await _cocktailDbService.GetRandomCocktail();
         }
 
