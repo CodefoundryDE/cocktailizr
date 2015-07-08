@@ -58,7 +58,7 @@ namespace Cocktailizr.Service.Impl
             return await _cocktailDbService.GetCocktailsByIndigrents(zutaten);
         }
 
-        public async Task<ISet<Zutat>> GetAllZutaten()
+        public async Task<IEnumerable<Zutat>> GetAllZutaten()
         {
             return await _cocktailDbService.GetAllZutaten();
         }
