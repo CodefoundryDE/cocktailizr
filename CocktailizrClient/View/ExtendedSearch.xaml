@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300"
+             d:DesignHeight="1024" d:DesignWidth="800"
              DataContext="{Binding ExtendedSearch, Source={StaticResource Locator}}"
              Visibility="{Binding IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
 
@@ -20,15 +20,17 @@
 
             <StackPanel Grid.Column="1">
                 <Label Content="Vorhande Zutaten auswählen"></Label>
-                <ItemsControl ItemsSource="{Binding ExistingIngredients}" Margin="5">
+                <ItemsControl ItemsSource="{Binding SelectedIngredients}" Margin="5">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <StackPanel>
-                                <CheckBox Content="{Binding Path=Name}"></CheckBox>
+                                <CheckBox Content="{Binding Path=Name}" IsChecked="{Binding Path=IsSelected}"></CheckBox>
                             </StackPanel>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
+
+                <Button Command="{Binding SearchClickedCommand}" Content="Suchen" Margin="5"></Button>
             </StackPanel>
         </Grid>
     </Grid>
