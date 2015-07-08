@@ -16,14 +16,14 @@ namespace Cocktailizr.Auth
 {
     public class UserAuthentication : UserNamePasswordValidator
     {
-        private BenutzerService _benutzerService;
+        private BenutzerDbService _benutzerService;
 
         public UserAuthentication()
         {
             _benutzerService = CocktailizrServiceLocator.BenutzerService;
         }
 
-        public UserAuthentication(BenutzerService benutzerService)
+        public UserAuthentication(BenutzerDbService benutzerService)
         {
             _benutzerService = benutzerService;
         }

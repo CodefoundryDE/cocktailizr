@@ -103,7 +103,7 @@
     <Compile Include="Auth\AuthPrincipal.cs" />
     <Compile Include="Auth\UserAuthentication.cs" />
     <Compile Include="CocktailizrServiceLocator.cs" />
-    <Compile Include="Model\Service\BenutzerService.cs" />
+    <Compile Include="Model\Service\BenutzerDbService.cs" />
     <Compile Include="Model\Service\CocktailDbService.cs" />
     <Compile Include="Service\Impl\AdminService.svc.cs">
       <DependentUpon>AdminService.svc</DependentUpon>

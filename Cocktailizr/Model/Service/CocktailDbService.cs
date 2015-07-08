@@ -45,7 +45,7 @@ namespace Cocktailizr.Model.Service
             return await _context.Cocktails.FindAsync(cocktail => !cocktail.Zutaten.Keys.Except(zutaten).Any());
         }
 
-        public async Task<IAsyncCursor<Cocktail>> GetAllZutaten()
+        public async Task<ISet<Zutat>> GetAllZutaten()
         {
             try
             {
@@ -56,28 +56,30 @@ namespace Cocktailizr.Model.Service
                     }
                 };
                 var match = new BsonDocument
-            {
-                {
-                    "$match",
-                    new BsonDocument
-                    {
-                        {"Zutaten", new BsonDocument
-                            {
-                                {"$exists", true}
-                            }
-                        }
-                    }
-                }
-            };
+                {
+                    {
+                        "$match",
+                        new BsonDocument
+                        {
+                            {"Zutaten", new BsonDocument
+                              {
+                                    {"$exists", true}
+                                }
+                         }
+                        }
+                    }
+                };
 
-            var pipeline = new[] { match, unwind };
-                
+                var pipeline = new[] { match, unwind};
                 var result = await _context.Cocktails.AggregateAsync<object>(pipeline);
 
-                await result.MoveNextAsync();
-                var x = result.Current;
+                
+                var completeZutatenList = await result.ToListAsync();
+                ISet<Zutat> zutatenSet =
+                    new SortedSet<Zutat>(completeZutatenList.Select(c => ((Cocktail) c).Zutaten.First().Key));
 
-                return null;
+
+                return zutatenSet;
             }
             catch (Exception e)
             {
