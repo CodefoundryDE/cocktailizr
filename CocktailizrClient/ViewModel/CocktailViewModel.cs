@@ -78,7 +78,7 @@ namespace CocktailizrClient.ViewModel
                             }
                         case CocktailSearchType.ByIngredients:
                             {
-
+                                ShowCocktailWithGivenIngredients(message.Ingredients);
                                 break;
                             }
                         case CocktailSearchType.ByName:
@@ -101,6 +101,18 @@ namespace CocktailizrClient.ViewModel
             SearchResults = new List<Cocktail>() { _serviceClient.GetRandomCocktail() };
         }
 
+        private void ShowCocktailWithGivenIngredients(IEnumerable<Zutat> ingredients)
+        {
+            Cocktail[] results = _serviceClient.GetCocktailsByIndigrents(ingredients.ToArray());
+            SearchResults = results;
+        }
+
+        private void ShowSearchResults(string searchText)
+        {
+            Cocktail[] results = _serviceClient.GetCocktailsByName(searchText);
+            SearchResults = results;
+        }
+
         private void ShowNextCocktail()
         {
             int recentIndex = SearchResults.IndexOf(ShownCocktail);
@@ -117,15 +129,9 @@ namespace CocktailizrClient.ViewModel
                 ShownCocktail = SearchResults.ElementAt(previousIndex);
         }
 
-        private void ShowSearchResults(string searchText)
-        {
-            Cocktail[] results = _serviceClient.GetCocktailsByName(searchText);
-            SearchResults = results;
-        }
-
         private void NavigateBackToSearch()
         {
-            MessengerInstance.Send(new LoadSearchMessage{LoadExtendedSearch = false});
+            MessengerInstance.Send(new LoadSearchMessage { LoadExtendedSearch = false });
             IsVisible = false;
         }
 
