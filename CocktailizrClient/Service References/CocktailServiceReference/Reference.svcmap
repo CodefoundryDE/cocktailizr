@@ -21,7 +21,7 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:19609/Service/Impl/CocktailService.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="https://localhost:44300/Service/Impl/CocktailService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
     <MetadataFile FileName="CocktailService.xsd" MetadataType="Schema" ID="7db373ea-84e3-470a-9ffd-0f96e7d01abb" SourceId="1" SourceUrl="https://localhost:44300/Service/Impl/CocktailService.svc?xsd=xsd4" />

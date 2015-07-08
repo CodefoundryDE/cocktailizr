@@ -140,24 +140,6 @@ namespace CocktailizrClient.AdminServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminService/RemoveCocktail", ReplyAction="http://tempuri.org/IAdminService/RemoveCocktailResponse")]
         System.Threading.Tasks.Task<bool> RemoveCocktailAsync(System.Guid cocktailId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminService/AddZutat", ReplyAction="http://tempuri.org/IAdminService/AddZutatResponse")]
-        bool AddZutat(CocktailizrTypes.Model.Entities.Zutat zutat);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminService/AddZutat", ReplyAction="http://tempuri.org/IAdminService/AddZutatResponse")]
-        System.Threading.Tasks.Task<bool> AddZutatAsync(CocktailizrTypes.Model.Entities.Zutat zutat);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminService/ModifyZutat", ReplyAction="http://tempuri.org/IAdminService/ModifyZutatResponse")]
-        bool ModifyZutat(System.Guid zutatId, CocktailizrTypes.Model.Entities.Zutat zutat);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminService/ModifyZutat", ReplyAction="http://tempuri.org/IAdminService/ModifyZutatResponse")]
-        System.Threading.Tasks.Task<bool> ModifyZutatAsync(System.Guid zutatId, CocktailizrTypes.Model.Entities.Zutat zutat);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminService/RemoveZutat", ReplyAction="http://tempuri.org/IAdminService/RemoveZutatResponse")]
-        bool RemoveZutat(System.Guid zutatId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminService/RemoveZutat", ReplyAction="http://tempuri.org/IAdminService/RemoveZutatResponse")]
-        System.Threading.Tasks.Task<bool> RemoveZutatAsync(System.Guid zutatId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -209,30 +191,6 @@ namespace CocktailizrClient.AdminServiceReference {
         
         public System.Threading.Tasks.Task<bool> RemoveCocktailAsync(System.Guid cocktailId) {
             return base.Channel.RemoveCocktailAsync(cocktailId);
-        }
-        
-        public bool AddZutat(CocktailizrTypes.Model.Entities.Zutat zutat) {
-            return base.Channel.AddZutat(zutat);
-        }
-        
-        public System.Threading.Tasks.Task<bool> AddZutatAsync(CocktailizrTypes.Model.Entities.Zutat zutat) {
-            return base.Channel.AddZutatAsync(zutat);
-        }
-        
-        public bool ModifyZutat(System.Guid zutatId, CocktailizrTypes.Model.Entities.Zutat zutat) {
-            return base.Channel.ModifyZutat(zutatId, zutat);
-        }
-        
-        public System.Threading.Tasks.Task<bool> ModifyZutatAsync(System.Guid zutatId, CocktailizrTypes.Model.Entities.Zutat zutat) {
-            return base.Channel.ModifyZutatAsync(zutatId, zutat);
-        }
-        
-        public bool RemoveZutat(System.Guid zutatId) {
-            return base.Channel.RemoveZutat(zutatId);
-        }
-        
-        public System.Threading.Tasks.Task<bool> RemoveZutatAsync(System.Guid zutatId) {
-            return base.Channel.RemoveZutatAsync(zutatId);
         }
     }
 }

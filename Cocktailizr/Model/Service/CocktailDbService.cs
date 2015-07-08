@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -40,9 +41,21 @@ namespace Cocktailizr.Model.Service
             return await _context.Cocktails.FindAsync(cocktail => cocktail.Name.Contains(name));
         }
 
-        public async Task<IAsyncCursor<Cocktail>> GetCocktailsByIndigrents(IEnumerable<Zutat> zutaten)
+        public async Task<IEnumerable<Cocktail>> GetCocktailsByIndigrents(IEnumerable<Zutat> zutaten)
         {
-            return await _context.Cocktails.FindAsync(cocktail => !cocktail.Zutaten.Keys.Except(zutaten).Any());
+            
+            IAsyncCursor<Cocktail> cocktailCursor;
+            try
+            {
+                var cocktails = await _context.Cocktails.Find(c => c.Zutaten.Any()).ToListAsync();
+                var cocktailsFiltered = cocktails.Where(cocktail => cocktail.Zutaten.Keys.Except(zutaten).Count() < 2);
+                return cocktailsFiltered.Distinct();
+            }
+            catch (Exception e)
+            {
+                var msg = e.Message;
+            }
+            return null;
         }
 
         public async Task<ISet<Zutat>> GetAllZutaten()

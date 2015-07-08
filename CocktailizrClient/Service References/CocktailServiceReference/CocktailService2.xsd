@@ -23,21 +23,21 @@
   <xs:element name="GetCocktailsByNameResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="GetCocktailsByNameResult" nillable="true" type="xs:anyType" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/CocktailizrTypes.Model.Entities" minOccurs="0" name="GetCocktailsByNameResult" nillable="true" type="q2:ArrayOfCocktail" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetCocktailsByIndigrents">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/CocktailizrTypes.Model.Entities" minOccurs="0" name="zutaten" nillable="true" type="q2:ArrayOfZutat" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/CocktailizrTypes.Model.Entities" minOccurs="0" name="zutaten" nillable="true" type="q3:ArrayOfZutat" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetCocktailsByIndigrentsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="GetCocktailsByIndigrentsResult" nillable="true" type="xs:anyType" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/CocktailizrTypes.Model.Entities" minOccurs="0" name="GetCocktailsByIndigrentsResult" nillable="true" type="q4:ArrayOfCocktail" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -49,7 +49,7 @@
   <xs:element name="GetAllZutatenResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/CocktailizrTypes.Model.Entities" minOccurs="0" name="GetAllZutatenResult" nillable="true" type="q3:ArrayOfZutat" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/CocktailizrTypes.Model.Entities" minOccurs="0" name="GetAllZutatenResult" nillable="true" type="q5:ArrayOfZutat" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

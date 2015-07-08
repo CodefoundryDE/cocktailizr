@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.ServiceModel.Description;
 using System.Windows.Media.Animation;
@@ -6,6 +8,7 @@ using System.Windows;
 using System.ServiceModel.Security;
 using CocktailizrClient.AdminServiceReference;
 using CocktailizrClient.CocktailServiceReference;
+using CocktailizrTypes.Model.Entities;
 
 namespace CocktailizrClient.ViewModel
 {
@@ -33,8 +36,11 @@ namespace CocktailizrClient.ViewModel
                 client.ClientCredentials.UserName.UserName = "Admin";
                 client.ClientCredentials.UserName.Password = "Cocktailizor";
                 client.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode = X509CertificateValidationMode.None;
-                MessageBox.Show(client.GetAllZutaten().ToString());
+                var zutaten = client.GetAllZutaten();
 
+                var apfel = zutaten.Single(z => z.Name.ToLowerInvariant().Equals("äpfel"));
+
+                var cocktailsByIngredients = client.GetCocktailsByIndigrents(new[] { apfel });
             }
             using (var client = new AdminServiceClient())
             {
