@@ -101,6 +101,7 @@ namespace CocktailizrClient.ViewModel
             try
             {
                 ShownCocktail = _serviceClient.GetRandomCocktail();
+                RaisePropertyChanged(() => ShownCocktail);
             }
             catch (Exception e)
             {
