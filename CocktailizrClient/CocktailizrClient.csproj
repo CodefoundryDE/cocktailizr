@@ -91,12 +91,17 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WpfAnimatedGif, Version=1.4.13.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\Cocktailizr\packages\WpfAnimatedGif.1.4.13\lib\net\WpfAnimatedGif.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Message\CocktailSearchMessage.cs" />
     <Compile Include="Service References\AdminServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -108,7 +113,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\CocktailizrClientViewModelBase.cs" />
+    <Compile Include="ViewModel\CocktailViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\SearchViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="View\Converter\BooleanToBrushConverter.cs" />
     <Compile Include="View\Converter\DivisionConverter.cs" />
@@ -124,8 +131,8 @@
     <Compile Include="View\ExtendedSearch.xaml.cs">
       <DependentUpon>ExtendedSearch.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Result.xaml.cs">
-      <DependentUpon>Result.xaml</DependentUpon>
+    <Compile Include="View\Cocktail.xaml.cs">
+      <DependentUpon>Cocktail.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Search.xaml.cs">
       <DependentUpon>Search.xaml</DependentUpon>
@@ -150,7 +157,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Result.xaml">
+    <Page Include="View\Cocktail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -180,6 +187,7 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Cocktailizr.Model.Entities.Cocktail.datasource" />
     <None Include="Properties\DataSources\CocktailizrTypes.Model.Entities.Cocktail.datasource" />
+    <None Include="Properties\DataSources\CocktailizrTypes.Model.Entities.Zutat.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -292,6 +300,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\ic_action_forward.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\loading.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

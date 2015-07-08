@@ -11,11 +11,11 @@ using CocktailizrTypes.Model.Entities;
 
 namespace Cocktailizr.Model.Service
 {
-    public class BenutzerService
+    public class BenutzerDbService
     {
         private CocktailizrDataContext _context;
 
-        public BenutzerService()
+        public BenutzerDbService()
         {
             _context = new CocktailizrDataContext();
         }

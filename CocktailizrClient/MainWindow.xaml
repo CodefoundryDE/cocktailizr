@@ -5,6 +5,8 @@
         Title="MainWindow" Height="350" Width="525"
         DataContext="{Binding Main, Source={StaticResource Locator}}">
     <Grid>
-        <view:Result/>
+        <view:Cocktail/>
+        <view:Search/>
+        <Image Style="{StaticResource LoadingGif}" Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}" />
     </Grid>
 </Window>

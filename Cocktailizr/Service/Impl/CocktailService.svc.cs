@@ -49,21 +49,30 @@ namespace Cocktailizr.Service.Impl
             return await _cocktailDbService.GetRandomCocktail();
         }
 
-        public async Task<IAsyncCursor<Cocktail>> GetCocktailsByName(string name)
+        public async Task<IEnumerable<Cocktail>> GetCocktailsByName(string name)
         {
-            return await _cocktailDbService.GetCocktailsByName(name);
+            var cocktails = await _cocktailDbService.GetCocktailsByName(name);
+            return await cocktails.ToListAsync();
         }
 
-        public async Task<IAsyncCursor<Cocktail>> GetCocktailsByIndigrents(IEnumerable<Zutat> zutaten)
+        public async Task<IEnumerable<Cocktail>> GetCocktailsByIndigrents(IEnumerable<Zutat> zutaten)
         {
+
             return await _cocktailDbService.GetCocktailsByIndigrents(zutaten);
         }
 
+        public async Task<IEnumerable<Zutat>> GetAllZutaten()
+        {
+            return await _cocktailDbService.GetAllZutaten();
+        }
         public async Task<Cocktail> GetCocktailById(Guid guid)
         {
             return await _cocktailDbService.GetCocktailById(guid);
         }
         #endregion
+
+
+
 
 
 

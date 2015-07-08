@@ -74,6 +74,13 @@ namespace Cocktailizr.Model.Database
                                 Skala = ZutatenSkala.Stueck
                             }, 30
                         },
+                        {new Zutat()
+                            {
+                                Name = "Eiswürfel",
+                                IsOptional = true,
+                                Skala = ZutatenSkala.Stueck
+                            }, 3
+                        },
                     },
                 };
                 string imgPath = @"C:\Users\Saphirim\Documents\Visual Studio 2013\Projects\cocktailizr\Cocktailizr\bin\Assets\cocktail.png";

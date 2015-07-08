@@ -18,7 +18,7 @@ namespace Cocktailizr.Auth
             get { return ClaimSet.System; }
         }
 
-        private BenutzerService _benutzerService;
+        private BenutzerDbService _benutzerService;
 
         public AuthPolicy()
         {
