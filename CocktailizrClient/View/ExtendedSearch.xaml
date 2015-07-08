@@ -7,6 +7,7 @@
              d:DesignHeight="300" d:DesignWidth="300"
              DataContext="{Binding ExtendedSearch, Source={StaticResource Locator}}"
              Visibility="{Binding IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/Assets/beach.jpg" Opacity="0.3"/>
@@ -16,10 +17,19 @@
                 <ColumnDefinition Width="4*"></ColumnDefinition>
                 <ColumnDefinition Width="1*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            
+
             <StackPanel Grid.Column="1">
-                
+                <Label Content="Vorhande Zutaten auswählen"></Label>
+                <ItemsControl ItemsSource="{Binding ExistingIngredients}" Margin="5">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <CheckBox Content="{Binding Path=Name}"></CheckBox>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
             </StackPanel>
-            </Grid>
         </Grid>
+    </Grid>
 </UserControl>
