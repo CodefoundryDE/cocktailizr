@@ -6,6 +6,7 @@ using System.Web;
 using MongoDB.Driver;
 using MongoDB.Bson;
 using System.Threading.Tasks;
+using Cocktailizr.Security;
 using CocktailizrTypes.Model.Entities;
 
 namespace Cocktailizr.Model.Service
@@ -21,9 +22,17 @@ namespace Cocktailizr.Model.Service
 
         public async Task<bool> CredentialsOk(string userName, string password)
         {
-            var task = await _context.Benutzer.FindAsync(x => x.Name.Equals(userName) && x.HashedPassword.Equals(password));
-            var benutzer = await task.ToListAsync();
-            return benutzer.Count == 1;
+            var task = await _context.Benutzer.FindAsync(x => x.Name.Equals(userName));
+            var benutzer = (await task.ToListAsync()).First();
+
+            return PasswordHashHelper.VerifyPassword(benutzer.HashedPassword, password);
+        }
+
+        public async Task<IEnumerable<string>> GetUserRoles(string userName)
+        {
+            var benutzer = await _context.Benutzer.FindAsync(x => x.Name.Equals(userName));
+
+            return new [] { (await benutzer.ToListAsync()).First().Role };
         }
     }
 }

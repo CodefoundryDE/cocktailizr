@@ -42,7 +42,7 @@ namespace Cocktailizr.Service.Impl
         #endregion
 
         #region Methods
-        [PrincipalPermission(SecurityAction.Demand, Role = "ADMIN")]
+        //[PrincipalPermission(SecurityAction.Demand, Role = "ADMIN")]
         public async Task<Cocktail> GetRandomCocktail()
         {
             return await _cocktailDbService.GetRandomCocktail();
