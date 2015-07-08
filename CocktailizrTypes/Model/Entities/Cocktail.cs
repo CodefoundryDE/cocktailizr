@@ -25,7 +25,7 @@ namespace CocktailizrTypes.Model.Entities
             set
             {
                 _name = value;
-                RaisePropertyChanged(() => Name);
+                OnPropertyChanged();
             }
         }
 
@@ -39,7 +39,7 @@ namespace CocktailizrTypes.Model.Entities
             set
             {
                 _tags = value;
-                RaisePropertyChanged(() => Tags);
+                OnPropertyChanged();
             }
         }
 
@@ -53,7 +53,7 @@ namespace CocktailizrTypes.Model.Entities
             set
             {
                 _drinkColor = value;
-                RaisePropertyChanged(() => DrinkColor);
+                OnPropertyChanged();
             }
         }
 
@@ -67,7 +67,7 @@ namespace CocktailizrTypes.Model.Entities
             set
             {
                 _alcoholic = value;
-                RaisePropertyChanged(() => Alcoholic);
+                OnPropertyChanged();
             }
         }
 
@@ -81,7 +81,7 @@ namespace CocktailizrTypes.Model.Entities
             set
             {
                 _zutaten = value;
-                RaisePropertyChanged(() => Zutaten);
+                OnPropertyChanged();
             }
         }
 
@@ -95,7 +95,7 @@ namespace CocktailizrTypes.Model.Entities
             set
             {
                 _rezept = value;
-                RaisePropertyChanged(() => Rezept);
+                OnPropertyChanged();
             }
         }
 

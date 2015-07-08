@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.Web;
 using System.Web.Configuration;
@@ -11,7 +13,7 @@ namespace CocktailizrTypes.Model.Entities
 {
 
     [DataContract]
-    public class CocktailizrEntityBase : ObservableObject
+    public class CocktailizrEntityBase : INotifyPropertyChanged
     {
         public CocktailizrEntityBase()
         {
@@ -28,8 +30,16 @@ namespace CocktailizrTypes.Model.Entities
             set
             {
                 _id = value;
-                RaisePropertyChanged(() => Id);
+                OnPropertyChanged();
             }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            var handler = PropertyChanged;
+            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 
