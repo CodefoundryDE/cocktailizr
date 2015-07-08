@@ -39,8 +39,13 @@ namespace CocktailizrClient.ViewModel
                 var zutaten = client.GetAllZutaten();
 
                 var apfel = zutaten.Single(z => z.Name.ToLowerInvariant().Equals("äpfel"));
+                var eisWürfel = zutaten.Single(z => z.Name.ToLowerInvariant().Equals("eiswürfel"));
+                var limette = zutaten.Single(z => z.Name.ToLowerInvariant().Equals("limette"));
+                var salz = zutaten.Single(z => z.Name.ToLowerInvariant().Equals("salz"));
+                var pfeffer = zutaten.Single(z => z.Name.ToLowerInvariant().Equals("pfeffer"));
+                var tomatens = zutaten.Single(z => z.Name.ToLowerInvariant().Equals("tomatensaft"));
 
-                var cocktailsByIngredients = client.GetCocktailsByIndigrents(new[] { apfel });
+                var cocktailsByIngredients = client.GetCocktailsByIndigrents(new[] { apfel, eisWürfel, limette, salz, pfeffer, tomatens });
             }
             using (var client = new AdminServiceClient())
             {

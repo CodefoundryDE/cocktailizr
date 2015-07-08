@@ -43,19 +43,9 @@ namespace Cocktailizr.Model.Service
 
         public async Task<IEnumerable<Cocktail>> GetCocktailsByIndigrents(IEnumerable<Zutat> zutaten)
         {
-            
-            IAsyncCursor<Cocktail> cocktailCursor;
-            try
-            {
                 var cocktails = await _context.Cocktails.Find(c => c.Zutaten.Any()).ToListAsync();
-                var cocktailsFiltered = cocktails.Where(cocktail => cocktail.Zutaten.Keys.Except(zutaten).Count() < 2);
+                var cocktailsFiltered = cocktails.Where(cocktail => cocktail.Zutaten.Keys.Except(zutaten).Count() <= 2);
                 return cocktailsFiltered.Distinct();
-            }
-            catch (Exception e)
-            {
-                var msg = e.Message;
-            }
-            return null;
         }
 
         public async Task<ISet<Zutat>> GetAllZutaten()
@@ -69,5 +59,7 @@ namespace Cocktailizr.Model.Service
             }
             return zutatenSet;
         }
+
+
     }
 }
