@@ -98,7 +98,15 @@ namespace CocktailizrClient.ViewModel
 
         private void ShowRandomCocktail()
         {
-            SearchResults = new List<Cocktail>() { _serviceClient.GetRandomCocktail() };
+            try
+            {
+                ShownCocktail = _serviceClient.GetRandomCocktail();
+                RaisePropertyChanged(() => ShownCocktail);
+            }
+            catch (Exception e)
+            {
+                var msg = e.Message;
+            }
         }
 
         private void ShowCocktailWithGivenIngredients(IEnumerable<Zutat> ingredients)
