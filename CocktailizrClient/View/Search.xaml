@@ -2,9 +2,11 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d" 
-             d:DesignHeight="1280" d:DesignWidth="1024">
+             d:DesignHeight="1280" d:DesignWidth="1024"
+             Visibility="{Binding IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
+             DataContext="{Binding Search, Source={StaticResource Locator}}">
     <UserControl.Resources>
         <ResourceDictionary Source="../Themes/Generic.xaml"></ResourceDictionary>
     </UserControl.Resources>
@@ -17,7 +19,7 @@
             <TextBox HorizontalAlignment="Center" Height="Auto" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" RenderTransformOrigin="0.156,-1.717"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
                 <Button Content="Suche" Width="Auto" Margin="5"/>
-                <Button Content="Auf gut Glück!" Width="Auto" Margin="5"/>
+                <Button Command="{Binding RandomClickedCommand}" Content="Auf gut Glück!" Width="Auto" Margin="5"/>
             </StackPanel>
             <TextBlock HorizontalAlignment="Center"><Hyperlink><Run Text="Erweiterte Suche"/></Hyperlink></TextBlock>
 

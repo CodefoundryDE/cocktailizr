@@ -6,5 +6,6 @@
         DataContext="{Binding Main, Source={StaticResource Locator}}">
     <Grid>
         <view:Cocktail/>
+        <view:Search/>
     </Grid>
 </Window>

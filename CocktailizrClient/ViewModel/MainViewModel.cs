@@ -21,26 +21,22 @@ namespace CocktailizrClient.ViewModel
     /// See http://www.galasoft.ch/mvvm
     /// </para>
     /// </summary>
-    public class MainViewModel : ViewModelBase
+    public class MainViewModel : CocktailizrClientViewModelBase
     {
+        #region Properties
+        
+
+        #endregion
+
+        #region Constructor
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
         public MainViewModel()
         {
-            using (var client = new CocktailServiceClient())
-            {
-                client.ClientCredentials.UserName.UserName = "Admin";
-                client.ClientCredentials.UserName.Password = "Cocktailizor";
-                client.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode = X509CertificateValidationMode.None;
-                MessageBox.Show(client.GetRandomCocktail().ToString());
-
-            }
-
-            using (var client = new AdminServiceClient())
-            {
-
-            }
+           
         }
+
+        #endregion
     }
 }

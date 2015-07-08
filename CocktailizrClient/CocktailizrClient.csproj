@@ -97,6 +97,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Message\CocktailSearchMessage.cs" />
     <Compile Include="Service References\AdminServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -110,6 +111,7 @@
     <Compile Include="ViewModel\CocktailizrClientViewModelBase.cs" />
     <Compile Include="ViewModel\CocktailViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\SearchViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="View\Converter\BooleanToBrushConverter.cs" />
     <Compile Include="View\Converter\DivisionConverter.cs" />

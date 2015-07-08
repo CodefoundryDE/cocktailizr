@@ -44,6 +44,7 @@ namespace CocktailizrClient.ViewModel
 
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<CocktailViewModel>();
+            SimpleIoc.Default.Register<SearchViewModel>();
         }
 
         public MainViewModel Main
@@ -59,6 +60,14 @@ namespace CocktailizrClient.ViewModel
             get
             {
                 return ServiceLocator.Current.GetInstance<CocktailViewModel>();
+            }
+        }
+
+        public SearchViewModel Search
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<SearchViewModel>();
             }
         }
 

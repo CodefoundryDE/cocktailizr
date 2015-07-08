@@ -10,7 +10,7 @@ namespace CocktailizrClient.ViewModel
     /// See http://www.galasoft.ch/mvvm
     /// </para>
     /// </summary>
-    public class CocktailizrClientViewModelBase : ViewModelBase
+    public class CocktailizrClientViewModelBase : ViewModelBase, IDisposable
     {
         #region Properties
 
@@ -36,6 +36,7 @@ namespace CocktailizrClient.ViewModel
 
         private int _loadingOperationsCount;
         private readonly object _syncRoot = new object();
+        private bool _disposed = false;
 
         #endregion
 
@@ -85,6 +86,36 @@ namespace CocktailizrClient.ViewModel
                 _loadingOperationsCount = 0;
             }
             RaisePropertyChanged(() => IsLoading);
+        }
+
+        #endregion
+
+        #region Dispose
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (_disposed)
+                return;
+
+            // Free any managed objects here.
+            if (disposing)
+            {
+                Cleanup();
+            }
+
+            // Free any unmanaged objects here.
+            _disposed = true;
+        }
+
+        ~CocktailizrClientViewModelBase()
+        {
+            Dispose(false);
         }
 
         #endregion
