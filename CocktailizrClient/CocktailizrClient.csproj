@@ -270,10 +270,16 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="View\beach.jpg" />
+    <Resource Include="Assets\beach.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="View\wmojtobasse.png" />
+    <Resource Include="Assets\wmojtobasse.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ic_action_back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ic_action_forward.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -10,7 +10,7 @@
     </UserControl.Resources>
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="beach.jpg"/>
+            <ImageBrush ImageSource="/Assets/beach.jpg"/>
         </Grid.Background>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Margin="80,80">
             <Label FontSize="{StaticResource HeadingFontSize}" Content="Cocktailizr" HorizontalAlignment="Center"  VerticalAlignment="Bottom"/>
