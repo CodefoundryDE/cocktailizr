@@ -100,6 +100,7 @@ namespace CocktailizrTypes.Model.Entities
             }
         }
 
+        [DataMember]
         [BsonElement]
         public byte[] ImageBytes { get; set; }
 
@@ -109,10 +110,9 @@ namespace CocktailizrTypes.Model.Entities
             get
             {
                 if (ImageBytes == null) { return null; }
-                using (var ms = new MemoryStream(ImageBytes))
-                {
-                    return ms.Length > 0 ? new Bitmap(ms) : null;
-                }
+                var ms = new MemoryStream(ImageBytes);
+                return ms.Length > 0 ? new Bitmap(ms) : null;
+
             }
             set
             {
