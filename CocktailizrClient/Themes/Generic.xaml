@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+                    xmlns:system="clr-namespace:System;assembly=mscorlib"
+                    xmlns:gif="http://wpfanimatedgif.codeplex.com">
 
     <system:Double x:Key="HeadingFontSize">40</system:Double>
     <system:Double x:Key="NormalFontSize">20</system:Double>
@@ -21,5 +22,18 @@
     <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource FontStyling}" />
     <Style TargetType="{x:Type ListView}" BasedOn="{StaticResource FontStyling}" />
     -->
+    
+    <!-- Loading-Animation -->
+    <Style x:Key="LoadingGif" TargetType="Image">
+        <Setter Property="gif:ImageBehavior.AnimatedSource" Value="../Assets/loading.gif" />
+        <Setter Property="Stretch" Value="None" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <BlurEffect Radius="2" RenderingBias="Quality" KernelType="Gaussian" />
+            </Setter.Value>
+        </Setter>
+    </Style>
 
 </ResourceDictionary>
