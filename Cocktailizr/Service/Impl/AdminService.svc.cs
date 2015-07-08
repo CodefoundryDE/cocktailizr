@@ -8,6 +8,9 @@ using System.Security.Permissions;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using Cocktailizr.Model.Service;
+using MongoDB.Bson;
+using MongoDB.Driver;
 
 namespace Cocktailizr.Service.Impl
 {
@@ -15,30 +18,29 @@ namespace Cocktailizr.Service.Impl
     // HINWEIS: Wählen Sie zum Starten des WCF-Testclients zum Testen dieses Diensts AdminService.svc oder AdminService.svc.cs im Projektmappen-Explorer aus, und starten Sie das Debuggen.
     public class AdminService : IAdminService
     {
-        private readonly CocktailizrDataContext _context;
+        private readonly CocktailDbService _cocktailDbService;
 
         public AdminService()
         {
-            _context = new CocktailizrDataContext();
+            _cocktailDbService = CocktailizrServiceLocator.CocktailDbService;
         }
 
         [PrincipalPermission(SecurityAction.Demand, Role = "ADMIN")]
-        public bool AddCocktail(Cocktail cocktail)
+        public async Task<Cocktail> AddCocktail(Cocktail cocktail)
         {
-            _context.Cocktails.InsertOneAsync(cocktail).Wait();
-            return true;
+            return await _cocktailDbService.AddCocktail(cocktail);
         }
 
         [PrincipalPermission(SecurityAction.Demand, Role = "ADMIN")]
-        public bool ModifyCocktail(Guid cocktailId, Cocktail cocktail)
+        public async Task<Cocktail> ModifyCocktail(Guid cocktailId, Cocktail cocktail)
         {
-            throw new NotImplementedException();
+            return await _cocktailDbService.ModifyCocktail(cocktailId, cocktail);
         }
 
         [PrincipalPermission(SecurityAction.Demand, Role = "ADMIN")]
-        public bool RemoveCocktail(Guid cocktailId)
+        public async Task<bool> RemoveCocktail(Guid cocktailId)
         {
-            throw new NotImplementedException();
+            return await _cocktailDbService.DeleteCocktail(cocktailId);
         }
     }
 }

@@ -12,29 +12,29 @@
   <xs:element name="AddCocktailResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="AddCocktailResult" type="xs:boolean" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/CocktailizrTypes.Model.Entities" minOccurs="0" name="AddCocktailResult" nillable="true" type="q2:Cocktail" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ModifyCocktail">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="cocktailId" type="q2:guid" />
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/CocktailizrTypes.Model.Entities" minOccurs="0" name="cocktail" nillable="true" type="q3:Cocktail" />
+        <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="cocktailId" type="q3:guid" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/CocktailizrTypes.Model.Entities" minOccurs="0" name="cocktail" nillable="true" type="q4:Cocktail" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ModifyCocktailResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="ModifyCocktailResult" type="xs:boolean" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/CocktailizrTypes.Model.Entities" minOccurs="0" name="ModifyCocktailResult" nillable="true" type="q5:Cocktail" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="RemoveCocktail">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="cocktailId" type="q4:guid" />
+        <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="cocktailId" type="q6:guid" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

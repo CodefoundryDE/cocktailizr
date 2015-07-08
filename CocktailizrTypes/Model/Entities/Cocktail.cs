@@ -31,11 +31,10 @@ namespace CocktailizrTypes.Model.Entities
             }
         }
 
-        private IEnumerable _tags;
-
+        private IEnumerable<string> _tags;
         [DataMember]
         [BsonElement]
-        public IEnumerable Tags
+        public IEnumerable<string> Tags
         {
             get { return _tags; }
             set
