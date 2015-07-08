@@ -26,11 +26,11 @@
                     <Image Source="/Assets/ic_action_back.png"></Image>
                 </Button>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Margin="5" Style="{DynamicResource MaterialDesignFloatingActionButton}">
+                    <Button Command="{Binding PreviousCocktailCommand}" Margin="5" Style="{DynamicResource MaterialDesignFloatingActionButton}">
                         <Image Source="/Assets/ic_action_back.png"></Image>
                     </Button>
                     <Label HorizontalAlignment="Center" Content="{Binding ShownCocktail.Name}" FontSize="{StaticResource HeadingFontSize}"></Label>
-                    <Button Margin="5" Style="{DynamicResource MaterialDesignFloatingActionButton}">
+                    <Button Command="{Binding NextCocktailCommand}" Margin="5" Style="{DynamicResource MaterialDesignFloatingActionButton}">
                         <Image Source="/Assets/ic_action_forward.png"></Image>
                     </Button>
                 </StackPanel>

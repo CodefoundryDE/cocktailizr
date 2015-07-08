@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.ServiceModel.Security;
 using System.Text;
@@ -16,6 +17,17 @@ namespace CocktailizrClient.ViewModel
     public class SearchViewModel : CocktailizrClientViewModelBase
     {
         #region Properties
+        private string _searchText;
+
+        public string SearchText
+        {
+            get { return _searchText; }
+            set
+            {
+                _searchText = value;
+                RaisePropertyChanged(() => SearchText);
+            }
+        }
 
         #endregion
 
@@ -26,6 +38,11 @@ namespace CocktailizrClient.ViewModel
             get { return new RelayCommand(GetRandomCocktail); }
         }
 
+        public ICommand SearchClickedCommand
+        {
+            get { return new RelayCommand(GetCocktailBySearchString, ValidateSearchString); }
+        }
+
         #endregion
 
         private void GetRandomCocktail()
@@ -33,6 +50,16 @@ namespace CocktailizrClient.ViewModel
             MessengerInstance.Send(new CocktailSearchMessage
             {
                 CocktailSearchType = CocktailSearchType.Random
+            });
+            IsVisible = false;
+        }
+
+        private void GetCocktailBySearchString()
+        {
+            MessengerInstance.Send(new CocktailSearchMessage
+            {
+                CocktailSearchType = CocktailSearchType.ByName,
+                SearchString = SearchText
             });
             IsVisible = false;
         }
@@ -48,6 +75,11 @@ namespace CocktailizrClient.ViewModel
         private void LoadSuche(LoadSucheMessage obj)
         {
             IsVisible = true;
+        }
+
+        private bool ValidateSearchString()
+        {
+            return !string.IsNullOrEmpty(SearchText);
         }
     }
 }

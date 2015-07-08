@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using CocktailizrClient.CocktailServiceReference;
@@ -12,6 +14,21 @@ namespace CocktailizrClient.ViewModel
     {
         #region Properties
         private CocktailServiceClient _serviceClient;
+
+        private IList<Cocktail> _searchResults = new List<Cocktail>();
+
+        public IList<Cocktail> SearchResults
+        {
+            get { return _searchResults; }
+            set
+            {
+                _searchResults = value;
+                ShownCocktail = _searchResults.FirstOrDefault();
+                RaisePropertyChanged(() => SearchResults);
+            }
+        }
+
+
         private Cocktail _shownCocktail;
 
         public Cocktail ShownCocktail
@@ -29,6 +46,10 @@ namespace CocktailizrClient.ViewModel
 
         public ICommand BackToSearchClickedCommand { get { return new RelayCommand(NavigateToSearch); } }
 
+        public ICommand NextCocktailCommand { get { return new RelayCommand(ShowNextCocktail); } }
+
+        public ICommand PreviousCocktailCommand { get { return new RelayCommand(ShowPreviousCocktail); } }
+
         #endregion
 
         #region Constructor
@@ -39,7 +60,7 @@ namespace CocktailizrClient.ViewModel
         }
         #endregion
 
-
+        #region Methods
         private void RecieveCocktailSearchMessage(CocktailSearchMessage message)
         {
             IsVisible = true;
@@ -62,7 +83,7 @@ namespace CocktailizrClient.ViewModel
                             }
                         case CocktailSearchType.ByName:
                             {
-
+                                ShowSearchResults(message.SearchString);
                                 break;
                             }
 
@@ -77,7 +98,29 @@ namespace CocktailizrClient.ViewModel
 
         private void ShowRandomCocktail()
         {
-            ShownCocktail = _serviceClient.GetRandomCocktail();
+            SearchResults = new List<Cocktail>() { _serviceClient.GetRandomCocktail() };
+        }
+
+        private void ShowNextCocktail()
+        {
+            int recentIndex = SearchResults.IndexOf(ShownCocktail);
+            int nextIndex = recentIndex + 1;
+            if (SearchResults.Count > nextIndex)
+                ShownCocktail = SearchResults.ElementAt(nextIndex);
+        }
+
+        private void ShowPreviousCocktail()
+        {
+            int recentIndex = SearchResults.IndexOf(ShownCocktail);
+            int previousIndex = recentIndex - 1;
+            if (previousIndex >= 0)
+                ShownCocktail = SearchResults.ElementAt(previousIndex);
+        }
+
+        private void ShowSearchResults(string searchText)
+        {
+            Cocktail[] results = _serviceClient.GetCocktailsByName(searchText);
+            SearchResults = results;
         }
 
         private void NavigateToSearch()
@@ -85,5 +128,7 @@ namespace CocktailizrClient.ViewModel
             MessengerInstance.Send(new LoadSucheMessage());
             IsVisible = false;
         }
+
+        #endregion
     }
 }
