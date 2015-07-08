@@ -63,7 +63,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="MaterialDesignThemes.Wpf, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Cocktailizr\packages\MaterialDesignThemes.0.0.0.77\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
+      <HintPath>..\Cocktailizr\packages\MaterialDesignThemes.0.0.0.78\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation">
@@ -107,8 +107,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\CocktailizrClientViewModelBase.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="View\Converter\BooleanToBrushConverter.cs" />
+    <Compile Include="View\Converter\DivisionConverter.cs" />
+    <Compile Include="View\Converter\InvertBooleanConverter.cs" />
+    <Compile Include="View\Converter\InvertedBooleanToVisibilityConverter.cs" />
+    <Compile Include="View\Converter\InvertedObjectInstanciatedToBooleanConverter.cs" />
+    <Compile Include="View\Converter\InvertedObjectInstanciatedToVisibilityConverter.cs" />
+    <Compile Include="View\Converter\IsNotZeroConverter.cs" />
+    <Compile Include="View\Converter\IsZeroConverter.cs" />
+    <Compile Include="View\Converter\ObjectInstanciatedToBooleanConverter.cs" />
+    <Compile Include="View\Converter\ObjectInstanciatedToVisibilityConverter.cs" />
+    <Compile Include="View\Converter\SubtractionConverter.cs" />
     <Compile Include="View\ExtendedSearch.xaml.cs">
       <DependentUpon>ExtendedSearch.xaml</DependentUpon>
     </Compile>
