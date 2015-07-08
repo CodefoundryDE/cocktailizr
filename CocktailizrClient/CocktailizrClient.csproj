@@ -124,8 +124,8 @@
     <Compile Include="View\ExtendedSearch.xaml.cs">
       <DependentUpon>ExtendedSearch.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Result.xaml.cs">
-      <DependentUpon>Result.xaml</DependentUpon>
+    <Compile Include="View\Cocktail.xaml.cs">
+      <DependentUpon>Cocktail.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Search.xaml.cs">
       <DependentUpon>Search.xaml</DependentUpon>
@@ -150,7 +150,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Result.xaml">
+    <Page Include="View\Cocktail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
