@@ -57,23 +57,25 @@
                 </StackPanel>
             </wpf:Card>
 
-            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top" Margin="20">
-                <Label Content="Benötigte Zutaten:"></Label>
-                <ItemsControl ItemsSource="{Binding ShownCocktail.Zutaten, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5">
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel>
-                                <TextBlock>
+            <wpf:Card HorizontalAlignment="Right" VerticalAlignment="Center" Margin="50">
+                <StackPanel>
+                    <Label Content="Benötigte Zutaten:" />
+                    <ItemsControl ItemsSource="{Binding ShownCocktail.Zutaten, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock>
                                     <Run Text="{Binding Path=Value, Mode=OneWay}" />
                                     <Run Text="{Binding Path=Key.Skala}" />
                                     <Run Text="{Binding Path=Key.Name}" />
                                     <Run Text="{Binding Path=Key.IsOptional, Converter={StaticResource BooleanToStringConverter}, ConverterParameter={}[Optional]}" />
-                                </TextBlock>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-            </StackPanel>
+                                    </TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+            </wpf:Card>
 
         </Grid>
 
