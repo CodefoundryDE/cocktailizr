@@ -26,12 +26,11 @@ namespace Cocktailizr.Security
             var pbkdf2 = new Rfc2898DeriveBytes(password, salt, Iterations);
             byte[] hash = pbkdf2.GetBytes(HashSize);
 
-            byte[] hashBytes = new byte[36];
-            Array.Copy(salt, 0, hashBytes, 0, 16);
-            Array.Copy(hash, 0, hashBytes, 16, 20);
+            byte[] hashBytes = new byte[HashSize + SaltSize];
+            Array.Copy(salt, 0, hashBytes, 0, SaltSize);
+            Array.Copy(hash, 0, hashBytes, SaltSize, HashSize);
 
-            string savedPasswordHash = Convert.ToBase64String(hashBytes);
-            return savedPasswordHash;
+            return Convert.ToBase64String(hashBytes);
         }
 
         public static bool VerifyPassword(string passwordHash, string enteredPassword)

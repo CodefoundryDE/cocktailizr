@@ -6,6 +6,7 @@ using System.IdentityModel.Policy;
 using System.Linq;
 using System.Security.Principal;
 using System.Web;
+using CocktailizrTypes.Security;
 
 namespace Cocktailizr.Security
 {
@@ -31,10 +32,9 @@ namespace Cocktailizr.Security
             // get the authenticated client identity
             IIdentity client = GetClientIdentity(evaluationContext);
 
-            var roles = _benutzerService.GetUserRole(client.Name);
+            UserRole role = _benutzerService.GetUserRole(client.Name).Result;
 
-            evaluationContext.Properties["Principal"] = new AuthPrincipal(client, roles.Result);
-
+            evaluationContext.Properties["Principal"] = new AuthPrincipal(client, role);
             return true;
         }
 

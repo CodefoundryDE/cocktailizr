@@ -302,7 +302,7 @@ namespace Cocktailizr.Model.Database
                     Id = new Guid("EB577661-B70D-48A8-B5EB-C7A9CB49A2B6"),
                     Alcoholic = true,
                     DrinkColor = Color.Green,
-                    Name = "Piña Colada",
+                    Name = "Pina Colada",
                     Tags = new List<string>() { "Sweet", "Cool", "Beach" },
                     Rezept = new Rezept()
                     {
