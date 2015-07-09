@@ -14,6 +14,7 @@ namespace CocktailizrClient.ViewModel
     {
         #region Properties
 
+        public const string IsVisiblePropertyName = "IsVisible";
         private bool _isVisible;
         public bool IsVisible
         {

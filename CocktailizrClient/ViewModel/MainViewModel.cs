@@ -9,6 +9,7 @@ using CocktailizrClient.Message;
 using CocktailizrTypes.Model.Entities;
 using CocktailizrTypes.Security;
 using GalaSoft.MvvmLight.CommandWpf;
+using GalaSoft.MvvmLight.Threading;
 
 namespace CocktailizrClient.ViewModel
 {
@@ -149,15 +150,15 @@ namespace CocktailizrClient.ViewModel
             {
                 //Einloggen erfolte gerade als Admin
                 //Entfernen des Login-Buttons, einhängen eines Logout-Buttons
-                MenuCommands.Remove(_loginKvp);
-                MenuCommands.Insert(0, _logoutKvp);
-                MenuCommands.Insert(1, _neuerCoktailKvp);
+                DispatcherHelper.CheckBeginInvokeOnUI(() => MenuCommands.Remove(_loginKvp));
+                DispatcherHelper.CheckBeginInvokeOnUI(() => MenuCommands.Insert(0, _logoutKvp));
+                DispatcherHelper.CheckBeginInvokeOnUI(() => MenuCommands.Insert(1, _neuerCoktailKvp));
             }
             else
             {
-                MenuCommands.Remove(_logoutKvp);
-                MenuCommands.Remove(_neuerCoktailKvp);
-                MenuCommands.Insert(0, _loginKvp);
+                DispatcherHelper.CheckBeginInvokeOnUI(() => MenuCommands.Remove(_logoutKvp));
+                DispatcherHelper.CheckBeginInvokeOnUI(() => MenuCommands.Remove(_neuerCoktailKvp));
+                DispatcherHelper.CheckBeginInvokeOnUI(() => MenuCommands.Insert(0, _loginKvp));
             }
 
         }

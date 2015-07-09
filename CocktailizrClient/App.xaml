@@ -38,6 +38,7 @@
                     <SolidColorBrush x:Key="PrimaryHueDarkForegroundBrush" Color="{StaticResource Primary700Foreground}"/>
                     
                     <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"></BooleanToVisibilityConverter>
+                    <c:ObjectInstanciatedToVisibilityConverter x:Key="ObjectInstanciatedToVisibilityConverter"></c:ObjectInstanciatedToVisibilityConverter>
                     
                 </ResourceDictionary>
 

@@ -13,11 +13,14 @@ using CocktailizrClient.AdminServiceReference;
 using CocktailizrClient.CocktailServiceReference;
 using CocktailizrClient.Message;
 using CocktailizrClient.Properties;
+using GalaSoft.MvvmLight.Views;
 
 namespace CocktailizrClient.ViewModel
 {
     public class LoginViewModel : CocktailizrClientViewModelBase
     {
+
+        #region Properties
 
         private string _userName;
         public string UserName
@@ -41,17 +44,35 @@ namespace CocktailizrClient.ViewModel
             }
         }
 
+        #endregion
+
+        #region Commands
+
         public ICommand ButtonLoginCommand { get { return new RelayCommand(ButtonLoginClick); } }
         public ICommand ButtonCancelCommand { get { return new RelayCommand(ButtonCancelClick); } }
 
-        private ViewModelLocator _viewModelLocator;
+        #endregion
 
-        public LoginViewModel(ViewModelLocator viewModelLocator)
+        #region Varibales
+
+        private readonly ViewModelLocator _viewModelLocator;
+        private readonly IDialogService _dialogService;
+
+        #endregion
+
+        #region Constructor
+
+        public LoginViewModel(ViewModelLocator viewModelLocator, IDialogService dialogService)
         {
             _viewModelLocator = viewModelLocator;
+            _dialogService = dialogService;
 
             MessengerInstance.Register<LoginMessage>(this, ReceiveLoginMessage);
         }
+
+        #endregion
+
+        #region Methods
 
         private void ReceiveLoginMessage(LoginMessage message)
         {
@@ -61,7 +82,7 @@ namespace CocktailizrClient.ViewModel
             }
             if (message.LoginAction == LoginAction.Logout)
             {
-                Logout();
+                Task.Factory.StartNew(Logout);
             }
         }
 
@@ -98,7 +119,7 @@ namespace CocktailizrClient.ViewModel
             }
             if (exceptionFlag)
             {
-                MessageBox.Show("Username oder Passwort sind inkorrekt!");
+                _dialogService.ShowMessage("Username oder Passwort sind inkorrekt!", "Login-Fehler");
                 Password = string.Empty;
             }
 
@@ -137,6 +158,7 @@ namespace CocktailizrClient.ViewModel
             MessengerInstance.Send(new LoginMessage() { LoginAction = LoginAction.Cancel });
         }
 
+        #endregion
 
     }
 }
