@@ -116,6 +116,7 @@
     <Compile Include="ViewModel\CocktailizrClientViewModelBase.cs" />
     <Compile Include="ViewModel\CocktailViewModel.cs" />
     <Compile Include="ViewModel\ExtendedSearchViewModel.cs" />
+    <Compile Include="Message\LoginMessage.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\SearchViewModel.cs" />
@@ -225,6 +226,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\AdminServiceReference\AdminService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdminServiceReference\AdminService5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\CocktailServiceReference\CocktailService.wsdl" />

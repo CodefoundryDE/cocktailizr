@@ -76,6 +76,7 @@
     <Compile Include="Model\Message\DownloadRequest.cs" />
     <Compile Include="Model\Message\RemoteFileInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\UserRole.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

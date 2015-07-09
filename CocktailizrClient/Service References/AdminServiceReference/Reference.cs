@@ -105,6 +105,18 @@ namespace CocktailizrClient.AdminServiceReference {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AdminServiceReference.IAdminService")]
     public interface IAdminService {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminService/CredentialsOk", ReplyAction="http://tempuri.org/IAdminService/CredentialsOkResponse")]
+        bool CredentialsOk();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminService/CredentialsOk", ReplyAction="http://tempuri.org/IAdminService/CredentialsOkResponse")]
+        System.Threading.Tasks.Task<bool> CredentialsOkAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminService/GetUserRole", ReplyAction="http://tempuri.org/IAdminService/GetUserRoleResponse")]
+        CocktailizrTypes.Security.UserRole GetUserRole();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminService/GetUserRole", ReplyAction="http://tempuri.org/IAdminService/GetUserRoleResponse")]
+        System.Threading.Tasks.Task<CocktailizrTypes.Security.UserRole> GetUserRoleAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminService/AddCocktail", ReplyAction="http://tempuri.org/IAdminService/AddCocktailResponse")]
         CocktailizrTypes.Model.Entities.Cocktail AddCocktail(CocktailizrTypes.Model.Entities.Cocktail cocktail);
         
@@ -149,6 +161,22 @@ namespace CocktailizrClient.AdminServiceReference {
         
         public AdminServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public bool CredentialsOk() {
+            return base.Channel.CredentialsOk();
+        }
+        
+        public System.Threading.Tasks.Task<bool> CredentialsOkAsync() {
+            return base.Channel.CredentialsOkAsync();
+        }
+        
+        public CocktailizrTypes.Security.UserRole GetUserRole() {
+            return base.Channel.GetUserRole();
+        }
+        
+        public System.Threading.Tasks.Task<CocktailizrTypes.Security.UserRole> GetUserRoleAsync() {
+            return base.Channel.GetUserRoleAsync();
         }
         
         public CocktailizrTypes.Model.Entities.Cocktail AddCocktail(CocktailizrTypes.Model.Entities.Cocktail cocktail) {

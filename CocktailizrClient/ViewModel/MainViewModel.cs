@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using CocktailizrClient.AdminServiceReference;
+using CocktailizrClient.Message;
 using GalaSoft.MvvmLight.CommandWpf;
 
 namespace CocktailizrClient.ViewModel
@@ -57,7 +58,7 @@ namespace CocktailizrClient.ViewModel
 
         private void InitializeMenuCommands()
         {
-            MenuCommands =new ObservableCollection<KeyValuePair<object, object>>()
+            MenuCommands = new ObservableCollection<KeyValuePair<object, object>>()
             {
                 new KeyValuePair<object, object>("Login", new RelayCommand(CallLoginDialog)),                
                 new KeyValuePair<object, object>("Über Cocktailizr", new RelayCommand(CallLoginDialog)),
@@ -67,7 +68,7 @@ namespace CocktailizrClient.ViewModel
 
         private void CallLoginDialog()
         {
-            
+            MessengerInstance.Send(new LoginMessage() { LoginAction = LoginAction.Show });
         }
 
 

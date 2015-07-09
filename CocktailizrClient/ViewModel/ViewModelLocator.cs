@@ -12,6 +12,7 @@
   See http://www.galasoft.ch/mvvm
 */
 
+using System.ServiceModel.Description;
 using System.ServiceModel.Security;
 using System.Web.UI.WebControls;
 using CocktailizrClient.CocktailServiceReference;
@@ -41,8 +42,8 @@ namespace CocktailizrClient.ViewModel
             SimpleIoc.Default.Register(() =>
             {
                 var client = new CocktailServiceClient();
-                client.ClientCredentials.UserName.UserName = "Admin";
-                client.ClientCredentials.UserName.Password = "Cocktailizor";
+                client.ClientCredentials.UserName.UserName = "ANONYMOUS";
+                client.ClientCredentials.UserName.Password = "ANONYMOUS";
                 return client;
             });
 
@@ -50,10 +51,12 @@ namespace CocktailizrClient.ViewModel
             SimpleIoc.Default.Register(() =>
             {
                 var client = new AdminServiceClient();
-                client.ClientCredentials.UserName.UserName = "Admin";
-                client.ClientCredentials.UserName.Password = "Cocktailizor";
+                client.ClientCredentials.UserName.UserName = "ANONYMOUS";
+                client.ClientCredentials.UserName.Password = "ANONYMOUS";
                 return client;
             });
+
+            SimpleIoc.Default.Register<ViewModelLocator>(() => this);
 
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<CocktailViewModel>();
@@ -100,6 +103,39 @@ namespace CocktailizrClient.ViewModel
             {
                 return ServiceLocator.Current.GetInstance<LoginViewModel>();
             }
+        }
+
+        public AdminServiceClient AdminServiceClient
+        {
+            get { return ServiceLocator.Current.GetInstance<AdminServiceClient>(); }
+        }
+
+        public CocktailServiceClient CocktailServiceClient
+        {
+            get { return ServiceLocator.Current.GetInstance<CocktailServiceClient>(); }
+        }
+
+        public void LoginServiceClients(ClientCredentials credentials)
+        {
+            SimpleIoc.Default.Unregister<AdminServiceClient>();
+            // AdminService - Client
+            SimpleIoc.Default.Register(() =>
+            {
+                var client = new AdminServiceClient();
+                client.ClientCredentials.UserName.UserName = credentials.UserName.UserName;
+                client.ClientCredentials.UserName.Password = credentials.UserName.Password;
+                return client;
+            });
+
+            SimpleIoc.Default.Unregister<CocktailServiceClient>();
+            // AdminService - Client
+            SimpleIoc.Default.Register(() =>
+            {
+                var client = new CocktailServiceClient();
+                client.ClientCredentials.UserName.UserName = credentials.UserName.UserName;
+                client.ClientCredentials.UserName.Password = credentials.UserName.Password;
+                return client;
+            });
         }
 
         public static void Cleanup()

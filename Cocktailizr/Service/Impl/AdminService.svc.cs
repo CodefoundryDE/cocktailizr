@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using Cocktailizr.Model.Service;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using CocktailizrTypes.Security;
 
 namespace Cocktailizr.Service.Impl
 {
@@ -19,10 +20,22 @@ namespace Cocktailizr.Service.Impl
     public class AdminService : IAdminService
     {
         private readonly CocktailDbService _cocktailDbService;
+        private readonly BenutzerDbService _benutzerDbService;
 
         public AdminService()
         {
             _cocktailDbService = CocktailizrServiceLocator.CocktailDbService;
+            _benutzerDbService = CocktailizrServiceLocator.BenutzerDbService;
+        }
+
+        public async Task<bool> CredentialsOk()
+        {
+            return await Task.FromResult(OperationContext.Current.ServiceSecurityContext.PrimaryIdentity.IsAuthenticated);
+        }
+
+        public Task<UserRole> GetUserRole()
+        {
+            return _benutzerDbService.GetUserRole(OperationContext.Current.ServiceSecurityContext.PrimaryIdentity.Name);
         }
 
         [PrincipalPermission(SecurityAction.Demand, Role = "ADMIN")]
@@ -42,6 +55,7 @@ namespace Cocktailizr.Service.Impl
         {
             return await _cocktailDbService.RemoveCocktail(cocktailId);
         }
+
     }
 }
 

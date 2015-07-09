@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using CocktailizrTypes.Model.Entities;
+using CocktailizrTypes.Security;
 
 namespace Cocktailizr.Service
 {
@@ -13,6 +14,12 @@ namespace Cocktailizr.Service
     [ServiceContract]
     public interface IAdminService
     {
+        [OperationContract]
+        Task<bool> CredentialsOk();
+
+        [OperationContract]
+        Task<UserRole> GetUserRole();
+
         [OperationContract]
         Task<Cocktail> AddCocktail(Cocktail cocktail);
 

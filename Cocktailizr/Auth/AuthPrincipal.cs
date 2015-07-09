@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Principal;
 using System.Web;
+using CocktailizrTypes.Security;
 
 namespace Cocktailizr.Auth
 {
@@ -10,17 +11,17 @@ namespace Cocktailizr.Auth
     {
         public IIdentity Identity { get; private set; }
 
-        private readonly IEnumerable<string> _roles;
+        private readonly UserRole _role;
 
-        public AuthPrincipal(IIdentity client, IEnumerable<string> roles)
+        public AuthPrincipal(IIdentity client, UserRole role)
         {
             Identity = client;
-            _roles = roles;
+            _role = role;
         }
 
         public bool IsInRole(string role)
         {
-            return _roles.Contains(role);
+            return _role.ToString().ToUpper().Equals(role);
         }
 
     }
