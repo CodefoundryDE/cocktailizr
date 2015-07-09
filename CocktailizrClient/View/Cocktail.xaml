@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:c="clr-namespace:CocktailizrClient.View.Converter"
+             xmlns:wpf="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
              mc:Ignorable="d" 
              d:DesignHeight="1280" d:DesignWidth="1024"
              DataContext="{Binding Cocktail, Source={StaticResource Locator}}"
@@ -17,48 +18,46 @@
             <ImageBrush ImageSource="../Assets/beach.jpg" Opacity="0.3"/>
         </Grid.Background>
         <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="4*"></ColumnDefinition>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-
-            <StackPanel Grid.Column="0">
-                <StackPanel Orientation="Horizontal">
-                    <Button Command="{Binding BackToSearchClickedCommand}" Width="Auto" Margin="5" HorizontalAlignment="Left" Style="{DynamicResource MaterialDesignFloatingActionButton}">
-                        <Image Source="../Assets/ic_action_back.png"></Image>
-                    </Button>
-                    <Button Command="{Binding EditCocktailCommand}" Content="Edit Cocktail" Margin="5"
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <Button Command="{Binding BackToSearchClickedCommand}" Width="Auto" Margin="5" HorizontalAlignment="Left" Style="{DynamicResource MaterialDesignFloatingActionButton}">
+                    <Image Source="../Assets/ic_action_back.png"></Image>
+                </Button>
+                <Button Command="{Binding EditCocktailCommand}" Content="Edit Cocktail" Margin="5"
                             Visibility="{Binding IsAdmin, Converter={StaticResource BooleanToVisibilityConverter}}"></Button>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Command="{Binding PreviousCocktailCommand}" IsEnabled="{Binding HasPreviousCocktail, UpdateSourceTrigger=PropertyChanged}" Margin="5" Style="{DynamicResource MaterialDesignFloatingActionButton}">
-                        <Image Source="/Assets/ic_action_back.png"></Image>
-                    </Button>
-                    <Label HorizontalAlignment="Center" Content="{Binding ShownCocktail.Name}" FontSize="{StaticResource HeadingFontSize}"></Label>
-                    <Button Command="{Binding NextCocktailCommand}" IsEnabled="{Binding HasNextCocktail, UpdateSourceTrigger=PropertyChanged}" Margin="5" Style="{DynamicResource MaterialDesignFloatingActionButton}">
-                        <Image Source="/Assets/ic_action_forward.png"></Image>
-                    </Button>
-                </StackPanel>
-                <Image Source="{Binding ShownCocktail.Image, Converter={StaticResource ImageConverter}}" HorizontalAlignment="Center" Height="400"></Image>
-                <StackPanel>
-                    <Label Content="Zubereitung:" HorizontalAlignment="Center"/>
-                    <TextBlock HorizontalAlignment="Center"><Run Text="Zubereitungszeit:" /><Run Text=" "/><Run Text="{Binding ShownCocktail.Rezept.Zubereitungszeit.TotalMinutes, Mode=OneWay}" /><Run Text=" "/><Run Text="Minuten" /></TextBlock>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Button Command="{Binding PreviousStepCommand}" Margin="5" Style="{DynamicResource MaterialDesignFloatingActionButton}" IsEnabled="{Binding HasPreviousStep}">
-                            <Image Source="/Assets/ic_action_back.png"/>
-                        </Button>
-                        <StackPanel>
-                            <Label Content="{Binding ShownStep.Headline}" HorizontalAlignment="Center"/>
-                            <Label Content="{Binding ShownStep.Beschreibung}" HorizontalAlignment="Center"/>
-                        </StackPanel>
-                        <Button Command="{Binding NextStepCommand}" Margin="5" Style="{DynamicResource MaterialDesignFloatingActionButton}" IsEnabled="{Binding HasNextStep}">
-                            <Image Source="/Assets/ic_action_forward.png"/>
-                        </Button>
-                    </StackPanel>
-                </StackPanel>
             </StackPanel>
 
-            <StackPanel Grid.Column="1">
+            <wpf:Card HorizontalAlignment="Center" VerticalAlignment="Center" Width="700" Height="600">
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Command="{Binding PreviousCocktailCommand}" IsEnabled="{Binding HasPreviousCocktail, UpdateSourceTrigger=PropertyChanged}" Margin="5" Style="{DynamicResource MaterialDesignFloatingActionButton}">
+                            <Image Source="/Assets/ic_action_back.png"></Image>
+                        </Button>
+                        <Label HorizontalAlignment="Center" Content="{Binding ShownCocktail.Name}" FontSize="{StaticResource HeadingFontSize}"></Label>
+                        <Button Command="{Binding NextCocktailCommand}" IsEnabled="{Binding HasNextCocktail, UpdateSourceTrigger=PropertyChanged}" Margin="5" Style="{DynamicResource MaterialDesignFloatingActionButton}">
+                            <Image Source="/Assets/ic_action_forward.png"></Image>
+                        </Button>
+                    </StackPanel>
+                    <Image Source="{Binding ShownCocktail.Image, Converter={StaticResource ImageConverter}}" HorizontalAlignment="Center" VerticalAlignment="Stretch" Height="400"></Image>
+                    <StackPanel>
+                        <Label Content="Zubereitung:" HorizontalAlignment="Center"/>
+                        <TextBlock HorizontalAlignment="Center"><Run Text="Zubereitungszeit:" /><Run Text=" "/><Run Text="{Binding ShownCocktail.Rezept.Zubereitungszeit.TotalMinutes, Mode=OneWay}" /><Run Text=" "/><Run Text="Minuten" /></TextBlock>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Button Command="{Binding PreviousStepCommand}" Margin="5" Style="{DynamicResource MaterialDesignFloatingActionButton}" IsEnabled="{Binding HasPreviousStep}">
+                                <Image Source="/Assets/ic_action_back.png"/>
+                            </Button>
+                            <StackPanel>
+                                <Label Content="{Binding ShownStep.Headline}" HorizontalAlignment="Center"/>
+                                <Label Content="{Binding ShownStep.Beschreibung}" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                            <Button Command="{Binding NextStepCommand}" Margin="5" Style="{DynamicResource MaterialDesignFloatingActionButton}" IsEnabled="{Binding HasNextStep}">
+                                <Image Source="/Assets/ic_action_forward.png"/>
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </wpf:Card>
+
+            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top" Margin="20">
                 <Label Content="Benötigte Zutaten:"></Label>
                 <ItemsControl ItemsSource="{Binding ShownCocktail.Zutaten, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5">
                     <ItemsControl.ItemTemplate>
