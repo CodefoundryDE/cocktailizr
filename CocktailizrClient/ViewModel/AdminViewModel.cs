@@ -1,12 +1,18 @@
-﻿using CocktailizrClient.AdminServiceReference;
+﻿using System.Windows.Input;
+using CocktailizrClient.AdminServiceReference;
 using CocktailizrClient.CocktailServiceReference;
+using CocktailizrClient.Message;
 using CocktailizrTypes.Model.Entities;
+using GalaSoft.MvvmLight.CommandWpf;
 
 namespace CocktailizrClient.ViewModel
 {
     public class AdminViewModel : CocktailizrClientViewModelBase
     {
-        #region Proprties
+        #region Properties
+
+        public ViewModelLocator ViewModelLocator { get; set; }
+
         private Cocktail _recentCocktail;
 
         public Cocktail RecentCocktail
@@ -18,27 +24,40 @@ namespace CocktailizrClient.ViewModel
                 RaisePropertyChanged(() => RecentCocktail);
             }
         }
-
-
-
-        public AdminServiceClient AdminServiceClient { get; set; }
-
-        public CocktailServiceClient CocktailServiceClient { get; set; }
         #endregion
 
         #region Commands
+        public ICommand SaveClickCommand
+        {
+            get { return new RelayCommand(SaveRecentCocktail); }
+        }
+
 
         #endregion
 
         #region Constructor
-        public AdminViewModel(AdminServiceClient adminServiceClient, CocktailServiceClient cocktailServiceClient)
+        public AdminViewModel(ViewModelLocator viewModelLocator)
         {
-            AdminServiceClient = adminServiceClient;
-            CocktailServiceClient = cocktailServiceClient;
+            ViewModelLocator = viewModelLocator;
+            MessengerInstance.Register<LoadAdminMessage>(this, ReceiveLoadAdmin);
         }
         #endregion
 
         #region Methods
+        private void ReceiveLoadAdmin(LoadAdminMessage message)
+        {
+            IsVisible = true;
+            if (message.CocktailToBeEdited != null)
+            {
+                RecentCocktail = message.CocktailToBeEdited;
+            }
+        }
+
+        private void SaveRecentCocktail()
+        {
+            ViewModelLocator.AdminServiceClient.ModifyCocktail(RecentCocktail.Id, RecentCocktail);
+        }
+
 
         #endregion
 
