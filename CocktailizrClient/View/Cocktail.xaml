@@ -34,22 +34,20 @@
                         <Image Source="/Assets/ic_action_forward.png"></Image>
                     </Button>
                 </StackPanel>
-                <Image Source="{Binding ShownCocktail.Image, Converter={StaticResource ImageConverter}}" HorizontalAlignment="Center" Height="500"></Image>
-
+                <Image Source="{Binding ShownCocktail.Image, Converter={StaticResource ImageConverter}}" HorizontalAlignment="Center" Height="400"></Image>
                 <StackPanel>
-                    <Label Content="Zubereitung:" HorizontalAlignment="Center"></Label>
-                    <TextBlock HorizontalAlignment="Center">
-                        <Run Text="Zubereitungszeit:" />
-                        <Run Text="{Binding ShownCocktail.Rezept.Zubereitungszeit.TotalMinutes, Mode=OneWay}" />
-                        <Run Text="Minuten" />
-                    </TextBlock>
+                    <Label Content="Zubereitung:" HorizontalAlignment="Center"/>
+                    <TextBlock HorizontalAlignment="Center"><Run Text="Zubereitungszeit:" /><Run Text=" "/><Run Text="{Binding ShownCocktail.Rezept.Zubereitungszeit.TotalMinutes, Mode=OneWay}" /><Run Text=" "/><Run Text="Minuten" /></TextBlock>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Button Margin="5" Style="{DynamicResource MaterialDesignFloatingActionButton}">
-                            <Image Source="/Assets/ic_action_back.png"></Image>
+                        <Button Command="{Binding PreviousStepCommand}" Margin="5" Style="{DynamicResource MaterialDesignFloatingActionButton}" IsEnabled="{Binding HasPreviousStep}">
+                            <Image Source="/Assets/ic_action_back.png"/>
                         </Button>
-                        <Label Content="Binding für den Zubereirungs-Text blablablabla"></Label>
-                        <Button Margin="5" Style="{DynamicResource MaterialDesignFloatingActionButton}">
-                            <Image Source="/Assets/ic_action_forward.png"></Image>
+                        <StackPanel>
+                            <Label Content="{Binding ShownStep.Headline}" HorizontalAlignment="Center"/>
+                            <Label Content="{Binding ShownStep.Beschreibung}" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                        <Button Command="{Binding NextStepCommand}" Margin="5" Style="{DynamicResource MaterialDesignFloatingActionButton}" IsEnabled="{Binding HasNextStep}">
+                            <Image Source="/Assets/ic_action_forward.png"/>
                         </Button>
                     </StackPanel>
                 </StackPanel>
