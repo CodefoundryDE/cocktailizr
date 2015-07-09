@@ -19,7 +19,7 @@ namespace CocktailizrTypes.Model.Entities
     {
         public CocktailizrEntityBase()
         {
-            Id = Guid.NewGuid();
+            Id = Guid.Empty;
         }
 
         private Guid _id;

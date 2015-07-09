@@ -73,6 +73,39 @@ namespace Cocktailizr.Model.Service
 
         public async Task<Cocktail> AddCocktail(Cocktail cocktail)
         {
+            List<string> errors = new List<string>();
+
+            //Plausibilitätprüfung
+            if (string.IsNullOrEmpty(cocktail.Name) || string.IsNullOrWhiteSpace(cocktail.Name))
+            {
+                errors.Add("Der Cocktailname darf nicht leern sein!");    
+            }
+            if (cocktail.Rezept.Zubereitungszeit.Equals(TimeSpan.Zero))
+            {
+                errors.Add("Die Zubereitungszeit darf nicht leern sein!");
+            }
+            if (!cocktail.Rezept.ZubereitungsSchritte.Any())
+            {
+                errors.Add("Bitte mindestens einen Zubereitungsschritt angeben!");
+            }
+            if (!cocktail.Zutaten.Any())
+            {
+                errors.Add("Bitte mindestens eine Zutat angeben!");
+            }
+            if (cocktail.ImageBytes.Length == 0)
+            {
+                errors.Add("Keine Bilddaten gefunden");
+            }
+            if (errors.Any())
+            {
+                string errorString = errors.Aggregate("Fehlerliste:", (current, error) => current + (Environment.NewLine + error));
+                throw new InvalidOperationException(errorString);
+            }
+
+            if (cocktail.Id.Equals(Guid.Empty))
+            {
+                cocktail.Id = Guid.NewGuid();
+            }
             await _context.Cocktails.InsertOneAsync(cocktail);
             return cocktail;
         }

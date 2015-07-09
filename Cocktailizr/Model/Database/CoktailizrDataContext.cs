@@ -71,14 +71,14 @@ namespace Cocktailizr.Model.Database
                             {
                                 Name = "Äpfel",
                                 IsOptional = false,
-                                Skala = ZutatenSkala.Stueck
+                                Skala = EZutatenSkala.Stueck
                             }, 30
                         },
                         {new Zutat()
                             {
                                 Name = "Eiswürfel",
                                 IsOptional = true,
-                                Skala = ZutatenSkala.Stueck
+                                Skala = EZutatenSkala.Stueck
                             }, 3
                         },
                     },
@@ -139,49 +139,49 @@ namespace Cocktailizr.Model.Database
                             {
                                 Name = "Limette",
                                 IsOptional = false,
-                                Skala = ZutatenSkala.Stueck
+                                Skala = EZutatenSkala.Stueck
                             }, 0.5m
                         },
                         {new Zutat()
                             {
                                 Name = "Eiswürfel",
                                 IsOptional = true,
-                                Skala = ZutatenSkala.Stueck
+                                Skala = EZutatenSkala.Stueck
                             }, 3
                         },
                         {new Zutat()
                             {
                                 Name = "Salz",
                                 IsOptional = false,
-                                Skala = ZutatenSkala.Priese
+                                Skala = EZutatenSkala.Priese
                             }, 1m
                         },
                         {new Zutat()
                             {
                                 Name = "Pfeffer",
                                 IsOptional = false,
-                                Skala = ZutatenSkala.Priese
+                                Skala = EZutatenSkala.Priese
                             }, 1m
                         },
                         {new Zutat()
                             {
                                 Name = "Tomatensaft",
                                 IsOptional = false,
-                                Skala = ZutatenSkala.Cl
+                                Skala = EZutatenSkala.Cl
                             }, 20m
                         },
                         {new Zutat()
                             {
                                 Name = "Worcestershire-Sauce",
                                 IsOptional = false,
-                                Skala = ZutatenSkala.Cl
+                                Skala = EZutatenSkala.Cl
                             }, 2m
                         },
                         {new Zutat()
                             {
                                 Name = "Wodka",
                                 IsOptional = false,
-                                Skala = ZutatenSkala.Cl
+                                Skala = EZutatenSkala.Cl
                             }, 5m
                         },
                     },
