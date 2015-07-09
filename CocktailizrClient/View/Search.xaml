@@ -12,9 +12,9 @@
     </UserControl.Resources>
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/Assets/beach.jpg" Stretch="UniformToFill" />
+            <ImageBrush ImageSource="../Assets/beach.jpg" Stretch="UniformToFill" />
         </Grid.Background>
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Margin="80,80">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Margin="80,80,80,200">
             <Label FontSize="{StaticResource HeadingFontSize}" Content="Cocktailizr" HorizontalAlignment="Center"  VerticalAlignment="Bottom"/>
             <TextBox Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Height="Auto" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" RenderTransformOrigin="0.156,-1.717"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
