@@ -12,22 +12,18 @@
     </UserControl.Resources>
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/Assets/beach.jpg" Stretch="UniformToFill" />
+            <ImageBrush ImageSource="../Assets/beach.jpg" Stretch="UniformToFill" />
         </Grid.Background>
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Margin="80,80">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Margin="80,80,80,200">
             <Label FontSize="{StaticResource HeadingFontSize}" Content="Cocktailizr" HorizontalAlignment="Center"  VerticalAlignment="Bottom"/>
             <TextBox Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Height="Auto" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" RenderTransformOrigin="0.156,-1.717"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
                 <Button Command="{Binding SearchClickedCommand}" Content="Suche" Width="Auto" Margin="5"/>
                 <Button Command="{Binding RandomClickedCommand}" Content="Auf gut Glück!" Width="Auto" Margin="5"/>
             </StackPanel>
-            <TextBlock HorizontalAlignment="Center"><Hyperlink Command="{Binding ExtendedSearchClickedCommand}"><Run Text="Erweiterte Suche"/></Hyperlink></TextBlock>
+            <Button HorizontalAlignment="Center" Command="{Binding ExtendedSearchClickedCommand}" Style="{StaticResource MaterialDesignFlatButton}">Erweiterte Suche</Button>
 
         </StackPanel>
-
-
-
-
 
     </Grid>
 </UserControl>
