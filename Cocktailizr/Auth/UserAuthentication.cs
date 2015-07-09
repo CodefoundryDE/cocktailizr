@@ -1,6 +1,7 @@
 ﻿using System.IdentityModel.Selectors;
 using System.IdentityModel.Tokens;
 using Cocktailizr.Model.Service;
+using Cocktailizr.Properties;
 
 namespace Cocktailizr.Auth
 {
@@ -20,7 +21,7 @@ namespace Cocktailizr.Auth
 
         public override void Validate(string userName, string password)
         {
-            if (userName.Equals("ANONYMOUS") && password.Equals("ANONYMOUS"))
+            if (userName.Equals(Resources.AnonymousCredentials) && password.Equals(Resources.AnonymousCredentials))
             {
                 return;
             }

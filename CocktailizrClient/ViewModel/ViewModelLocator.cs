@@ -20,6 +20,8 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Practices.ServiceLocation;
 using CocktailizrClient.AdminServiceReference;
+using CocktailizrClient.Properties;
+using CocktailizrClient.View;
 
 namespace CocktailizrClient.ViewModel
 {
@@ -42,8 +44,8 @@ namespace CocktailizrClient.ViewModel
             SimpleIoc.Default.Register(() =>
             {
                 var client = new CocktailServiceClient();
-                client.ClientCredentials.UserName.UserName = "ANONYMOUS";
-                client.ClientCredentials.UserName.Password = "ANONYMOUS";
+                client.ClientCredentials.UserName.UserName = Resources.AnonymousCredentials;
+                client.ClientCredentials.UserName.Password = Resources.AnonymousCredentials;
                 return client;
             });
 
@@ -51,8 +53,8 @@ namespace CocktailizrClient.ViewModel
             SimpleIoc.Default.Register(() =>
             {
                 var client = new AdminServiceClient();
-                client.ClientCredentials.UserName.UserName = "ANONYMOUS";
-                client.ClientCredentials.UserName.Password = "ANONYMOUS";
+                client.ClientCredentials.UserName.UserName = Resources.AnonymousCredentials;
+                client.ClientCredentials.UserName.Password = Resources.AnonymousCredentials;
                 return client;
             });
 
@@ -62,6 +64,7 @@ namespace CocktailizrClient.ViewModel
             SimpleIoc.Default.Register<CocktailViewModel>();
             SimpleIoc.Default.Register<SearchViewModel>();
             SimpleIoc.Default.Register<ExtendedSearchViewModel>();
+            SimpleIoc.Default.Register<AdminViewModel>();
             SimpleIoc.Default.Register<LoginViewModel>();
         }
 
@@ -97,6 +100,13 @@ namespace CocktailizrClient.ViewModel
             }
         }
 
+        public AdminViewModel Admin
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<AdminViewModel>();
+            }
+        }
         public LoginViewModel Login
         {
             get

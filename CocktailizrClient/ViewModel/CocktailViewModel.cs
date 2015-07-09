@@ -7,6 +7,7 @@ using System.Windows.Input;
 using CocktailizrClient.CocktailServiceReference;
 using CocktailizrClient.Message;
 using CocktailizrTypes.Model.Entities;
+using CocktailizrTypes.Security;
 using GalaSoft.MvvmLight.CommandWpf;
 
 namespace CocktailizrClient.ViewModel
@@ -14,8 +15,6 @@ namespace CocktailizrClient.ViewModel
     public class CocktailViewModel : CocktailizrClientViewModelBase
     {
         #region Properties
-        private CocktailServiceClient _serviceClient;
-
         private ObservableCollection<Cocktail> _searchResults = new ObservableCollection<Cocktail>();
 
         public ObservableCollection<Cocktail> SearchResults
@@ -89,8 +88,19 @@ namespace CocktailizrClient.ViewModel
             }
         }
 
-
         private Step _shownStep;
+
+
+        private bool _isAdmin;
+        public bool IsAdmin
+        {
+            get { return _isAdmin; }
+            set
+            {
+                _isAdmin = value;
+                RaisePropertyChanged(() => IsAdmin);
+            }
+        }
 
         public Step ShownStep
         {
@@ -133,6 +143,12 @@ namespace CocktailizrClient.ViewModel
 
         #endregion
 
+        #region Variables
+
+        private ViewModelLocator _viewModelLocator;
+
+        #endregion
+
         #region Commands
 
         public ICommand BackToSearchClickedCommand { get { return new RelayCommand(NavigateBackToSearch); } }
@@ -145,6 +161,8 @@ namespace CocktailizrClient.ViewModel
 
         public ICommand PreviousStepCommand { get { return new RelayCommand(ShowPreviousStep); } }
 
+        public ICommand EditCocktailCommand { get { return new RelayCommand(NavigateToCocktailEdit);} }
+
         #endregion
 
         #region Validation
@@ -152,10 +170,11 @@ namespace CocktailizrClient.ViewModel
         #endregion
 
         #region Constructor
-        public CocktailViewModel(CocktailServiceClient serviceClient)
+        public CocktailViewModel(ViewModelLocator viewModelLocator)
         {
-            _serviceClient = serviceClient;
+            _viewModelLocator = viewModelLocator;
             MessengerInstance.Register<CocktailSearchMessage>(this, RecieveCocktailSearchMessage);
+            MessengerInstance.Register<LoginMessage>(this, RecieveLoginMessage);
         }
         #endregion
 
@@ -195,20 +214,29 @@ namespace CocktailizrClient.ViewModel
             });
         }
 
+        private void RecieveLoginMessage(LoginMessage message)
+        {
+            if (LoginAction.RoleChange != message.LoginAction)
+            {
+                return;
+            }
+            IsAdmin = _viewModelLocator.AdminServiceClient.GetUserRole() == UserRole.Admin;
+        }
+
         private void ShowRandomCocktail()
         {
-            SearchResults = new ObservableCollection<Cocktail>() { _serviceClient.GetRandomCocktail() };
+            SearchResults = new ObservableCollection<Cocktail>() { _viewModelLocator.CocktailServiceClient.GetRandomCocktail() };
         }
 
         private void ShowCocktailWithGivenIngredients(IEnumerable<Zutat> ingredients)
         {
-            Cocktail[] results = _serviceClient.GetCocktailsByIndigrents(ingredients.ToArray());
+            Cocktail[] results = _viewModelLocator.CocktailServiceClient.GetCocktailsByIndigrents(ingredients.ToArray());
             SearchResults = new ObservableCollection<Cocktail>(results);
         }
 
         private void ShowSearchResults(string searchText)
         {
-            Cocktail[] results = _serviceClient.GetCocktailsByName(searchText);
+            Cocktail[] results = _viewModelLocator.CocktailServiceClient.GetCocktailsByName(searchText);
             SearchResults = new ObservableCollection<Cocktail>(results);
         }
 
@@ -253,6 +281,15 @@ namespace CocktailizrClient.ViewModel
             MessengerInstance.Send(new LoadSearchMessage { LoadExtendedSearch = false });
             IsVisible = false;
         }
+
+        private void NavigateToCocktailEdit()
+        {
+            if (ShownCocktail != null)
+            {
+                MessengerInstance.Send(new LoadAdminMessage { CocktailToBeEdited = ShownCocktail });
+            }
+        }
+
         #endregion
     }
 }
