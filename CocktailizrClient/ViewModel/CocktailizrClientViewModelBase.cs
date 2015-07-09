@@ -18,7 +18,10 @@ namespace CocktailizrClient.ViewModel
         private bool _isVisible;
         public bool IsVisible
         {
-            get { return _isVisible; }
+            get
+            {
+                return IsInDesignMode || _isVisible;
+            }
             set
             {
                 _isVisible = value;

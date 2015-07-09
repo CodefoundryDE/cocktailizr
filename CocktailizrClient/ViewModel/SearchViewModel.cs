@@ -90,6 +90,7 @@ namespace CocktailizrClient.ViewModel
         {
             if (!message.LoadExtendedSearch)
             {
+                SearchText = string.Empty;
                 IsVisible = true;
             }
 
