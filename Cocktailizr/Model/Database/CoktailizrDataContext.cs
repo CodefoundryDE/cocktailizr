@@ -85,13 +85,13 @@ namespace Cocktailizr.Model.Database
                 };
                 try
                 {
-                    string path = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);                   
+                    string path = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
                     string imgPath = path.Substring(6) + @"\Assets\apfelsaft.jpg";
                     cocktail.Image = Image.FromFile(imgPath);
 
                     Cocktails.InsertOneAsync(cocktail);
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
 
                 }
@@ -190,12 +190,12 @@ namespace Cocktailizr.Model.Database
                 try
                 {
                     string path = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
-                    string imgPath = path.Substring(6) + @"\Assets\bloodymary.png";
+                    string imgPath = path.Substring(6) + @"\Assets\bloodymary.jpg";
                     cocktail.Image = Image.FromFile(imgPath);
 
                     Cocktails.InsertOneAsync(cocktail);
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
 
                 }
@@ -282,12 +282,94 @@ namespace Cocktailizr.Model.Database
                 try
                 {
                     string path = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
-                    string imgPath = path.Substring(6) + @"\Assets\caipirinha.png";
+                    string imgPath = path.Substring(6) + @"\Assets\caipirinha.jpg";
                     cocktail.Image = Image.FromFile(imgPath);
 
                     Cocktails.InsertOneAsync(cocktail);
                 }
-                catch (Exception)
+                catch (Exception e)
+                {
+
+                }
+                #endregion
+            }
+
+            if (Cocktails.Find(c => c.Id.Equals(new Guid("EB577661-B70D-48A8-B5EB-C7A9CB49A2B6"))).CountAsync().Result == 0)
+            {
+                #region Piña Colada-DemoCocktail
+                var cocktail = new Cocktail()
+                {
+                    Id = new Guid("EB577661-B70D-48A8-B5EB-C7A9CB49A2B6"),
+                    Alcoholic = true,
+                    DrinkColor = Color.Green,
+                    Name = "Piña Colada",
+                    Tags = new List<string>() { "Sweet", "Cool", "Beach" },
+                    Rezept = new Rezept()
+                    {
+                        Zubereitungszeit = TimeSpan.FromMinutes(15),
+                        ZubereitungsSchritte = new List<Step>()
+                    {
+                        new Step()
+                        {
+                            Headline = "Zubereitung /1",
+                            Beschreibung = "Die Zutaten inklusive Eis im Shaker schütteln und in ein mit drei großen Eiswürfeln gefülltes Longdrinkglas abseihen."
+                        },                      
+                        new Step()
+                        {
+                            Headline = "Zubereitung /2",
+                            Beschreibung = "Zwei Ananasstücke werden zur Dekoration auf den Glasrand gesteckt (evtl. mit Zuckerrand)."
+                        },
+                    }
+                    },
+                    Zutaten = new Dictionary<Zutat, decimal>()
+                    {
+                        {new Zutat()
+                            {
+                                Name = "Weißer Rum",
+                                IsOptional = false,
+                                Skala = ZutatenSkala.Cl
+                            }, 3m
+                        },
+                        {new Zutat()
+                            {
+                                Name = "Kokosmilch",
+                                IsOptional = false,
+                                Skala = ZutatenSkala.Cl
+                            }, 3m
+                        },
+                        {new Zutat()
+                            {
+                                Name = "Ananassaft",
+                                IsOptional = false,
+                                Skala = ZutatenSkala.Cl
+                            }, 9m
+                        },
+                        {new Zutat()
+                            {
+                                Name = "Eiswürfel",
+                                IsOptional = false,
+                                Skala = ZutatenSkala.Stueck
+                            }, 3 
+                        },
+                        {new Zutat()
+                            {
+                                Name = "Ananasstücke",
+                                IsOptional = true,
+                                Skala = ZutatenSkala.Stueck
+                            }, 2 
+                        },
+                    },
+                };
+
+                try
+                {
+                    string path = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+                    string imgPath = path.Substring(6) + @"\Assets\pinacolada.jpg";
+                    cocktail.Image = Image.FromFile(imgPath);
+
+                    Cocktails.InsertOneAsync(cocktail);
+                }
+                catch (Exception e)
                 {
 
                 }
