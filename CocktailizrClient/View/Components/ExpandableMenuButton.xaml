@@ -14,11 +14,11 @@
         </Grid.RowDefinitions>
         <Button Style="{DynamicResource MaterialDesignFloatingActionButton}" Name="MenuButton" 
                 MouseEnter="MenuButton_MouseEnter" MouseLeave="MenuButton_MouseLeave"
-                HorizontalAlignment="Right">
+                HorizontalAlignment="Right" Padding="0">
             <Image Source="/Assets/ic_action_menu.png" VerticalAlignment="Center" HorizontalAlignment="Center"></Image>
         </Button>
         <ItemsControl Grid.Row="1" Name="MenuListBox" ItemsSource="{Binding ElementName=ExpandableManuButtonUc, Path=Itemssource, Mode=TwoWay}" 
-                 HorizontalAlignment="Left" Margin="5,15,5,5"
+                 HorizontalAlignment="Left" Margin="5,0,5,5" Padding="0,-15,0,0"
                  Background="Transparent"
                  MouseEnter="MenuListBox_MouseEnter" MouseLeave="MenuListBox_MouseLeave"
                  Visibility="Collapsed" >
@@ -31,7 +31,7 @@
                                     <Storyboard>
                                         <DoubleAnimation
                                                 Storyboard.TargetProperty="Height"
-                                                From="0.0" To="250" Duration="0:0:0:0.4" />
+                                                From="0.0" To="250" Duration="0:0:0:0.3" />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </DataTrigger.EnterActions>
@@ -40,7 +40,7 @@
                                     <Storyboard>
                                         <DoubleAnimation
                                                 Storyboard.TargetProperty="Height"
-                                                From="250" To="0" Duration="0:0:0:0.4" />
+                                                From="250" To="0" Duration="0:0:0:0.3" />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </DataTrigger.ExitActions>

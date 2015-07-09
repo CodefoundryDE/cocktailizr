@@ -21,6 +21,6 @@
             <Label Content="Franz Wimmer"></Label>
             <Label Content="Michael Hutterer"></Label>
         </StackPanel>
-        <Button Grid.Row="2" Content="Like + Close :)" Click="ButtonBase_OnClick"></Button>
+        <Button HorizontalAlignment="Center" Grid.Row="2" Content="Like + Close :)" Click="ButtonBase_OnClick"></Button>
     </Grid>
 </UserControl>

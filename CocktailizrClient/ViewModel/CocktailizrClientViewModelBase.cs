@@ -1,5 +1,7 @@
 ﻿using System;
 using System.ServiceModel.Channels;
+using System.Threading;
+using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
 
 namespace CocktailizrClient.ViewModel
@@ -18,7 +20,10 @@ namespace CocktailizrClient.ViewModel
         private bool _isVisible;
         public bool IsVisible
         {
-            get { return _isVisible; }
+            get
+            {
+                return IsInDesignMode || _isVisible;
+            }
             set
             {
                 _isVisible = value;
@@ -38,6 +43,7 @@ namespace CocktailizrClient.ViewModel
         private int _loadingOperationsCount;
         private readonly object _syncRoot = new object();
         private bool _disposed = false;
+        private Random _random = new Random();
 
         #endregion
 
@@ -66,6 +72,7 @@ namespace CocktailizrClient.ViewModel
                 _loadingOperationsCount += 1;
             }
             RaisePropertyChanged(() => IsLoading);
+            Thread.Sleep(((int)_random.Next(5) * 800) );
         }
 
         protected void ExitLoading()

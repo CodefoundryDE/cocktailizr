@@ -29,12 +29,10 @@ namespace Cocktailizr.Security
             {
                 throw new SecurityTokenException("Username and Password are required.");
             }
-
             if (!_benutzerService.CredentialsOk(userName, password).Result)
             {
                 throw new SecurityTokenException("Unknown Username or Incorrect Password");
             }
-
         }
     }
 

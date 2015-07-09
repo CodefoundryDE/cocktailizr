@@ -10,6 +10,7 @@ using CocktailizrClient.Message;
 using CocktailizrTypes.Model.Entities;
 using CocktailizrTypes.Security;
 using GalaSoft.MvvmLight.CommandWpf;
+using GalaSoft.MvvmLight.Views;
 
 namespace CocktailizrClient.ViewModel
 {
@@ -147,6 +148,7 @@ namespace CocktailizrClient.ViewModel
         #region Variables
 
         private ViewModelLocator _viewModelLocator;
+        private IDialogService _dialogService;
 
         #endregion
 
@@ -162,7 +164,7 @@ namespace CocktailizrClient.ViewModel
 
         public ICommand PreviousStepCommand { get { return new RelayCommand(ShowPreviousStep); } }
 
-        public ICommand EditCocktailCommand { get { return new RelayCommand(NavigateToCocktailEdit);} }
+        public ICommand EditCocktailCommand { get { return new RelayCommand(NavigateToCocktailEdit); } }
 
         #endregion
 
@@ -171,9 +173,10 @@ namespace CocktailizrClient.ViewModel
         #endregion
 
         #region Constructor
-        public CocktailViewModel(ViewModelLocator viewModelLocator)
+        public CocktailViewModel(ViewModelLocator viewModelLocator, IDialogService dialogService)
         {
             _viewModelLocator = viewModelLocator;
+            _dialogService = dialogService;
             MessengerInstance.Register<CocktailSearchMessage>(this, RecieveCocktailSearchMessage);
             MessengerInstance.Register<LoginMessage>(this, RecieveLoginMessage);
         }
@@ -182,6 +185,7 @@ namespace CocktailizrClient.ViewModel
         #region Methods
         private void RecieveCocktailSearchMessage(CocktailSearchMessage message)
         {
+            ShownCocktail = null;
             IsVisible = true;
             Task.Factory.StartNew(() =>
             {
@@ -226,7 +230,8 @@ namespace CocktailizrClient.ViewModel
 
         private void ShowRandomCocktail()
         {
-            SearchResults = new ObservableCollection<Cocktail>() { _viewModelLocator.CocktailServiceClient.GetRandomCocktail() };
+            Cocktail result = _viewModelLocator.CocktailServiceClient.GetRandomCocktail();
+            SearchResults = new ObservableCollection<Cocktail> { result };
         }
 
         private void ShowCocktailWithGivenIngredients(IEnumerable<Zutat> ingredients)
@@ -235,9 +240,7 @@ namespace CocktailizrClient.ViewModel
             SearchResults = new ObservableCollection<Cocktail>(results);
             if (!results.Any())
             {
-                MessageBox.Show("Ihre Suche liefert keine Ergebnisse");
-                MessengerInstance.Send(new LoadSearchMessage() { LoadExtendedSearch = true });
-                IsVisible = false;
+                _dialogService.ShowMessage("Ihre Anfrage liefert keine Ergebnisse", "Achtung", "Ok", NavigateBackToSearch);
             }
         }
 
@@ -247,9 +250,7 @@ namespace CocktailizrClient.ViewModel
             SearchResults = new ObservableCollection<Cocktail>(results);
             if (!results.Any())
             {
-                MessageBox.Show("Ihre Suche liefert keine Ergebnisse");
-                MessengerInstance.Send(new LoadSearchMessage() { LoadExtendedSearch = false });
-                IsVisible = false;
+                _dialogService.ShowMessage("Ihre Anfrage liefert keine Ergebnisse", "Achtung", "Ok", NavigateBackToSearch);
             }
         }
 
@@ -300,6 +301,7 @@ namespace CocktailizrClient.ViewModel
             if (ShownCocktail != null)
             {
                 MessengerInstance.Send(new LoadAdminMessage { CocktailToBeEdited = ShownCocktail });
+                IsVisible = false;
             }
         }
 

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using CocktailizrTypes.Helper.Serializer;
 using MongoDB.Bson;
@@ -36,7 +38,7 @@ namespace CocktailizrTypes.Model.Entities
         [BsonElement]
         public IEnumerable<string> Tags
         {
-            get { return _tags; }
+            get { return _tags ?? (_tags = new List<string>()); }
             set
             {
                 _tags = value;
@@ -78,7 +80,7 @@ namespace CocktailizrTypes.Model.Entities
         [BsonElement, BsonDictionaryOptions(DictionaryRepresentation.ArrayOfDocuments)]
         public IDictionary<Zutat, decimal> Zutaten
         {
-            get { return _zutaten; }
+            get { return _zutaten ?? (_zutaten = new Dictionary<Zutat, decimal>()); }
             set
             {
                 _zutaten = value;
@@ -86,13 +88,15 @@ namespace CocktailizrTypes.Model.Entities
             }
         }
 
+
         private Rezept _rezept;
+        private byte[] _imageBytes;
 
         [DataMember]
         [BsonElement]
         public Rezept Rezept
         {
-            get { return _rezept; }
+            get { return _rezept ?? (_rezept = new Rezept()); }
             set
             {
                 _rezept = value;
@@ -102,7 +106,17 @@ namespace CocktailizrTypes.Model.Entities
 
         [DataMember]
         [BsonElement]
-        public byte[] ImageBytes { get; set; }
+        public byte[] ImageBytes
+        {
+            get { return _imageBytes ?? (_imageBytes = new byte[] { }); }
+            set
+            {
+                _imageBytes = value; 
+                OnPropertyChanged();
+                // ReSharper disable once ExplicitCallerInfoArgument
+                OnPropertyChanged("Image");
+            }
+        }
 
         [BsonIgnore]
         public Image Image
@@ -112,7 +126,6 @@ namespace CocktailizrTypes.Model.Entities
                 if (ImageBytes == null) { return null; }
                 var ms = new MemoryStream(ImageBytes);
                 return ms.Length > 0 ? new Bitmap(ms) : null;
-
             }
             set
             {
@@ -137,16 +150,50 @@ namespace CocktailizrTypes.Model.Entities
 
     [DataContract]
     [BsonIgnoreExtraElements]
-    public class Rezept
+    public class Rezept : INotifyPropertyChanged
     {
-        [DataMember]
-        [BsonElement]
-        public TimeSpan Zubereitungszeit { get; set; }
+        private IEnumerable<Step> _zubereitungsSchritte;
+        private TimeSpan _zubereitungszeit;
 
         [DataMember]
         [BsonElement]
-        public IEnumerable<Step> ZubereitungsSchritte { get; set; }
+        public TimeSpan Zubereitungszeit
+        {
+            get { return _zubereitungszeit; }
+            set
+            {
+                _zubereitungszeit = value; OnPropertyChanged();
+                // ReSharper disable once ExplicitCallerInfoArgument
+                OnPropertyChanged("ZubereitungMinutes");
+            }
+        }
 
+        public double ZubereitungMinutes
+        {
+            get { return Zubereitungszeit.TotalMinutes; }
+            set
+            {
+                Zubereitungszeit = TimeSpan.FromMinutes(value);
+                OnPropertyChanged();
+            }
+        }
+
+        [DataMember]
+        [BsonElement]
+        public IEnumerable<Step> ZubereitungsSchritte
+        {
+            get { return _zubereitungsSchritte ?? (_zubereitungsSchritte = new List<Step>()); }
+            set { _zubereitungsSchritte = value; }
+        }
+
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            var handler = PropertyChanged;
+            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 
     [DataContract]
@@ -165,19 +212,47 @@ namespace CocktailizrTypes.Model.Entities
 
     [DataContract]
     [BsonIgnoreExtraElements]
-    public class Zutat
+    public class Zutat : INotifyPropertyChanged
     {
-        [DataMember]
-        [BsonElement]
-        public string Name { get; set; }
+        private string _name = String.Empty;
+        private bool _isOptional;
+        private EZutatenSkala _skala = EZutatenSkala.Stueck;
 
         [DataMember]
         [BsonElement]
-        public bool IsOptional { get; set; }
+        public string Name
+        {
+            get { return _name; }
+            set
+            {
+                _name = value;
+                OnPropertyChanged();
+            }
+        }
+
+        [DataMember]
+        [BsonElement]
+        public bool IsOptional
+        {
+            get { return _isOptional; }
+            set
+            {
+                _isOptional = value;
+                OnPropertyChanged();
+            }
+        }
 
         [DataMember]
         [BsonElement, BsonRepresentation(BsonType.String)]
-        public ZutatenSkala Skala { get; set; }
+        public EZutatenSkala Skala
+        {
+            get { return _skala; }
+            set
+            {
+                _skala = value;
+                OnPropertyChanged();
+            }
+        }
 
         [BsonIgnore]
         public bool IsSelected { get; set; }
@@ -219,10 +294,19 @@ namespace CocktailizrTypes.Model.Entities
             hash += Skala.GetHashCode() * 17;
             return hash;
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            var handler = PropertyChanged;
+            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 
+
     [DataContract]
-    public enum ZutatenSkala
+    public enum EZutatenSkala
     {
         [EnumMember]
         Cl,
