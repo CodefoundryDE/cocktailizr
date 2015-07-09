@@ -13,10 +13,6 @@
             <Style TargetType="FrameworkElement" x:Key="DialogElementStyle">
                 <Setter Property="Margin" Value="20" />
             </Style>
-            <Style x:Key="DialogButtonStyle" TargetType="Button" BasedOn="{StaticResource DialogElementStyle}">
-                <Setter Property="Height" Value="30" />
-                <Setter Property="Padding" Value="10,0"></Setter>
-            </Style>
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
@@ -39,12 +35,11 @@
                     <TextBlock Text="{Binding Dialog.DialogText}" TextWrapping="WrapWithOverflow" Style="{StaticResource DialogElementStyle}" />
                 </ScrollViewer>
                 <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button Style="{StaticResource DialogButtonStyle}"
-                        Command="{Binding PrimButtonCommand}"
+                    <Button Command="{Binding PrimButtonCommand}" Margin="5"
                         Content="{Binding Dialog.ButtonConfirmText}"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center" />
-                    <Button Style="{StaticResource DialogButtonStyle}"
+                    <Button Margin="5"
                         Command="{Binding SecButtonCommand}"
                         Content="{Binding Dialog.ButtonCancelText}"
                         Visibility="{Binding Dialog.ButtonCancelText, Converter={StaticResource ObjectInstanciatedToVisibilityConverter}}"

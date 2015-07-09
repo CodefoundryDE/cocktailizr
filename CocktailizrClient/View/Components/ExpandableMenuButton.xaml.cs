@@ -15,14 +15,7 @@ namespace CocktailizrClient.View.Components
     {
         #region Properties
 
-        private int _menuIsOpen;
-        public int MenuIsOpen{
-            get { return _menuIsOpen; }
-            set
-            {
-                _menuIsOpen = value;
-            }
-        }
+        public int MenuIsOpen { get; set; }
 
         #region DependencyProperties
 
@@ -86,7 +79,7 @@ namespace CocktailizrClient.View.Components
 
         private void MenuButton_MouseLeave(object sender, MouseEventArgs e)
         {
-                CloseMenu();
+           CloseMenu();
         }
 
         private void MenuListBox_MouseEnter(object sender, MouseEventArgs e)
@@ -113,11 +106,11 @@ namespace CocktailizrClient.View.Components
         private async void CloseMenu()
         {
             MenuIsOpen--;
-            await Task.Delay(150);
+            await Task.Delay(50);
             if (MenuIsOpen == 0)
             {
                 MenuListBox.IsTabStop = false;
-                await Task.Delay(390);
+                await Task.Delay(300);
                 MenuListBox.Visibility = Visibility.Collapsed;
             }
         }
