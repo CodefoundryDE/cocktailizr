@@ -12,6 +12,7 @@ using System.Windows;
 using CocktailizrClient.AdminServiceReference;
 using CocktailizrClient.CocktailServiceReference;
 using CocktailizrClient.Message;
+using CocktailizrClient.Properties;
 
 namespace CocktailizrClient.ViewModel
 {
@@ -58,6 +59,10 @@ namespace CocktailizrClient.ViewModel
             {
                 IsVisible = true;
             }
+            if (message.LoginAction == LoginAction.Logout)
+            {
+                Logout();
+            }
         }
 
         private void ButtonLoginClick()
@@ -77,8 +82,9 @@ namespace CocktailizrClient.ViewModel
                     // Bei Erfolg
                     IsVisible = false;
                     MessengerInstance.Send(new LoginMessage() { LoginAction = LoginAction.RoleChange });
-
-                    MessageBox.Show(_viewModelLocator.AdminServiceClient.GetUserRole().ToString());
+                    UserName = string.Empty;
+                    Password = string.Empty;
+                    //MessageBox.Show(_viewModelLocator.AdminServiceClient.GetUserRole().ToString());
                 }
                 else
                 {
@@ -93,6 +99,34 @@ namespace CocktailizrClient.ViewModel
             if (exceptionFlag)
             {
                 MessageBox.Show("Username oder Passwort sind inkorrekt!");
+                Password = string.Empty;
+            }
+
+        }
+
+        private void Logout()
+        {
+            //Logout entspricht einem Login als "ANONYMOUS"
+            var credentials = new ClientCredentials();
+            credentials.UserName.UserName = Resources.AnonymousCredentials;
+            credentials.UserName.Password = Resources.AnonymousCredentials;
+
+            bool exceptionFlag = false;
+
+            try
+            {
+                _viewModelLocator.LoginServiceClients(credentials);
+                MessengerInstance.Send(new LoginMessage() { LoginAction = LoginAction.RoleChange });
+
+            }
+            catch
+            {
+                // Login fehlgeschlagen
+                exceptionFlag = true;
+            }
+            if (exceptionFlag)
+            {
+                MessageBox.Show("Fehler beim Logout!");
             }
 
         }

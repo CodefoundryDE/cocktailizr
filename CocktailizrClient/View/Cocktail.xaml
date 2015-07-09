@@ -22,9 +22,13 @@
             </Grid.ColumnDefinitions>
 
             <StackPanel Grid.Column="0">
+                <StackPanel Orientation="Horizontal">
                 <Button Command="{Binding BackToSearchClickedCommand}" Width="Auto" Margin="5" HorizontalAlignment="Left" Style="{DynamicResource MaterialDesignFloatingActionButton}">
                     <Image Source="/Assets/ic_action_back.png"></Image>
                 </Button>
+                    <Button Command="{Binding EditCocktailCommand}" Content="Edit Cocktail" Margin="5"
+                            Visibility="{Binding IsAdmin, Converter={StaticResource BooleanToVisibilityConverter}}"></Button>
+                </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Button Command="{Binding PreviousCocktailCommand}" IsEnabled="{Binding HasPreviousCocktail, UpdateSourceTrigger=PropertyChanged}" Margin="5" Style="{DynamicResource MaterialDesignFloatingActionButton}">
                         <Image Source="/Assets/ic_action_back.png"></Image>

@@ -15,6 +15,7 @@ namespace CocktailizrClient.Message
     {
         Show,
         Cancel,
-        RoleChange
+        RoleChange,
+        Logout
     }
 }

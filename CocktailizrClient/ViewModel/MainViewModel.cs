@@ -1,8 +1,13 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using CocktailizrClient.AdminServiceReference;
 using CocktailizrClient.Message;
+using CocktailizrTypes.Model.Entities;
+using CocktailizrTypes.Security;
 using GalaSoft.MvvmLight.CommandWpf;
 
 namespace CocktailizrClient.ViewModel
@@ -34,6 +39,36 @@ namespace CocktailizrClient.ViewModel
             }
         }
 
+
+        private bool _impressumVisible;
+        public bool ImpressumVisible
+        {
+            get { return _impressumVisible; }
+            set
+            {
+                _impressumVisible = value;
+                RaisePropertyChanged(() => ImpressumVisible);
+            }
+        }
+
+        #endregion
+
+        #region Variables
+
+        private ViewModelLocator _viewModelLocator;
+
+        private RelayCommand _loginCommand;
+        private KeyValuePair<object, object> _loginKvp;
+        private RelayCommand _logoutCommand;
+        private KeyValuePair<object, object> _logoutKvp;
+        private RelayCommand _ueberCocktailizrCommand;
+        private KeyValuePair<object, object> _ueberCocktailizrKvp;
+        private RelayCommand _beendenCommand;
+        private KeyValuePair<object, object> _beendenKvp;
+        private RelayCommand _neuerCocktailCommand;
+        private KeyValuePair<object, object> _neuerCoktailKvp;
+
+
         #endregion
 
         #region Constructor
@@ -41,13 +76,11 @@ namespace CocktailizrClient.ViewModel
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
-        public MainViewModel()
+        public MainViewModel(ViewModelLocator viewModelLocator)
         {
-            using (var client = new AdminServiceClient())
-            {
-                client.ClientCredentials.UserName.UserName = "Admin";
-                client.ClientCredentials.UserName.Password = "Cocktailizor";
-            }
+            _viewModelLocator = viewModelLocator;
+
+            MessengerInstance.Register<LoginMessage>(this, RecieveLoginMessage);
 
             InitializeMenuCommands();
         }
@@ -58,19 +91,76 @@ namespace CocktailizrClient.ViewModel
 
         private void InitializeMenuCommands()
         {
+            _loginCommand = new RelayCommand(NavigateToLogin);
+            _loginKvp = new KeyValuePair<object, object>("Login", _loginCommand);
+
+            _logoutCommand = new RelayCommand(SendLogOutRequest);
+            _logoutKvp = new KeyValuePair<object, object>("Logout", _logoutCommand);
+
+            _beendenCommand = new RelayCommand(ShutApplicationDown);
+            _beendenKvp = new KeyValuePair<object, object>("Beenden", _beendenCommand);
+
+            _neuerCocktailCommand = new RelayCommand(NavigateToCocktailEdit);
+            _neuerCoktailKvp = new KeyValuePair<object, object>("Neuer Cocktail", _neuerCocktailCommand);
+
+            _ueberCocktailizrCommand = new RelayCommand(NavigateToImpressum);
+            _ueberCocktailizrKvp = new KeyValuePair<object, object>("Über Cocktailizr", _ueberCocktailizrCommand);
+
             MenuCommands = new ObservableCollection<KeyValuePair<object, object>>()
             {
-                new KeyValuePair<object, object>("Login", new RelayCommand(CallLoginDialog)),                
-                new KeyValuePair<object, object>("Über Cocktailizr", new RelayCommand(CallLoginDialog)),
-                new KeyValuePair<object, object>("Beenden", new RelayCommand(CallLoginDialog)),
+                _loginKvp,
+                _ueberCocktailizrKvp,
+                _beendenKvp
             };
         }
 
-        private void CallLoginDialog()
+        private void NavigateToLogin()
         {
             MessengerInstance.Send(new LoginMessage() { LoginAction = LoginAction.Show });
         }
 
+        private void SendLogOutRequest()
+        {
+            MessengerInstance.Send(new LoginMessage() { LoginAction = LoginAction.Logout });
+        }
+
+        private void ShutApplicationDown()
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void NavigateToCocktailEdit()
+        {
+            MessengerInstance.Send(new LoadAdminMessage { CocktailToBeEdited = new Cocktail() });
+        }
+
+        private void NavigateToImpressum()
+        {
+            ImpressumVisible = true;
+        }
+
+        private void RecieveLoginMessage(LoginMessage message)
+        {
+            if (LoginAction.RoleChange != message.LoginAction)
+            {
+                return;
+            }
+            if (_viewModelLocator.AdminServiceClient.GetUserRole() == UserRole.Admin)
+            {
+                //Einloggen erfolte gerade als Admin
+                //Entfernen des Login-Buttons, einhängen eines Logout-Buttons
+                MenuCommands.Remove(_loginKvp);
+                MenuCommands.Insert(0, _logoutKvp);
+                MenuCommands.Insert(1, _neuerCoktailKvp);
+            }
+            else
+            {
+                MenuCommands.Remove(_logoutKvp);
+                MenuCommands.Remove(_neuerCoktailKvp);
+                MenuCommands.Insert(0, _loginKvp);
+            }
+
+        }
 
         #endregion
     }
