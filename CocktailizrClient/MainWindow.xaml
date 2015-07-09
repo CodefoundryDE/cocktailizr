@@ -15,7 +15,9 @@
         <view:Search />
         <!-- ExtendedSearch -->
         <view:ExtendedSearch />
-        
+        <!-- AdminView -->
+        <view:Admin Grid.RowSpan="2"/>
+
         <!-- Options-Button -->
         <comp:ExpandableMenuButton Margin="5" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Right" Itemssource="{Binding MenuCommands, Mode=TwoWay}"/>
 

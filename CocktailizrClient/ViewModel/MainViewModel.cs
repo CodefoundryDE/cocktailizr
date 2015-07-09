@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -132,6 +133,9 @@ namespace CocktailizrClient.ViewModel
 
         private void NavigateToCocktailEdit()
         {
+            _viewModelLocator.Search.IsVisible = false;
+            _viewModelLocator.Cocktail.IsVisible = false;
+            _viewModelLocator.ExtendedSearch.IsVisible = false;
             MessengerInstance.Send(new LoadAdminMessage { CocktailToBeEdited = new Cocktail() });
         }
 
