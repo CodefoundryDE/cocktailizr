@@ -6,6 +6,8 @@ using System.IdentityModel.Policy;
 using System.Linq;
 using System.Security.Principal;
 using System.Web;
+using System.Web.ClientServices;
+using Cocktailizr.Properties;
 using CocktailizrTypes.Security;
 
 namespace Cocktailizr.Security
@@ -30,11 +32,17 @@ namespace Cocktailizr.Security
         public bool Evaluate(EvaluationContext evaluationContext, ref object state)
         {
             // get the authenticated client identity
-            IIdentity client = GetClientIdentity(evaluationContext);
-
-            UserRole role = _benutzerService.GetUserRole(client.Name).Result;
-
-            evaluationContext.Properties["Principal"] = new AuthPrincipal(client, role);
+            try
+            {
+                IIdentity client;
+                client = GetClientIdentity(evaluationContext);
+                UserRole role = _benutzerService.GetUserRole(client.Name).Result;
+                evaluationContext.Properties["Principal"] = new AuthPrincipal(client, role);
+            }
+            catch
+            {
+                evaluationContext.Properties["Principal"] = new AuthPrincipal(new GenericIdentity("ANONYMOUS"), UserRole.User);
+            }
             return true;
         }
 
