@@ -28,11 +28,11 @@
 
             <wpf:Card HorizontalAlignment="Center" VerticalAlignment="Center" Width="700" Height="600">
                 <StackPanel Orientation="Vertical">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
                         <Button Command="{Binding PreviousCocktailCommand}" IsEnabled="{Binding HasPreviousCocktail, UpdateSourceTrigger=PropertyChanged}" Margin="5" Style="{DynamicResource MaterialDesignFloatingActionButton}">
                             <Image Source="/Assets/ic_action_back.png"></Image>
                         </Button>
-                        <Label HorizontalAlignment="Center" Content="{Binding ShownCocktail.Name}" FontSize="{StaticResource HeadingFontSize}"></Label>
+                        <Label HorizontalAlignment="Center" Content="{Binding ShownCocktail.Name}" FontSize="{StaticResource HeadingFontSize}" Width="400"></Label>
                         <Button Command="{Binding NextCocktailCommand}" IsEnabled="{Binding HasNextCocktail, UpdateSourceTrigger=PropertyChanged}" Margin="5" Style="{DynamicResource MaterialDesignFloatingActionButton}">
                             <Image Source="/Assets/ic_action_forward.png"></Image>
                         </Button>
@@ -47,7 +47,7 @@
                             </Button>
                             <StackPanel>
                                 <Label Content="{Binding ShownStep.Headline}" HorizontalAlignment="Center"/>
-                                <Label Content="{Binding ShownStep.Beschreibung}" HorizontalAlignment="Center"/>
+                                <TextBlock Text="{Binding ShownStep.Beschreibung}" HorizontalAlignment="Center" Width="500" TextWrapping="Wrap"/>
                             </StackPanel>
                             <Button Command="{Binding NextStepCommand}" Margin="5" Style="{DynamicResource MaterialDesignFloatingActionButton}" IsEnabled="{Binding HasNextStep}">
                                 <Image Source="/Assets/ic_action_forward.png"/>

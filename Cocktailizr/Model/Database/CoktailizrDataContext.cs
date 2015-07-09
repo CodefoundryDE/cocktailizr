@@ -245,35 +245,35 @@ namespace Cocktailizr.Model.Database
                             {
                                 Name = "Limette",
                                 IsOptional = false,
-                                Skala = ZutatenSkala.Stueck
+                                Skala = EZutatenSkala.Stueck
                             }, 1m
                         },
                         {new Zutat()
                             {
                                 Name = "Crushed Ice",
                                 IsOptional = false,
-                                Skala = ZutatenSkala.Cl
+                                Skala = EZutatenSkala.Cl
                             }, 40m
                         },
                         {new Zutat()
                             {
                                 Name = "Brauner Zucker",
                                 IsOptional = false,
-                                Skala = ZutatenSkala.Priese
+                                Skala = EZutatenSkala.Priese
                             }, 1m
                         },
                         {new Zutat()
                             {
                                 Name = "Ginger Ale",
                                 IsOptional = false,
-                                Skala = ZutatenSkala.Cl
+                                Skala = EZutatenSkala.Cl
                             }, 10m
                         },
                         {new Zutat()
                             {
                                 Name = "Cachaca",
                                 IsOptional = false,
-                                Skala = ZutatenSkala.Cl
+                                Skala = EZutatenSkala.Cl
                             }, 10m
                         },
                     },
@@ -327,35 +327,35 @@ namespace Cocktailizr.Model.Database
                             {
                                 Name = "Weißer Rum",
                                 IsOptional = false,
-                                Skala = ZutatenSkala.Cl
+                                Skala = EZutatenSkala.Cl
                             }, 3m
                         },
                         {new Zutat()
                             {
                                 Name = "Kokosmilch",
                                 IsOptional = false,
-                                Skala = ZutatenSkala.Cl
+                                Skala = EZutatenSkala.Cl
                             }, 3m
                         },
                         {new Zutat()
                             {
                                 Name = "Ananassaft",
                                 IsOptional = false,
-                                Skala = ZutatenSkala.Cl
+                                Skala = EZutatenSkala.Cl
                             }, 9m
                         },
                         {new Zutat()
                             {
                                 Name = "Eiswürfel",
                                 IsOptional = false,
-                                Skala = ZutatenSkala.Stueck
+                                Skala = EZutatenSkala.Stueck
                             }, 3 
                         },
                         {new Zutat()
                             {
                                 Name = "Ananasstücke",
                                 IsOptional = true,
-                                Skala = ZutatenSkala.Stueck
+                                Skala = EZutatenSkala.Stueck
                             }, 2 
                         },
                     },
