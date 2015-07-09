@@ -117,6 +117,9 @@
     <EmbeddedResource Include="Assets\cocktail.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <Content Include="Assets\apfelsaft.jpg" />
+    <Content Include="Assets\bloodymary.jpg" />
+    <Content Include="Assets\caipirinha.jpg" />
     <Content Include="Service\Impl\AdminService.svc" />
     <Content Include="Service\Impl\CocktailService.svc" />
     <Content Include="Web.config">

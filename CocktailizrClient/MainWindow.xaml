@@ -5,7 +5,7 @@
         xmlns:comp="clr-namespace:CocktailizrClient.View.Components"
         Title="MainWindow" Height="350" Width="525"
         DataContext="{Binding Main, Source={StaticResource Locator}}" 
-        WindowState="Maximized" MinWidth="1280" MinHeight="768">
+        WindowState="Maximized" MinWidth="1280" MinHeight="768" Icon="Assets/App.ico">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
