@@ -21,7 +21,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <Grid Background="White" Grid.Row="0" Grid.RowSpan="3" Opacity="0.75"></Grid>
+        <Grid Background="White" Grid.Row="0" Grid.RowSpan="3"></Grid>
         <TextBox Grid.Row="0" wpf:TextField.Hint="Benutzername" Text="{Binding UserName}" Width="200" Style="{StaticResource LoginTextBoxStyle}">
             <TextBox.InputBindings>
                 <KeyBinding Key="Enter" Command="{Binding ButtonLoginCommand}" />
