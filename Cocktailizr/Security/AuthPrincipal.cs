@@ -5,7 +5,7 @@ using System.Security.Principal;
 using System.Web;
 using CocktailizrTypes.Security;
 
-namespace Cocktailizr.Auth
+namespace Cocktailizr.Security
 {
     public class AuthPrincipal : IPrincipal
     {

@@ -3,7 +3,7 @@ using System.IdentityModel.Tokens;
 using Cocktailizr.Model.Service;
 using Cocktailizr.Properties;
 
-namespace Cocktailizr.Auth
+namespace Cocktailizr.Security
 {
     public class UserAuthentication : UserNamePasswordValidator
     {

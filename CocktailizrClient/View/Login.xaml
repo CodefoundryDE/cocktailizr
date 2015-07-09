@@ -15,26 +15,27 @@
             <Setter Property="Margin" Value="10" />
         </Style>
     </UserControl.Resources>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-        <Grid Background="White" Grid.Row="0" Grid.RowSpan="3" Opacity="0.75"></Grid>
-        <TextBox Grid.Row="0" wpf:TextField.Hint="Benutzername" Text="{Binding UserName}" Width="200" Style="{StaticResource LoginTextBoxStyle}">
-            <TextBox.InputBindings>
-                <KeyBinding Key="Enter" Command="{Binding ButtonLoginCommand}" />
-            </TextBox.InputBindings>
-        </TextBox>
-        <PasswordBox Grid.Row="1" Name="PasswordBox" PasswordChanged="PasswordBox_OnPasswordChanged" wpf:TextField.Hint="Passwort" Width="200" Style="{StaticResource LoginPasswordBoxStyle}">
-            <PasswordBox.InputBindings>
-                <KeyBinding Key="Enter" Command="{Binding ButtonLoginCommand}" />
-            </PasswordBox.InputBindings>
-        </PasswordBox>
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Command="{Binding ButtonLoginCommand}" Style="{StaticResource MaterialDesignFlatButton}">Anmelden</Button>
-            <Button Command="{Binding ButtonCancelCommand}" Style="{StaticResource MaterialDesignFlatButton}">Abbrechen</Button>
-        </StackPanel>
-    </Grid>
+    <wpf:Card>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <TextBox Grid.Row="0" wpf:TextField.Hint="Benutzername" Text="{Binding UserName}" Width="200" Style="{StaticResource LoginTextBoxStyle}">
+                <TextBox.InputBindings>
+                    <KeyBinding Key="Enter" Command="{Binding ButtonLoginCommand}" />
+                </TextBox.InputBindings>
+            </TextBox>
+            <PasswordBox Grid.Row="1" Name="PasswordBox" PasswordChanged="PasswordBox_OnPasswordChanged" wpf:TextField.Hint="Passwort" Width="200" Style="{StaticResource LoginPasswordBoxStyle}">
+                <PasswordBox.InputBindings>
+                    <KeyBinding Key="Enter" Command="{Binding ButtonLoginCommand}" />
+                </PasswordBox.InputBindings>
+            </PasswordBox>
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Command="{Binding ButtonLoginCommand}" Style="{StaticResource MaterialDesignFlatButton}">Anmelden</Button>
+                <Button Command="{Binding ButtonCancelCommand}" Style="{StaticResource MaterialDesignFlatButton}">Abbrechen</Button>
+            </StackPanel>
+        </Grid>
+    </wpf:Card>
 </UserControl>

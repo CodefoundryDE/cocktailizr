@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Cocktailizr.Auth;
+using Cocktailizr.Security;
 using Cocktailizr.Model.Service;
 using GalaSoft.MvvmLight.Ioc;
 
