@@ -105,11 +105,24 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="https://localhost:44300/Service/Impl/AdminService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="https://localhost:44300/Service/Impl/AdminService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="https://localhost:44300/Service/Impl/AdminService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/CocktailizrTypes.Model.Entities" />
-      <xsd:import schemaLocation="https://localhost:44300/Service/Impl/AdminService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System.Drawing" />
-      <xsd:import schemaLocation="https://localhost:44300/Service/Impl/AdminService.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="https://localhost:44300/Service/Impl/AdminService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/CocktailizrTypes.Security" />
+      <xsd:import schemaLocation="https://localhost:44300/Service/Impl/AdminService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/CocktailizrTypes.Model.Entities" />
+      <xsd:import schemaLocation="https://localhost:44300/Service/Impl/AdminService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System.Drawing" />
+      <xsd:import schemaLocation="https://localhost:44300/Service/Impl/AdminService.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IAdminService_CredentialsOk_InputMessage">
+    <wsdl:part name="parameters" element="tns:CredentialsOk" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_CredentialsOk_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CredentialsOkResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetUserRole_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserRole" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetUserRole_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserRoleResponse" />
+  </wsdl:message>
   <wsdl:message name="IAdminService_AddCocktail_InputMessage">
     <wsdl:part name="parameters" element="tns:AddCocktail" />
   </wsdl:message>
@@ -129,6 +142,14 @@
     <wsdl:part name="parameters" element="tns:RemoveCocktailResponse" />
   </wsdl:message>
   <wsdl:portType name="IAdminService">
+    <wsdl:operation name="CredentialsOk">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminService/CredentialsOk" message="tns:IAdminService_CredentialsOk_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminService/CredentialsOkResponse" message="tns:IAdminService_CredentialsOk_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserRole">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminService/GetUserRole" message="tns:IAdminService_GetUserRole_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminService/GetUserRoleResponse" message="tns:IAdminService_GetUserRole_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="AddCocktail">
       <wsdl:input wsaw:Action="http://tempuri.org/IAdminService/AddCocktail" message="tns:IAdminService_AddCocktail_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAdminService/AddCocktailResponse" message="tns:IAdminService_AddCocktail_OutputMessage" />
@@ -145,6 +166,24 @@
   <wsdl:binding name="WSHttpBinding_IAdminService" type="tns:IAdminService">
     <wsp:PolicyReference URI="#WSHttpBinding_IAdminService_policy" />
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CredentialsOk">
+      <soap12:operation soapAction="http://tempuri.org/IAdminService/CredentialsOk" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserRole">
+      <soap12:operation soapAction="http://tempuri.org/IAdminService/GetUserRole" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="AddCocktail">
       <soap12:operation soapAction="http://tempuri.org/IAdminService/AddCocktail" style="document" />
       <wsdl:input>

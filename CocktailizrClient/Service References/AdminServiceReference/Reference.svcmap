@@ -30,6 +30,7 @@
     <MetadataFile FileName="AdminService2.xsd" MetadataType="Schema" ID="aa999ab8-1cfd-4e80-b1ea-641cc628d197" SourceId="1" SourceUrl="https://localhost:44300/Service/Impl/AdminService.svc?xsd=xsd2" />
     <MetadataFile FileName="AdminService3.xsd" MetadataType="Schema" ID="d75db8dd-8486-42c7-847f-20816456886b" SourceId="1" SourceUrl="https://localhost:44300/Service/Impl/AdminService.svc?xsd=xsd3" />
     <MetadataFile FileName="AdminService4.xsd" MetadataType="Schema" ID="d97b63d4-b66b-4a47-9fe3-3973fe84a1da" SourceId="1" SourceUrl="https://localhost:44300/Service/Impl/AdminService.svc?xsd=xsd4" />
+    <MetadataFile FileName="AdminService5.xsd" MetadataType="Schema" ID="4e93e8ab-d94a-4353-a71f-41093a0b9752" SourceId="1" SourceUrl="https://localhost:44300/Service/Impl/AdminService.svc?xsd=xsd5" />
     <MetadataFile FileName="AdminService.disco" MetadataType="Disco" ID="8020e231-b462-45ab-9e2f-a1626f8959ce" SourceId="1" SourceUrl="https://localhost:44300/Service/Impl/AdminService.svc?disco" />
   </Metadata>
   <Extensions>
