@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using CocktailizrClient.CocktailServiceReference;
 using CocktailizrClient.Message;
@@ -204,12 +205,24 @@ namespace CocktailizrClient.ViewModel
         {
             Cocktail[] results = _serviceClient.GetCocktailsByIndigrents(ingredients.ToArray());
             SearchResults = new ObservableCollection<Cocktail>(results);
+            if (!results.Any())
+            {
+                MessageBox.Show("Ihre Suche liefert keine Ergebnisse");
+                MessengerInstance.Send(new LoadSearchMessage() { LoadExtendedSearch = true });
+                IsVisible = false;
+            }
         }
 
         private void ShowSearchResults(string searchText)
         {
             Cocktail[] results = _serviceClient.GetCocktailsByName(searchText);
             SearchResults = new ObservableCollection<Cocktail>(results);
+            if (!results.Any())
+            {
+                MessageBox.Show("Ihre Suche liefert keine Ergebnisse");
+                MessengerInstance.Send(new LoadSearchMessage() { LoadExtendedSearch = false });
+                IsVisible = false;
+            }
         }
 
         private void ShowNextCocktail()
