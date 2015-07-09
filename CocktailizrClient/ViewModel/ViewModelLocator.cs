@@ -21,6 +21,7 @@ using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Practices.ServiceLocation;
 using CocktailizrClient.AdminServiceReference;
 using CocktailizrClient.Properties;
+using CocktailizrClient.View;
 
 namespace CocktailizrClient.ViewModel
 {
@@ -63,6 +64,7 @@ namespace CocktailizrClient.ViewModel
             SimpleIoc.Default.Register<CocktailViewModel>();
             SimpleIoc.Default.Register<SearchViewModel>();
             SimpleIoc.Default.Register<ExtendedSearchViewModel>();
+            SimpleIoc.Default.Register<AdminViewModel>();
             SimpleIoc.Default.Register<LoginViewModel>();
         }
 
@@ -98,6 +100,13 @@ namespace CocktailizrClient.ViewModel
             }
         }
 
+        public AdminViewModel Admin
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<AdminViewModel>();
+            }
+        }
         public LoginViewModel Login
         {
             get
