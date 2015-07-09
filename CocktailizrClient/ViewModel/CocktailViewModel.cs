@@ -126,16 +126,7 @@ namespace CocktailizrClient.ViewModel
 
         private void ShowRandomCocktail()
         {
-            SearchResults = new ObservableCollection<Cocktail>() { _serviceClient.GetRandomCocktail() };
-            try
-            {
-                ShownCocktail = _serviceClient.GetRandomCocktail();
-                RaisePropertyChanged(() => ShownCocktail);
-            }
-            catch (Exception e)
-            {
-                var msg = e.Message;
-            }
+            SearchResults = new ObservableCollection<Cocktail>() { _serviceClient.GetRandomCocktail() };            
         }
 
         private void ShowCocktailWithGivenIngredients(IEnumerable<Zutat> ingredients)
