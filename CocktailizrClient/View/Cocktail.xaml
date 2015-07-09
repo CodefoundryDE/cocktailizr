@@ -32,7 +32,7 @@
                         <Button Command="{Binding PreviousCocktailCommand}" IsEnabled="{Binding HasPreviousCocktail, UpdateSourceTrigger=PropertyChanged}" Margin="5" Style="{DynamicResource MaterialDesignFloatingActionButton}">
                             <Image Source="/Assets/ic_action_back.png"></Image>
                         </Button>
-                        <Label HorizontalAlignment="Center" Content="{Binding ShownCocktail.Name}" FontSize="{StaticResource HeadingFontSize}" Width="400"></Label>
+                        <Label HorizontalContentAlignment="Center" HorizontalAlignment="Center" Content="{Binding ShownCocktail.Name}" FontSize="{StaticResource HeadingFontSize}" Width="400"></Label>
                         <Button Command="{Binding NextCocktailCommand}" IsEnabled="{Binding HasNextCocktail, UpdateSourceTrigger=PropertyChanged}" Margin="5" Style="{DynamicResource MaterialDesignFloatingActionButton}">
                             <Image Source="/Assets/ic_action_forward.png"></Image>
                         </Button>
@@ -47,7 +47,7 @@
                             </Button>
                             <StackPanel>
                                 <Label Content="{Binding ShownStep.Headline}" HorizontalAlignment="Center"/>
-                                <TextBlock Text="{Binding ShownStep.Beschreibung}" HorizontalAlignment="Center" Width="500" TextWrapping="Wrap"/>
+                                <TextBlock TextAlignment="Center" Text="{Binding ShownStep.Beschreibung}" HorizontalAlignment="Center" Width="500" TextWrapping="Wrap"/>
                             </StackPanel>
                             <Button Command="{Binding NextStepCommand}" Margin="5" Style="{DynamicResource MaterialDesignFloatingActionButton}" IsEnabled="{Binding HasNextStep}">
                                 <Image Source="/Assets/ic_action_forward.png"/>
