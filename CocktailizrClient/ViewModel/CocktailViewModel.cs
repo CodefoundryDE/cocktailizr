@@ -300,6 +300,7 @@ namespace CocktailizrClient.ViewModel
             if (ShownCocktail != null)
             {
                 MessengerInstance.Send(new LoadAdminMessage { CocktailToBeEdited = ShownCocktail });
+                IsVisible = false;
             }
         }
 

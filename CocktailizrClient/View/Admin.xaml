@@ -30,7 +30,7 @@
         <CheckBox Content="{Binding RecentCocktail.Alcoholic}" Margin="5" Grid.Column="3" Grid.Row="0"></CheckBox>
 
         <Label Content="Zutaten" Grid.Column="0" Grid.Row="1"></Label>
-        <DataGrid Width="200" Grid.Column="1" Grid.Row="1">
+        <DataGrid Grid.Column="1" Grid.Row="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name"></DataGridTextColumn>
                 <DataGridCheckBoxColumn Header="IsOptional"></DataGridCheckBoxColumn>
@@ -40,7 +40,7 @@
         </DataGrid>
 
         <Label Content="Schritte" Grid.Column="2" Grid.Row="1"></Label>
-        <DataGrid Width="200" Grid.Column="3" Grid.Row="1">
+        <DataGrid Grid.Column="3" Grid.Row="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Titel"></DataGridTextColumn>
                 <DataGridTextColumn Header="Beschreibung"></DataGridTextColumn>
