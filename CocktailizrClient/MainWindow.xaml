@@ -27,5 +27,6 @@
 
         <view:Login Grid.Row="0" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
         <view:Impressum Grid.Row="0" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <view:Dialog Grid.Row="0" Grid.RowSpan="2" Panel.ZIndex="9999"></view:Dialog>
     </Grid>
 </Window>

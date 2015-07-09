@@ -117,6 +117,7 @@
     <Compile Include="ViewModel\AdminViewModel.cs" />
     <Compile Include="ViewModel\CocktailizrClientViewModelBase.cs" />
     <Compile Include="ViewModel\CocktailViewModel.cs" />
+    <Compile Include="ViewModel\DialogViewModel.cs" />
     <Compile Include="ViewModel\ExtendedSearchViewModel.cs" />
     <Compile Include="Message\LoginMessage.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
@@ -141,6 +142,9 @@
     <Compile Include="View\Converter\ObjectInstanciatedToBooleanConverter.cs" />
     <Compile Include="View\Converter\ObjectInstanciatedToVisibilityConverter.cs" />
     <Compile Include="View\Converter\SubtractionConverter.cs" />
+    <Compile Include="View\Dialog.xaml.cs">
+      <DependentUpon>Dialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ExtendedSearch.xaml.cs">
       <DependentUpon>ExtendedSearch.xaml</DependentUpon>
     </Compile>
@@ -177,6 +181,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\Components\ExpandableMenuButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Dialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
