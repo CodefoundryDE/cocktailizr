@@ -8,9 +8,50 @@
              DataContext="{Binding Admin, Source={StaticResource Locator}}"
              Visibility="{Binding IsVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
         <Grid.Background>
             <ImageBrush ImageSource="/Assets/beach.jpg" Opacity="0.3"/>
         </Grid.Background>
-            
+
+        <Label Content="Name" Grid.Column="0" Grid.Row="0"></Label>
+        <TextBox Text="{Binding RecentCocktail.Name}" Grid.Column="1" Grid.Row="0"></TextBox>
+        <Label Content="Alkoholisch?" Grid.Column="2" Grid.Row="0"></Label>
+        <CheckBox Content="{Binding RecentCocktail.Alcoholic}" Margin="5" Grid.Column="3" Grid.Row="0"></CheckBox>
+
+        <Label Content="Zutaten" Grid.Column="0" Grid.Row="1"></Label>
+        <DataGrid Width="200" Grid.Column="1" Grid.Row="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name"></DataGridTextColumn>
+                <DataGridCheckBoxColumn Header="IsOptional"></DataGridCheckBoxColumn>
+                <DataGridComboBoxColumn Header="Skala"></DataGridComboBoxColumn>
+                <DataGridTextColumn Header="Menge"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Label Content="Schritte" Grid.Column="2" Grid.Row="1"></Label>
+        <DataGrid Width="200" Grid.Column="3" Grid.Row="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Titel"></DataGridTextColumn>
+                <DataGridTextColumn Header="Beschreibung"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Label Content="Zubereitungszeit" Grid.Column="0" Grid.Row="2"></Label>
+        <TextBox BindingGroup="{Binding RecentCocktail.Rezept.Zubereitungszeit}" Grid.Column="1" Grid.Row="2"></TextBox>
+
+        <Label Content="Pfad zum Bild" Grid.Column="2" Grid.Row="2"></Label>
+        <TextBox Grid.Column="3" Grid.Row="2"></TextBox>
+
     </Grid>
 </UserControl>
