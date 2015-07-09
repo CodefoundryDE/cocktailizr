@@ -21,13 +21,9 @@
                 <Button Command="{Binding SearchClickedCommand}" Content="Suche" Width="Auto" Margin="5"/>
                 <Button Command="{Binding RandomClickedCommand}" Content="Auf gut Glück!" Width="Auto" Margin="5"/>
             </StackPanel>
-            <TextBlock HorizontalAlignment="Center"><Hyperlink Command="{Binding ExtendedSearchClickedCommand}"><Run Text="Erweiterte Suche"/></Hyperlink></TextBlock>
+            <Button HorizontalAlignment="Center" Command="{Binding ExtendedSearchClickedCommand}" Style="{StaticResource MaterialDesignFlatButton}">Erweiterte Suche</Button>
 
         </StackPanel>
-
-
-
-
 
     </Grid>
 </UserControl>
