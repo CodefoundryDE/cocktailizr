@@ -31,11 +31,10 @@ namespace CocktailizrTypes.Model.Entities
             }
         }
 
-        private IEnumerable _tags;
-
+        private IEnumerable<string> _tags;
         [DataMember]
         [BsonElement]
-        public IEnumerable Tags
+        public IEnumerable<string> Tags
         {
             get { return _tags; }
             set
@@ -101,6 +100,7 @@ namespace CocktailizrTypes.Model.Entities
             }
         }
 
+        [DataMember]
         [BsonElement]
         public byte[] ImageBytes { get; set; }
 
@@ -110,10 +110,9 @@ namespace CocktailizrTypes.Model.Entities
             get
             {
                 if (ImageBytes == null) { return null; }
-                using (var ms = new MemoryStream(ImageBytes))
-                {
-                    return ms.Length > 0 ? new Bitmap(ms) : null;
-                }
+                var ms = new MemoryStream(ImageBytes);
+                return ms.Length > 0 ? new Bitmap(ms) : null;
+
             }
             set
             {

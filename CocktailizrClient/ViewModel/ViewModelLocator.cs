@@ -17,6 +17,7 @@ using CocktailizrClient.CocktailServiceReference;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Practices.ServiceLocation;
+using CocktailizrClient.AdminServiceReference;
 
 namespace CocktailizrClient.ViewModel
 {
@@ -33,23 +34,23 @@ namespace CocktailizrClient.ViewModel
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
-            ////if (ViewModelBase.IsInDesignModeStatic)
-            ////{
-            ////    // Create design time view services and models
-            ////    SimpleIoc.Default.Register<IDataService, DesignDataService>();
-            ////}
-            ////else
-            ////{
-            ////    // Create run time view services and models
-            ////    SimpleIoc.Default.Register<IDataService, DataService>();
-            ////}
+            Cleanup();
 
+            // CocktailService - Client
             SimpleIoc.Default.Register(() =>
             {
                 var client = new CocktailServiceClient();
                 client.ClientCredentials.UserName.UserName = "Admin";
                 client.ClientCredentials.UserName.Password = "Cocktailizor";
-                client.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode = X509CertificateValidationMode.None;
+                return client;
+            });
+
+            // AdminService - Client
+            SimpleIoc.Default.Register(() =>
+            {
+                var client = new AdminServiceClient();
+                client.ClientCredentials.UserName.UserName = "Admin";
+                client.ClientCredentials.UserName.Password = "Cocktailizor";
                 return client;
             });
 
@@ -93,7 +94,7 @@ namespace CocktailizrClient.ViewModel
 
         public static void Cleanup()
         {
-            // TODO Clear the ViewModels
+            SimpleIoc.Default.Reset();
         }
     }
 }

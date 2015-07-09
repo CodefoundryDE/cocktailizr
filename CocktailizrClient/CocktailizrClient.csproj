@@ -121,6 +121,7 @@
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="View\Converter\BooleanToBrushConverter.cs" />
     <Compile Include="View\Converter\DivisionConverter.cs" />
+    <Compile Include="View\Converter\ImageConverter.cs" />
     <Compile Include="View\Converter\InvertBooleanConverter.cs" />
     <Compile Include="View\Converter\InvertedBooleanToVisibilityConverter.cs" />
     <Compile Include="View\Converter\InvertedObjectInstanciatedToBooleanConverter.cs" />

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -6,9 +7,12 @@ using System.Windows.Media.Animation;
 using GalaSoft.MvvmLight;
 using System.Windows;
 using System.ServiceModel.Security;
+using System.Windows.Documents;
 using CocktailizrClient.AdminServiceReference;
 using CocktailizrClient.CocktailServiceReference;
 using CocktailizrTypes.Model.Entities;
+using Color = System.Drawing.Color;
+using System.Collections.Generic;
 
 namespace CocktailizrClient.ViewModel
 {
@@ -32,12 +36,17 @@ namespace CocktailizrClient.ViewModel
         #endregion
 
         #region Constructor
+
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
         public MainViewModel()
         {
-           
+            using (var client = new AdminServiceClient())
+            {
+                client.ClientCredentials.UserName.UserName = "Admin";
+                client.ClientCredentials.UserName.Password = "Cocktailizor";
+            }
         }
 
         #endregion

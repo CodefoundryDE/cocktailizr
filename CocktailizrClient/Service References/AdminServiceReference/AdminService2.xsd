@@ -9,9 +9,10 @@
         <xs:sequence>
           <xs:element minOccurs="0" name="Alcoholic" type="xs:boolean" />
           <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/System.Drawing" minOccurs="0" name="DrinkColor" type="q1:Color" />
+          <xs:element minOccurs="0" name="ImageBytes" nillable="true" type="xs:base64Binary" />
           <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Rezept" nillable="true" type="tns:Rezept" />
-          <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Tags" nillable="true" type="q2:ArrayOfanyType" />
+          <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Tags" nillable="true" type="q2:ArrayOfstring" />
           <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Zutaten" nillable="true" type="q3:ArrayOfKeyValueOfZutatdecimalKV94ifYk" />
         </xs:sequence>
       </xs:extension>

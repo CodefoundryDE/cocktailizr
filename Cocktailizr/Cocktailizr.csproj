@@ -119,7 +119,6 @@
     </EmbeddedResource>
     <Content Include="Service\Impl\AdminService.svc" />
     <Content Include="Service\Impl\CocktailService.svc" />
-    <Content Include="Service\Impl\TransferService.svc" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -148,10 +147,6 @@
     </Compile>
     <Compile Include="Service\ICocktailService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service\Impl\TransferService.svc.cs">
-      <DependentUpon>TransferService.svc</DependentUpon>
-    </Compile>
-    <Compile Include="Service\ITransferService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
