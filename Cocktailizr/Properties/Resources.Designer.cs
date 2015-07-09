@@ -61,6 +61,15 @@ namespace Cocktailizr.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die ANONYMOUS ähnelt.
+        /// </summary>
+        internal static string AnonymousCredentials {
+            get {
+                return ResourceManager.GetString("AnonymousCredentials", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Benutzer ähnelt.
         /// </summary>
         internal static string BenutzerCollectionName {

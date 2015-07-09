@@ -20,6 +20,7 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Practices.ServiceLocation;
 using CocktailizrClient.AdminServiceReference;
+using CocktailizrClient.Properties;
 
 namespace CocktailizrClient.ViewModel
 {
@@ -42,8 +43,8 @@ namespace CocktailizrClient.ViewModel
             SimpleIoc.Default.Register(() =>
             {
                 var client = new CocktailServiceClient();
-                client.ClientCredentials.UserName.UserName = "ANONYMOUS";
-                client.ClientCredentials.UserName.Password = "ANONYMOUS";
+                client.ClientCredentials.UserName.UserName = Resources.AnonymousCredentials;
+                client.ClientCredentials.UserName.Password = Resources.AnonymousCredentials;
                 return client;
             });
 
@@ -51,8 +52,8 @@ namespace CocktailizrClient.ViewModel
             SimpleIoc.Default.Register(() =>
             {
                 var client = new AdminServiceClient();
-                client.ClientCredentials.UserName.UserName = "ANONYMOUS";
-                client.ClientCredentials.UserName.Password = "ANONYMOUS";
+                client.ClientCredentials.UserName.UserName = Resources.AnonymousCredentials;
+                client.ClientCredentials.UserName.Password = Resources.AnonymousCredentials;
                 return client;
             });
 

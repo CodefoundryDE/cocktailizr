@@ -142,6 +142,9 @@
     <Compile Include="View\Cocktail.xaml.cs">
       <DependentUpon>Cocktail.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Impressum.xaml.cs">
+      <DependentUpon>Impressum.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -173,6 +176,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Cocktail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Impressum.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
