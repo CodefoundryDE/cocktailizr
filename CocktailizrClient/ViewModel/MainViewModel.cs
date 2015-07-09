@@ -1,18 +1,8 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.ServiceModel.Description;
-using System.Windows.Media.Animation;
-using GalaSoft.MvvmLight;
-using System.Windows;
-using System.ServiceModel.Security;
-using System.Windows.Documents;
+using System.Collections.ObjectModel;
+using System.Windows.Input;
 using CocktailizrClient.AdminServiceReference;
-using CocktailizrClient.CocktailServiceReference;
-using CocktailizrTypes.Model.Entities;
-using Color = System.Drawing.Color;
-using System.Collections.Generic;
+using GalaSoft.MvvmLight.CommandWpf;
 
 namespace CocktailizrClient.ViewModel
 {
@@ -31,7 +21,17 @@ namespace CocktailizrClient.ViewModel
     public class MainViewModel : CocktailizrClientViewModelBase
     {
         #region Properties
-        
+
+        private ObservableCollection<KeyValuePair<object, object>> _menuCommands;
+        public ObservableCollection<KeyValuePair<object, object>> MenuCommands
+        {
+            get { return _menuCommands; }
+            set
+            {
+                _menuCommands = value;
+                RaisePropertyChanged(() => MenuCommands);
+            }
+        }
 
         #endregion
 
@@ -47,7 +47,29 @@ namespace CocktailizrClient.ViewModel
                 client.ClientCredentials.UserName.UserName = "Admin";
                 client.ClientCredentials.UserName.Password = "Cocktailizor";
             }
+
+            InitializeMenuCommands();
         }
+
+        #endregion
+
+        #region Methods
+
+        private void InitializeMenuCommands()
+        {
+            MenuCommands =new ObservableCollection<KeyValuePair<object, object>>()
+            {
+                new KeyValuePair<object, object>("Login", new RelayCommand(CallLoginDialog)),                
+                new KeyValuePair<object, object>("Über Cocktailizr", new RelayCommand(CallLoginDialog)),
+                new KeyValuePair<object, object>("Beenden", new RelayCommand(CallLoginDialog)),
+            };
+        }
+
+        private void CallLoginDialog()
+        {
+            
+        }
+
 
         #endregion
     }

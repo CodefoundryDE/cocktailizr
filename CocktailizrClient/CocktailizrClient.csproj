@@ -120,6 +120,9 @@
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\SearchViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="View\Components\ExpandableMenuButton.xaml.cs">
+      <DependentUpon>ExpandableMenuButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Converter\BooleanToBrushConverter.cs" />
     <Compile Include="View\Converter\DivisionConverter.cs" />
     <Compile Include="View\Converter\ImageConverter.cs" />
@@ -157,6 +160,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Components\ExpandableMenuButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -314,6 +321,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\loading.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ic_action_menu.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

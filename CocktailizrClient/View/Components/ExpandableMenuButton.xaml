@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="CocktailizrClient.View.Components.ExpandableMenuButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             DataContext="{Binding Main, Source={StaticResource Locator}}"
+             Name="ExpandableManuButtonUc">
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Button Style="{DynamicResource MaterialDesignFloatingActionButton}" Name="MenuButton" 
+                MouseEnter="MenuButton_MouseEnter" MouseLeave="MenuButton_MouseLeave"
+                HorizontalAlignment="Right">
+            <Image Source="/Assets/ic_action_menu.png" VerticalAlignment="Center" HorizontalAlignment="Center"></Image>
+        </Button>
+        <ItemsControl Grid.Row="1" Name="MenuListBox" ItemsSource="{Binding ElementName=ExpandableManuButtonUc, Path=Itemssource, Mode=TwoWay}" 
+                 HorizontalAlignment="Left" Margin="5,15,5,5"
+                 Background="Transparent"
+                 MouseEnter="MenuListBox_MouseEnter" MouseLeave="MenuListBox_MouseLeave"
+                 Visibility="Collapsed" >
+            <ItemsControl.Style>
+                <Style>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=MenuListBox, Path=IsTabStop}" Value="true">
+                            <DataTrigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                                Storyboard.TargetProperty="Height"
+                                                From="0.0" To="250" Duration="0:0:0:0.4" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </DataTrigger.EnterActions>
+                            <DataTrigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                                Storyboard.TargetProperty="Height"
+                                                From="250" To="0" Duration="0:0:0:0.4" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </DataTrigger.ExitActions>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ItemsControl.Style>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Button Content="{Binding Path=Key}" Command="{Binding Path=Value}" Margin="5"></Button>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </Grid>
+</UserControl>
