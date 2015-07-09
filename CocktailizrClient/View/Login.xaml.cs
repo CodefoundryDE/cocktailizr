@@ -27,6 +27,18 @@ namespace CocktailizrClient.View
         {
             InitializeComponent();
             _viewModel = DataContext as LoginViewModel;
+            if (_viewModel != null)
+            {
+                _viewModel.PropertyChanged += VmPropertyChangedHandler;
+            }
+        }
+
+        private void VmPropertyChangedHandler(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName.Equals(CocktailizrClientViewModelBase.IsVisiblePropertyName))
+            {
+                PasswordBox.Clear();
+            };
         }
 
         private void PasswordBox_OnPasswordChanged(object sender, RoutedEventArgs e)
