@@ -22,5 +22,7 @@
         
         <!-- Options-Button -->
         <comp:ExpandableMenuButton Margin="5" Grid.Row="0" HorizontalAlignment="Right" Itemssource="{Binding MenuCommands, Mode=TwoWay}"/>
+
+        <view:Login Grid.Row="0" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
     </Grid>
 </Window>

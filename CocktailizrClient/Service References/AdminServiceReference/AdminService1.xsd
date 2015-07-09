@@ -1,40 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="https://localhost:44300/Service/Impl/AdminService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/CocktailizrTypes.Model.Entities" />
+  <xs:import schemaLocation="https://localhost:44300/Service/Impl/AdminService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/CocktailizrTypes.Security" />
+  <xs:import schemaLocation="https://localhost:44300/Service/Impl/AdminService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/CocktailizrTypes.Model.Entities" />
   <xs:import schemaLocation="https://localhost:44300/Service/Impl/AdminService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:element name="CredentialsOk">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CredentialsOkResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CredentialsOkResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserRole">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserRoleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/CocktailizrTypes.Security" minOccurs="0" name="GetUserRoleResult" type="q1:UserRole" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="AddCocktail">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/CocktailizrTypes.Model.Entities" minOccurs="0" name="cocktail" nillable="true" type="q1:Cocktail" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/CocktailizrTypes.Model.Entities" minOccurs="0" name="cocktail" nillable="true" type="q2:Cocktail" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddCocktailResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/CocktailizrTypes.Model.Entities" minOccurs="0" name="AddCocktailResult" nillable="true" type="q2:Cocktail" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/CocktailizrTypes.Model.Entities" minOccurs="0" name="AddCocktailResult" nillable="true" type="q3:Cocktail" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ModifyCocktail">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="cocktailId" type="q3:guid" />
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/CocktailizrTypes.Model.Entities" minOccurs="0" name="cocktail" nillable="true" type="q4:Cocktail" />
+        <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="cocktailId" type="q4:guid" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/CocktailizrTypes.Model.Entities" minOccurs="0" name="cocktail" nillable="true" type="q5:Cocktail" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ModifyCocktailResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/CocktailizrTypes.Model.Entities" minOccurs="0" name="ModifyCocktailResult" nillable="true" type="q5:Cocktail" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/CocktailizrTypes.Model.Entities" minOccurs="0" name="ModifyCocktailResult" nillable="true" type="q6:Cocktail" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="RemoveCocktail">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="cocktailId" type="q6:guid" />
+        <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="cocktailId" type="q7:guid" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

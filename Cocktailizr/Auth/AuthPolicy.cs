@@ -31,7 +31,7 @@ namespace Cocktailizr.Auth
             // get the authenticated client identity
             IIdentity client = GetClientIdentity(evaluationContext);
 
-            var roles = _benutzerService.GetUserRoles(client.Name);
+            var roles = _benutzerService.GetUserRole(client.Name);
 
             evaluationContext.Properties["Principal"] = new AuthPrincipal(client, roles.Result);
 

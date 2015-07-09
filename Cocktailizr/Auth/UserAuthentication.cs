@@ -20,6 +20,10 @@ namespace Cocktailizr.Auth
 
         public override void Validate(string userName, string password)
         {
+            if (userName.Equals("ANONYMOUS") && password.Equals("ANONYMOUS"))
+            {
+                return;
+            }
             if (string.IsNullOrWhiteSpace(userName) || string.IsNullOrWhiteSpace(password))
             {
                 throw new SecurityTokenException("Username and Password are required.");
