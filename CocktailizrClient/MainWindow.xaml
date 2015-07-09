@@ -2,13 +2,25 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:view="clr-namespace:CocktailizrClient.View"
+        xmlns:comp="clr-namespace:CocktailizrClient.View.Components"
         Title="MainWindow" Height="350" Width="525"
         DataContext="{Binding Main, Source={StaticResource Locator}}" 
         WindowState="Maximized" MinWidth="1280" MinHeight="768">
     <Grid>
-        <view:Cocktail/>
-        <view:Search/>
-        <view:ExtendedSearch/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!-- Loading Animation -->
         <Image Style="{StaticResource LoadingGif}" Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}" />
+        <!-- CocktailView -->
+        <view:Cocktail Grid.RowSpan="2" />
+        <!-- SearchView -->
+        <view:Search Grid.RowSpan="2" />
+        <!-- ExtendedSearch -->
+        <view:ExtendedSearch Grid.RowSpan="2"/>
+        
+        <!-- Options-Button -->
+        <comp:ExpandableMenuButton Margin="5" Grid.Row="0" HorizontalAlignment="Right" Itemssource="{Binding MenuCommands, Mode=TwoWay}"/>
     </Grid>
 </Window>
