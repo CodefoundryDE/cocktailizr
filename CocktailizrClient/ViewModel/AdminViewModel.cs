@@ -105,18 +105,34 @@ namespace CocktailizrClient.ViewModel
         #region Methods
         private void ReceiveLoadAdmin(LoadAdminMessage message)
         {
+            RecentCocktail = null;
+            _imgFilePath = null;
             IsVisible = true;
-            if (message.CocktailToBeEdited == null)
-            { return; }
-
-            RecentCocktail = message.CocktailToBeEdited;
-            ZutatenCollection = new ObservableCollection<CocktailZutatProxy>();
-            foreach (var zutatEntry in RecentCocktail.Zutaten)
+            Task.Factory.StartNew(() =>
             {
-                ZutatenCollection.Add(new CocktailZutatProxy(zutatEntry.Key, zutatEntry.Value));
-            }
-            // ReSharper disable once ExplicitCallerInfoArgument
-            ZubereitungsSteps = new ObservableCollection<Step>(RecentCocktail.Rezept.ZubereitungsSchritte);
+                EnterLoading();
+                try
+                {
+
+                    if (message.CocktailToBeEdited == null)
+                    {
+                        return;
+                    }
+
+                    RecentCocktail = message.CocktailToBeEdited;
+                    ZutatenCollection = new ObservableCollection<CocktailZutatProxy>();
+                    foreach (var zutatEntry in RecentCocktail.Zutaten)
+                    {
+                        ZutatenCollection.Add(new CocktailZutatProxy(zutatEntry.Key, zutatEntry.Value));
+                    }
+                    // ReSharper disable once ExplicitCallerInfoArgument
+                    ZubereitungsSteps = new ObservableCollection<Step>(RecentCocktail.Rezept.ZubereitungsSchritte);
+                }
+                finally
+                {
+                    ExitLoading();
+                }
+            });
         }
 
         private async void SaveRecentCocktail()

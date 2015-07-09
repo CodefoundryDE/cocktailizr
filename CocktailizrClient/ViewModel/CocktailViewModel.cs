@@ -185,6 +185,7 @@ namespace CocktailizrClient.ViewModel
         #region Methods
         private void RecieveCocktailSearchMessage(CocktailSearchMessage message)
         {
+            ShownCocktail = null;
             IsVisible = true;
             Task.Factory.StartNew(() =>
             {
