@@ -7,7 +7,7 @@ using System.Linq;
 using System.Security.Principal;
 using System.Web;
 
-namespace Cocktailizr.Auth
+namespace Cocktailizr.Security
 {
     public class AuthPolicy : IAuthorizationPolicy
     {
@@ -18,7 +18,7 @@ namespace Cocktailizr.Auth
             get { return ClaimSet.System; }
         }
 
-        private BenutzerDbService _benutzerService;
+        private readonly BenutzerDbService _benutzerService;
 
         public AuthPolicy()
         {
