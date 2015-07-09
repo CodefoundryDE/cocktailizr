@@ -13,6 +13,7 @@
 */
 
 using System.ServiceModel.Security;
+using System.Web.UI.WebControls;
 using CocktailizrClient.CocktailServiceReference;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
@@ -58,6 +59,7 @@ namespace CocktailizrClient.ViewModel
             SimpleIoc.Default.Register<CocktailViewModel>();
             SimpleIoc.Default.Register<SearchViewModel>();
             SimpleIoc.Default.Register<ExtendedSearchViewModel>();
+            SimpleIoc.Default.Register<LoginViewModel>();
         }
 
         public MainViewModel Main
@@ -89,6 +91,14 @@ namespace CocktailizrClient.ViewModel
             get
             {
                 return ServiceLocator.Current.GetInstance<ExtendedSearchViewModel>();
+            }
+        }
+
+        public LoginViewModel Login
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<LoginViewModel>();
             }
         }
 

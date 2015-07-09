@@ -9,6 +9,7 @@
         <view:Cocktail/>
         <view:Search/>
         <view:ExtendedSearch/>
+        <view:Login HorizontalAlignment="Center" VerticalAlignment="Center" />
         <Image Style="{StaticResource LoadingGif}" Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}" />
     </Grid>
 </Window>

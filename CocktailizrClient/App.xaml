@@ -18,6 +18,8 @@
                 <!-- standard templates -->
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
 
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+
                 <!-- primary color -->
                 <ResourceDictionary>
                     <!-- include your primary palette -->
