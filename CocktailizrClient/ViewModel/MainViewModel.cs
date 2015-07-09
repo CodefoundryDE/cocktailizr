@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Input;
 using CocktailizrClient.AdminServiceReference;
 using CocktailizrClient.Message;
+using CocktailizrTypes.Model.Entities;
 using CocktailizrTypes.Security;
 using GalaSoft.MvvmLight.CommandWpf;
 
@@ -38,7 +39,7 @@ namespace CocktailizrClient.ViewModel
             }
         }
 
-        
+
         private bool _impressumVisible;
         public bool ImpressumVisible
         {
@@ -82,29 +83,6 @@ namespace CocktailizrClient.ViewModel
             MessengerInstance.Register<LoginMessage>(this, RecieveLoginMessage);
 
             InitializeMenuCommands();
-        }
-
-        private void RecieveLoginMessage(LoginMessage message)
-        {
-            if (LoginAction.RoleChange != message.LoginAction)
-            {
-                return;
-            }
-            if (_viewModelLocator.AdminServiceClient.GetUserRole() == UserRole.Admin)
-            {
-                //Einloggen erfolte gerade als Admin
-                //Entfernen des Login-Buttons, einhängen eines Logout-Buttons
-                MenuCommands.Remove(_loginKvp);
-                MenuCommands.Insert(0, _logoutKvp);
-                MenuCommands.Insert(1, _neuerCoktailKvp);
-            }
-            else
-            {
-                MenuCommands.Remove(_logoutKvp);
-                MenuCommands.Remove(_neuerCoktailKvp);
-                MenuCommands.Insert(0, _loginKvp);
-            }
-
         }
 
         #endregion
@@ -153,7 +131,7 @@ namespace CocktailizrClient.ViewModel
 
         private void NavigateToCocktailEdit()
         {
-            
+            MessengerInstance.Send(new LoadAdminMessage { CocktailToBeEdited = new Cocktail() });
         }
 
         private void NavigateToImpressum()
@@ -161,6 +139,28 @@ namespace CocktailizrClient.ViewModel
             ImpressumVisible = true;
         }
 
+        private void RecieveLoginMessage(LoginMessage message)
+        {
+            if (LoginAction.RoleChange != message.LoginAction)
+            {
+                return;
+            }
+            if (_viewModelLocator.AdminServiceClient.GetUserRole() == UserRole.Admin)
+            {
+                //Einloggen erfolte gerade als Admin
+                //Entfernen des Login-Buttons, einhängen eines Logout-Buttons
+                MenuCommands.Remove(_loginKvp);
+                MenuCommands.Insert(0, _logoutKvp);
+                MenuCommands.Insert(1, _neuerCoktailKvp);
+            }
+            else
+            {
+                MenuCommands.Remove(_logoutKvp);
+                MenuCommands.Remove(_neuerCoktailKvp);
+                MenuCommands.Insert(0, _loginKvp);
+            }
+
+        }
 
         #endregion
     }
