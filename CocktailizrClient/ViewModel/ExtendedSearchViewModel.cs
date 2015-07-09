@@ -34,6 +34,11 @@ namespace CocktailizrClient.ViewModel
             get { return new RelayCommand(GetCocktailByIngredients, ValidateAnyCheckboxIsChecked); }
         }
 
+        public ICommand BackToSearchClickedCommand
+        {
+            get { return new RelayCommand(NavigateBackToSearch); }
+        }
+
         #endregion
 
         #region Validation
@@ -67,7 +72,13 @@ namespace CocktailizrClient.ViewModel
         private void GetCocktailByIngredients()
         {
             var checkedIngredients = SelectedIngredients.Where(zutat => zutat.IsSelected);
-            MessengerInstance.Send(new CocktailSearchMessage() { CocktailSearchType = CocktailSearchType.ByIngredients, Ingredients = checkedIngredients});
+            MessengerInstance.Send(new CocktailSearchMessage() { CocktailSearchType = CocktailSearchType.ByIngredients, Ingredients = checkedIngredients });
+            IsVisible = false;
+        }
+
+        private void NavigateBackToSearch()
+        {
+            MessengerInstance.Send(new LoadSearchMessage { LoadExtendedSearch = false });
             IsVisible = false;
         }
         #endregion

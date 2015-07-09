@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -15,19 +16,47 @@ namespace CocktailizrClient.ViewModel
         #region Properties
         private CocktailServiceClient _serviceClient;
 
-        private IList<Cocktail> _searchResults = new List<Cocktail>();
+        private ObservableCollection<Cocktail> _searchResults = new ObservableCollection<Cocktail>();
 
-        public IList<Cocktail> SearchResults
+        public ObservableCollection<Cocktail> SearchResults
         {
             get { return _searchResults; }
             set
             {
                 _searchResults = value;
                 ShownCocktail = _searchResults.FirstOrDefault();
+                if (ShownCocktail != null && ShownCocktail.Rezept != null &&
+                    ShownCocktail.Rezept.ZubereitungsSchritte != null)
+                {
+                    Steps = new ObservableCollection<Step>(ShownCocktail.Rezept.ZubereitungsSchritte);
+                    ShownStep = ShownCocktail.Rezept.ZubereitungsSchritte.FirstOrDefault();
+                }
+
                 RaisePropertyChanged(() => SearchResults);
+                RaisePropertyChanged(() => HasNextCocktail);
+                RaisePropertyChanged(() => HasPreviousCocktail);
             }
         }
 
+        public bool HasNextCocktail
+        {
+            get
+            {
+                int recentIndex = SearchResults.IndexOf(ShownCocktail);
+                int nextIndex = recentIndex + 1;
+                return SearchResults.Count > nextIndex;
+            }
+        }
+
+        public bool HasPreviousCocktail
+        {
+            get
+            {
+                int recentIndex = SearchResults.IndexOf(ShownCocktail);
+                int previousIndex = recentIndex - 1;
+                return previousIndex >= 0;
+            }
+        }
 
         private Cocktail _shownCocktail;
 
@@ -38,8 +67,70 @@ namespace CocktailizrClient.ViewModel
             {
                 _shownCocktail = value;
                 RaisePropertyChanged(() => ShownCocktail);
+                if (value != null && value.Rezept != null && value.Rezept.ZubereitungsSchritte != null)
+                {
+                    Steps = new ObservableCollection<Step>(value.Rezept.ZubereitungsSchritte);
+                    ShownStep = _steps.FirstOrDefault();
+                }
             }
         }
+
+        private ObservableCollection<Step> _steps;
+
+        public ObservableCollection<Step> Steps
+        {
+            get { return _steps; }
+            set
+            {
+                _steps = value;
+                RaisePropertyChanged(() => Steps);
+                RaisePropertyChanged(() => HasNextStep);
+                RaisePropertyChanged(() => HasPreviousStep);
+            }
+        }
+
+
+        private Step _shownStep;
+
+        public Step ShownStep
+        {
+            get { return _shownStep; }
+            set
+            {
+                _shownStep = value;
+                RaisePropertyChanged(() => ShownStep);
+            }
+        }
+
+        public bool HasNextStep
+        {
+            get
+            {
+                if (ShownStep != null)
+                {
+                    int recentIndex = Steps.IndexOf(ShownStep);
+                    int nextIndex = recentIndex + 1;
+                    return Steps.Count > nextIndex;
+                }
+                return false;
+            }
+        }
+
+        public bool HasPreviousStep
+        {
+            get
+            {
+                if (ShownStep != null)
+                {
+                    int recentIndex = Steps.IndexOf(ShownStep);
+                    int previousIndex = recentIndex - 1;
+                    return previousIndex >= 0;
+                }
+                return false; ;
+            }
+        }
+
+
         #endregion
 
         #region Commands
@@ -49,6 +140,14 @@ namespace CocktailizrClient.ViewModel
         public ICommand NextCocktailCommand { get { return new RelayCommand(ShowNextCocktail); } }
 
         public ICommand PreviousCocktailCommand { get { return new RelayCommand(ShowPreviousCocktail); } }
+
+        public ICommand NextStepCommand { get { return new RelayCommand(ShowNextStep); } }
+
+        public ICommand PreviousStepCommand { get { return new RelayCommand(ShowPreviousStep); } }
+
+        #endregion
+
+        #region Validation
 
         #endregion
 
@@ -98,43 +197,55 @@ namespace CocktailizrClient.ViewModel
 
         private void ShowRandomCocktail()
         {
-            try
-            {
-                ShownCocktail = _serviceClient.GetRandomCocktail();
-                RaisePropertyChanged(() => ShownCocktail);
-            }
-            catch (Exception e)
-            {
-                var msg = e.Message;
-            }
+            SearchResults = new ObservableCollection<Cocktail>() { _serviceClient.GetRandomCocktail() };
         }
 
         private void ShowCocktailWithGivenIngredients(IEnumerable<Zutat> ingredients)
         {
             Cocktail[] results = _serviceClient.GetCocktailsByIndigrents(ingredients.ToArray());
-            SearchResults = results;
+            SearchResults = new ObservableCollection<Cocktail>(results);
         }
 
         private void ShowSearchResults(string searchText)
         {
             Cocktail[] results = _serviceClient.GetCocktailsByName(searchText);
-            SearchResults = results;
+            SearchResults = new ObservableCollection<Cocktail>(results);
         }
 
         private void ShowNextCocktail()
         {
             int recentIndex = SearchResults.IndexOf(ShownCocktail);
             int nextIndex = recentIndex + 1;
-            if (SearchResults.Count > nextIndex)
-                ShownCocktail = SearchResults.ElementAt(nextIndex);
+            ShownCocktail = SearchResults.ElementAt(nextIndex);
+            RaisePropertyChanged(() => HasNextCocktail);
+            RaisePropertyChanged(() => HasPreviousCocktail);
         }
 
         private void ShowPreviousCocktail()
         {
             int recentIndex = SearchResults.IndexOf(ShownCocktail);
             int previousIndex = recentIndex - 1;
-            if (previousIndex >= 0)
-                ShownCocktail = SearchResults.ElementAt(previousIndex);
+            ShownCocktail = SearchResults.ElementAt(previousIndex);
+            RaisePropertyChanged(() => HasNextCocktail);
+            RaisePropertyChanged(() => HasPreviousCocktail);
+        }
+
+        private void ShowNextStep()
+        {
+            int recentIndex = Steps.IndexOf(ShownStep);
+            int nextIndex = recentIndex + 1;
+            ShownStep = Steps.ElementAt(nextIndex);
+            RaisePropertyChanged(() => HasNextStep);
+            RaisePropertyChanged(() => HasPreviousStep);
+        }
+
+        private void ShowPreviousStep()
+        {
+            int recentIndex = Steps.IndexOf(ShownStep);
+            int previousIndex = recentIndex - 1;
+            ShownStep = Steps.ElementAt(previousIndex);
+            RaisePropertyChanged(() => HasNextStep);
+            RaisePropertyChanged(() => HasPreviousStep);
         }
 
         private void NavigateBackToSearch()
@@ -142,7 +253,6 @@ namespace CocktailizrClient.ViewModel
             MessengerInstance.Send(new LoadSearchMessage { LoadExtendedSearch = false });
             IsVisible = false;
         }
-
         #endregion
     }
 }
