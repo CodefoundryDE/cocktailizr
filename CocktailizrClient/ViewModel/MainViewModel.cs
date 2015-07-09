@@ -45,7 +45,10 @@ namespace CocktailizrClient.ViewModel
         private bool _impressumVisible;
         public bool ImpressumVisible
         {
-            get { return _impressumVisible; }
+            get
+            {
+                return IsInDesignMode || _impressumVisible;
+            }
             set
             {
                 _impressumVisible = value;

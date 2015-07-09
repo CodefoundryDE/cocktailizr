@@ -164,5 +164,8 @@
             <Button Content="Übertragen" Command="{Binding SaveClickCommand}"  Margin="5"></Button>
             <Button Content="Abbrechen"  Command="{Binding NavigateBackCommand}" Margin="5"></Button>
         </StackPanel>
+        <!-- Loading-Gif -->
+        <Image Style="{StaticResource LoadingGif}" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3"
+               Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}" />
     </Grid>
 </UserControl>
