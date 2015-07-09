@@ -85,13 +85,13 @@ namespace Cocktailizr.Model.Database
                 };
                 try
                 {
-                    string path = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);                   
-                    string imgPath = path.Substring(6) + @"\Assets\cocktail.png";
+                    string path = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+                    string imgPath = path.Substring(6) + @"\Assets\apfelsaft.jpg";
                     cocktail.Image = Image.FromFile(imgPath);
 
                     Cocktails.InsertOneAsync(cocktail);
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
 
                 }
@@ -190,12 +190,186 @@ namespace Cocktailizr.Model.Database
                 try
                 {
                     string path = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
-                    string imgPath = path.Substring(6) + @"\Assets\cocktail.png";
+                    string imgPath = path.Substring(6) + @"\Assets\bloodymary.jpg";
                     cocktail.Image = Image.FromFile(imgPath);
 
                     Cocktails.InsertOneAsync(cocktail);
                 }
-                catch (Exception)
+                catch (Exception e)
+                {
+
+                }
+                #endregion
+            }
+
+            if (Cocktails.Find(c => c.Id.Equals(new Guid("4C65CAA9-CD36-44BC-A1DF-8155D75464C9"))).CountAsync().Result == 0)
+            {
+                #region Caipirinha-DemoCocktail
+                var cocktail = new Cocktail()
+                {
+                    Id = new Guid("4C65CAA9-CD36-44BC-A1DF-8155D75464C9"),
+                    Alcoholic = true,
+                    DrinkColor = Color.Green,
+                    Name = "Caipirinha",
+                    Tags = new List<string>() { "Sweet", "Cool" },
+                    Rezept = new Rezept()
+                    {
+                        Zubereitungszeit = TimeSpan.FromMinutes(15),
+                        ZubereitungsSchritte = new List<Step>()
+                    {
+                        new Step()
+                        {
+                            Headline = "Vorbereitung",
+                           Beschreibung = "Die unbehandelten Limetten vierteln."
+                        },
+                        new Step()
+                        {
+                            Headline = "Zubereitung /1",
+                            Beschreibung = "Im Glas die Limettenviertel mit dem Zucker zusammen zerdrücken."
+                        },                      
+                        new Step()
+                        {
+                            Headline = "Zubereitung /2",
+                            Beschreibung = "Cachaca zugeben und mit gestoßenem Eis auffüllen und umrühren."
+                        },
+                        new Step()
+                        {
+                            Headline = "Zubereitung /3",
+                            Beschreibung = "Evtl. Ginger Ale zugeben."
+                        }
+                    }
+                    },
+                    Zutaten = new Dictionary<Zutat, decimal>()
+                    {
+                        {new Zutat()
+                            {
+                                Name = "Limette",
+                                IsOptional = false,
+                                Skala = ZutatenSkala.Stueck
+                            }, 1m
+                        },
+                        {new Zutat()
+                            {
+                                Name = "Crushed Ice",
+                                IsOptional = false,
+                                Skala = ZutatenSkala.Cl
+                            }, 40m
+                        },
+                        {new Zutat()
+                            {
+                                Name = "Brauner Zucker",
+                                IsOptional = false,
+                                Skala = ZutatenSkala.Priese
+                            }, 1m
+                        },
+                        {new Zutat()
+                            {
+                                Name = "Ginger Ale",
+                                IsOptional = false,
+                                Skala = ZutatenSkala.Cl
+                            }, 10m
+                        },
+                        {new Zutat()
+                            {
+                                Name = "Cachaca",
+                                IsOptional = false,
+                                Skala = ZutatenSkala.Cl
+                            }, 10m
+                        },
+                    },
+                };
+
+                try
+                {
+                    string path = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+                    string imgPath = path.Substring(6) + @"\Assets\caipirinha.jpg";
+                    cocktail.Image = Image.FromFile(imgPath);
+
+                    Cocktails.InsertOneAsync(cocktail);
+                }
+                catch (Exception e)
+                {
+
+                }
+                #endregion
+            }
+
+            if (Cocktails.Find(c => c.Id.Equals(new Guid("EB577661-B70D-48A8-B5EB-C7A9CB49A2B6"))).CountAsync().Result == 0)
+            {
+                #region Piña Colada-DemoCocktail
+                var cocktail = new Cocktail()
+                {
+                    Id = new Guid("EB577661-B70D-48A8-B5EB-C7A9CB49A2B6"),
+                    Alcoholic = true,
+                    DrinkColor = Color.Green,
+                    Name = "Piña Colada",
+                    Tags = new List<string>() { "Sweet", "Cool", "Beach" },
+                    Rezept = new Rezept()
+                    {
+                        Zubereitungszeit = TimeSpan.FromMinutes(15),
+                        ZubereitungsSchritte = new List<Step>()
+                    {
+                        new Step()
+                        {
+                            Headline = "Zubereitung /1",
+                            Beschreibung = "Die Zutaten inklusive Eis im Shaker schütteln und in ein mit drei großen Eiswürfeln gefülltes Longdrinkglas abseihen."
+                        },                      
+                        new Step()
+                        {
+                            Headline = "Zubereitung /2",
+                            Beschreibung = "Zwei Ananasstücke werden zur Dekoration auf den Glasrand gesteckt (evtl. mit Zuckerrand)."
+                        },
+                    }
+                    },
+                    Zutaten = new Dictionary<Zutat, decimal>()
+                    {
+                        {new Zutat()
+                            {
+                                Name = "Weißer Rum",
+                                IsOptional = false,
+                                Skala = ZutatenSkala.Cl
+                            }, 3m
+                        },
+                        {new Zutat()
+                            {
+                                Name = "Kokosmilch",
+                                IsOptional = false,
+                                Skala = ZutatenSkala.Cl
+                            }, 3m
+                        },
+                        {new Zutat()
+                            {
+                                Name = "Ananassaft",
+                                IsOptional = false,
+                                Skala = ZutatenSkala.Cl
+                            }, 9m
+                        },
+                        {new Zutat()
+                            {
+                                Name = "Eiswürfel",
+                                IsOptional = false,
+                                Skala = ZutatenSkala.Stueck
+                            }, 3 
+                        },
+                        {new Zutat()
+                            {
+                                Name = "Ananasstücke",
+                                IsOptional = true,
+                                Skala = ZutatenSkala.Stueck
+                            }, 2 
+                        },
+                    },
+                };
+
+                try
+                {
+                    string path = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+                    string imgPath = path.Substring(6) + @"\Assets\pinacolada.jpg";
+                    cocktail.Image = Image.FromFile(imgPath);
+
+                    Cocktails.InsertOneAsync(cocktail);
+                }
+                catch (Exception e)
                 {
 
                 }

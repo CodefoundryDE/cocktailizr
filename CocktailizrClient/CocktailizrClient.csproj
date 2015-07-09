@@ -13,6 +13,7 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -25,7 +26,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -47,6 +47,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Assets\App.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="GalaSoft.MvvmLight">
@@ -131,6 +134,7 @@
       <DependentUpon>ExpandableMenuButton.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Converter\BooleanToBrushConverter.cs" />
+    <Compile Include="View\Converter\BooleanToStringConverter.cs" />
     <Compile Include="View\Converter\DivisionConverter.cs" />
     <Compile Include="View\Converter\ImageConverter.cs" />
     <Compile Include="View\Converter\InvertBooleanConverter.cs" />
@@ -352,6 +356,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\ic_action_menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\App.ico" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\ic_action_filePath.png" />

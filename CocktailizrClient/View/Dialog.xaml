@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:wpf="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
              DataContext="{Binding Dialog, Source={StaticResource Locator}}"
@@ -25,30 +26,32 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Grid Background="WhiteSmoke" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="150"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-            </Grid.RowDefinitions>
-            <TextBlock Text="{Binding Dialog.DialogTitle}" TextTrimming="WordEllipsis" Grid.Row="0" FontSize="36" Style="{StaticResource DialogElementStyle}" />
-            <Separator Grid.Row="0" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="20,0" />
-            <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
-                <TextBlock Text="{Binding Dialog.DialogText}" TextWrapping="WrapWithOverflow" Style="{StaticResource DialogElementStyle}" />
-            </ScrollViewer>
-            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Style="{StaticResource DialogButtonStyle}"
+        <wpf:Card HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="150"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock Text="{Binding Dialog.DialogTitle}" TextTrimming="WordEllipsis" Grid.Row="0" FontSize="36" Style="{StaticResource DialogElementStyle}" />
+                <Separator Grid.Row="0" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="20,0" />
+                <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
+                    <TextBlock Text="{Binding Dialog.DialogText}" TextWrapping="WrapWithOverflow" Style="{StaticResource DialogElementStyle}" />
+                </ScrollViewer>
+                <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Style="{StaticResource DialogButtonStyle}"
                         Command="{Binding PrimButtonCommand}"
                         Content="{Binding Dialog.ButtonConfirmText}"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center" />
-                <Button Style="{StaticResource DialogButtonStyle}"
+                    <Button Style="{StaticResource DialogButtonStyle}"
                         Command="{Binding SecButtonCommand}"
                         Content="{Binding Dialog.ButtonCancelText}"
                         Visibility="{Binding Dialog.ButtonCancelText, Converter={StaticResource ObjectInstanciatedToVisibilityConverter}}"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center" />
-            </StackPanel>
-        </Grid>
+                </StackPanel>
+            </Grid>
+        </wpf:Card>
     </Grid>
 </UserControl>

@@ -52,6 +52,10 @@ namespace CocktailizrClient.ViewModel
         public CocktailizrClientViewModelBase()
         {
             _loadingOperationsCount = 0;
+            if (IsInDesignMode)
+            {
+                IsVisible = true;
+            }
         }
 
         #endregion
